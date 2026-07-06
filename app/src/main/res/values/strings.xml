@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">CarsRecommendationApp</string>
+    <string name="find_perfect_car">Pronađi savršen auto za sebe - brzo,\npametno i bez kompromisa</string>
+    <string name="drive">Drive</string>
+    <string name="match">Match</string>
+    <string name="start">Započni</string>
+    <string name="already_have_account">Već imam nalog · Prijavi se</string>
+
+    <string name="before_we_start">Pre nego što počnemo...</string>
+    <string name="ask_name">Kako da te zovemo? Personalizovaćemo iskustvo\nza tebe.</string>
+    <string name="your_name">TVOJE IME</string>
+    <string name="name_example">""</string>
+    <string name="name_privacy_info">Tvoje ime koristimo samo u aplikaciji</string>
+    <string name="continue_text">Nastavi</string>
+</resources>

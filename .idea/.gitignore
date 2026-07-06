@@ -1,0 +1,11 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# Local Android Studio files
+AndroidProjectSystem.xml
+androidTestResultsUserPreferences.xml
+assetWizardSettings.xml
+deploymentTargetSelector.xml
+deviceManager.xml
+runConfigurations.xml
