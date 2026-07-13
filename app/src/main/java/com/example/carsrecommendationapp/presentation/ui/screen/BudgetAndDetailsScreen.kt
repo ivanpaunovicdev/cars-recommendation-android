@@ -29,6 +29,7 @@ import androidx.compose.material3.SliderDefaults
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Slider
+import androidx.compose.ui.res.stringResource
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -38,9 +39,24 @@ fun BudgetAndDetailsScreen(
     onBackClick: () -> Unit,
     onContinueClick: () -> Unit
 ) {
-    var price by remember { mutableStateOf(28000f) }
-    var selectedYear by remember { mutableStateOf("2020+") }
-    var selectedTransmission by remember { mutableStateOf("Automatik") }
+    val savedBudgetMax by onboardingViewModel.budgetMax.collectAsState()
+    val savedMinYear by onboardingViewModel.minYear.collectAsState()
+    val savedTransmission by onboardingViewModel.transmission.collectAsState()
+
+    var price by remember(savedBudgetMax) {
+        mutableStateOf(savedBudgetMax.toFloat())
+    }
+
+    var selectedYear by remember(savedMinYear) {
+        mutableStateOf("${savedMinYear}+")
+    }
+
+    var selectedTransmission by remember(savedTransmission) {
+        mutableStateOf(
+            if (savedTransmission.isBlank()) "Automatik"
+            else savedTransmission
+        )
+    }
 
     val years = listOf("2018+", "2019+", "2020+", "2022+", "2024+" , "2025+", "2026+")
     val transmissions = listOf("Automatik", "Manuelni", "Svejedno")
@@ -88,7 +104,7 @@ fun BudgetAndDetailsScreen(
                     .verticalScroll(rememberScrollState())
             ) {
                 Text(
-                    text = "KORAK 4 OD 5",
+                    text = stringResource(R.string.step_4_of_5),
                     color = colorResource(R.color.orange),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold
@@ -97,7 +113,7 @@ fun BudgetAndDetailsScreen(
                 Spacer(modifier = Modifier.height(screenHeight * 0.01f))
 
                 Text(
-                    text = "Budžet i detalji",
+                    text = stringResource(R.string.budget_details_title),
                     color = colorResource(R.color.white),
                     fontSize = 34.sp,
                     fontWeight = FontWeight.Black
@@ -106,7 +122,7 @@ fun BudgetAndDetailsScreen(
                 Spacer(modifier = Modifier.height(screenHeight * 0.01f))
 
                 Text(
-                    text = "Podesi opseg cene koji ti odgovara.",
+                    text = stringResource(R.string.budget_details_description),
                     color = colorResource(R.color.light_gray),
                     fontSize = 16.sp
                 )
@@ -135,7 +151,7 @@ fun BudgetAndDetailsScreen(
                         verticalArrangement = Arrangement.Center
                     ) {
                         Text(
-                            text = "Cenovni rang",
+                            text = stringResource(R.string.price_range),
                             color = colorResource(R.color.light_gray),
                             fontSize = 15.sp
                         )
@@ -153,7 +169,7 @@ fun BudgetAndDetailsScreen(
                         Spacer(modifier = Modifier.height(4.dp))
 
                         Text(
-                            text = "≈ približno mesečna procena",
+                            text = stringResource(R.string.monthly_estimate),
                             color = colorResource(R.color.light_gray),
                             fontSize = 13.sp
                         )
@@ -221,7 +237,7 @@ fun BudgetAndDetailsScreen(
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
                             Text(
-                                text = "Godište",
+                                text = stringResource(R.string.year),
                                 color = colorResource(R.color.white),
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold
@@ -255,7 +271,7 @@ fun BudgetAndDetailsScreen(
                 Spacer(modifier = Modifier.height(screenHeight * 0.03f))
 
                 Text(
-                    text = "Menjač",
+                    text = stringResource(R.string.transmission),
                     color = colorResource(R.color.white),
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Black
@@ -279,7 +295,7 @@ fun BudgetAndDetailsScreen(
             }
 
             PrimaryButton(
-                text = "Nastavi",
+                text = stringResource(R.string.continue_text_simple),
                 onClick = {
                     onboardingViewModel.updateBudgetMax(price.toInt())
                     onboardingViewModel.updateMinYear(selectedYear.removeSuffix("+").toInt())

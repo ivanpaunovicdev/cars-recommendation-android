@@ -12,4 +12,72 @@
     <string name="name_example">""</string>
     <string name="name_privacy_info">Tvoje ime koristimo samo u aplikaciji</string>
     <string name="continue_text">Nastavi</string>
+    <string name="step_1_of_5">KORAK 1 OD 5</string>
+
+    <string name="brand_selection_title">
+    Koji brendovi te\nnajviše interesuju?
+</string>
+
+    <string name="brand_selection_description">
+    Izaberi jedan ili više brendova. Možeš preskočiti ovaj korak.
+</string>
+
+    <string name="next">Dalje</string>
+
+    <string name="next_selected">Dalje (%1$d izabrano)</string>
+
+    <string name="step_2_of_5">KORAK 2 OD 5</string>
+    <string name="body_type_title">Tip karoserije</string>
+    <string name="body_type_description">Izaberi jedan ili više tipova karoserije.</string>
+    <string name="body_type_section">Karoserija</string>
+
+    <string name="step_3_of_5">KORAK 3 OD 5</string>
+    <string name="fuel_type_title">Tip goriva</string>
+    <string name="fuel_type_description">Izaberi jedan ili više tipova goriva.</string>
+    <string name="continue_text_simple">Nastavi</string>
+    <string name="loading">Loading...</string>
+    <string name="unable_to_load_data">Unable to load data.</string>
+
+    <string name="step_4_of_5">KORAK 4 OD 5</string>
+    <string name="budget_details_title">Budžet i detalji</string>
+    <string name="budget_details_description">Podesi opseg cene koji ti odgovara.</string>
+    <string name="price_range">Cenovni rang</string>
+    <string name="monthly_estimate">≈ približno mesečna procena</string>
+    <string name="year">Godište</string>
+    <string name="transmission">Menjač</string>
+
+    <string name="step_5_of_5">KORAK 5 OD 5</string>
+    <string name="driving_habits_title">Tvoje navike vožnje</string>
+    <string name="driving_habits_description">
+    Poslednji korak - reci nam nešto o tome kako voziš.
+</string>
+    <string name="daily_route">DNEVNA RUTA</string>
+    <string name="primary_driving_terrain">PRIMARNI TEREN VOŽNJE</string>
+    <string name="driving_philosophy">MOJA FILOZOFIJA VOŽNJE</string>
+    <string name="find_car_for_me">Pronađi auto za mene</string>
+
+    <string name="hello_user">Zdravo, %1$s</string>
+    <string name="default_user">Korisniče</string>
+    <string name="your_recommendations">Tvoje preporuke</string>
+    <string name="results_count">%1$d rezultata</string>
+    <string name="budget_filter">do €%1$d</string>
+    <string name="year_filter">%1$d+</string>
+    <string name="unable_to_load_recommendations">Unable to load recommendations.</string>
+
+    <string name="vehicle_price_label">Cena</string>
+    <string name="vehicle_specs_title">Specifikacije</string>
+    <string name="fuel_label">Gorivo</string>
+    <string name="body_type_label">Karoserija</string>
+    <string name="transmission_label">Menjač</string>
+    <string name="drive_type_label">Pogon</string>
+    <string name="match_percentage">%1$d%% MATCH</string>
+    <string name="not_available">N/A</string>
+    <string name="vehicle_subtitle">%1$s · %2$s km · Beograd</string>
+
+    <string name="car_logo_description">Car logo</string>
+
+    <string name="user_icon_description">User icon</string>
+    <string name="name_icon_description">Name icon</string>
+    <string name="info_icon_description">Info icon</string>
+
 </resources>

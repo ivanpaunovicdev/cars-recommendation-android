@@ -34,7 +34,11 @@ fun NameInputScreen(
     onBackClick: () -> Unit,
     onContinueClick: () -> Unit
 ) {
-    var name by remember { mutableStateOf("") }
+    val savedUserName by onboardingViewModel.userName.collectAsState()
+
+    var name by remember(savedUserName) {
+        mutableStateOf(savedUserName)
+    }
 
     BoxWithConstraints(
         modifier = Modifier
@@ -77,7 +81,7 @@ fun NameInputScreen(
             ) {
                 Icon(
                     painter = painterResource(R.drawable.baseline_person),
-                    contentDescription = "User icon",
+                    contentDescription = stringResource(R.string.user_icon_description),
                     tint = colorResource(R.color.orange),
                     modifier = Modifier.size(54.dp)
                 )
@@ -122,7 +126,7 @@ fun NameInputScreen(
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.baseline_person),
-                        contentDescription = "Name icon",
+                        contentDescription = stringResource(R.string.name_icon_description),
                         tint = colorResource(R.color.orange),
                         modifier = Modifier.size(22.dp)
                     )
@@ -162,7 +166,7 @@ fun NameInputScreen(
             ) {
                 Icon(
                     painter = painterResource(R.drawable.baseline_info),
-                    contentDescription = "Info icon",
+                    contentDescription = stringResource(R.string.info_icon_description),
                     tint = colorResource(R.color.light_gray),
                     modifier = Modifier.size(14.dp)
                 )
@@ -179,7 +183,7 @@ fun NameInputScreen(
             Spacer(modifier = Modifier.weight(1f))
 
             PrimaryButton(
-                text = "Nastavi",
+                text = stringResource(R.string.continue_text_simple),
                 enabled = name.trim().isNotEmpty(),
                 onClick = {
                     onboardingViewModel.updateUserName(name.trim())

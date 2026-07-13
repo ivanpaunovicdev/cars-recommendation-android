@@ -24,6 +24,7 @@ import com.example.carsrecommendationapp.presentation.ui.components.SortChip
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.res.stringResource
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.RecommendationViewModel
 
@@ -36,6 +37,8 @@ fun ResultsScreen(
 
     val recommendationViewModel: RecommendationViewModel = viewModel()
     val recommendations by recommendationViewModel.recommendations.collectAsState()
+    val isLoading by recommendationViewModel.isLoading.collectAsState()
+    val errorMessage by recommendationViewModel.errorMessage.collectAsState()
     val selectedBrands by onboardingViewModel.selectedBrands.collectAsState()
     val selectedBodyTypes by onboardingViewModel.selectedBodyTypes.collectAsState()
     val selectedFuels by onboardingViewModel.selectedFuels.collectAsState()
@@ -101,7 +104,10 @@ fun ResultsScreen(
                     Column {
 
                         Text(
-                            text = "Zdravo, ${userName.ifBlank { "Korisniče" }}",
+                            text = stringResource(
+                                R.string.hello_user,
+                                userName.ifBlank { stringResource(R.string.default_user) }
+                            ),
                             color = colorResource(R.color.light_gray),
                             fontSize = 13.sp
                         )
@@ -109,7 +115,7 @@ fun ResultsScreen(
                         Spacer(modifier = Modifier.height(6.dp))
 
                         Text(
-                            text = "Tvoje preporuke",
+                            text = stringResource(R.string.your_recommendations),
                             color = colorResource(R.color.white),
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Black
@@ -143,9 +149,9 @@ fun ResultsScreen(
                         ActiveFilterChip(selectedFuels.joinToString(", "))
                     }
 
-                    ActiveFilterChip("do €$budgetMax")
+                    ActiveFilterChip(stringResource(R.string.budget_filter, budgetMax))
 
-                    ActiveFilterChip("$minYear+")
+                    ActiveFilterChip(stringResource(R.string.year_filter, minYear))
 
                     if (transmission.isNotBlank()) {
                         ActiveFilterChip(transmission)
@@ -171,7 +177,7 @@ fun ResultsScreen(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
-                        text = "${recommendations.size} rezultata",
+                        text = stringResource(R.string.results_count, recommendations.size),
                         color = colorResource(R.color.orange),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold
@@ -183,26 +189,62 @@ fun ResultsScreen(
                 Spacer(modifier = Modifier.height(18.dp))
             }
 
-            items(recommendations.size) { index ->
-                val car = recommendations[index]
-
-                CarResultCard(
-                    title = "${car.marka ?: ""} ${car.model ?: ""}",
-                    subtitle = "${car.marka ?: ""} · ${car.godiste ?: "-"} · ${formatMileage(car.kilometraza)} km",
-                    price = formatPrice(car.cena),
-                    matchPercent = car.skor ?: 0,
-                    fuel = car.gorivo ?: "N/A",
-                    transmission = car.menjac ?: "N/A",
-                    power = car.pogon ?: "N/A",
-                    isFavorite = index == 0,
-                    onFavoriteClick = { },
-                    onClick = {
-                        onboardingViewModel.updateSelectedRecommendation(car)
-                        onCarClick()
+            when {
+                isLoading -> {
+                    item {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(260.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = stringResource(R.string.loading),
+                                color = colorResource(R.color.white)
+                            )
+                        }
                     }
-                )
+                }
 
-                Spacer(modifier = Modifier.height(18.dp))
+                errorMessage != null -> {
+                    item {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(260.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = stringResource(R.string.unable_to_load_recommendations),
+                                color = colorResource(R.color.orange)
+                            )
+                        }
+                    }
+                }
+
+                else -> {
+                    items(recommendations.size) { index ->
+                        val car = recommendations[index]
+
+                        CarResultCard(
+                            title = "${car.marka ?: ""} ${car.model ?: ""}",
+                            subtitle = "${car.marka ?: ""} · ${car.godiste ?: "-"} · ${formatMileage(car.kilometraza)} km",
+                            price = formatPrice(car.cena),
+                            matchPercent = car.skor ?: 0,
+                            fuel = car.gorivo ?: "N/A",
+                            transmission = car.menjac ?: "N/A",
+                            power = car.pogon ?: "N/A",
+                            isFavorite = index == 0,
+                            onFavoriteClick = { },
+                            onClick = {
+                                onboardingViewModel.updateSelectedRecommendation(car)
+                                onCarClick()
+                            }
+                        )
+
+                        Spacer(modifier = Modifier.height(18.dp))
+                    }
+                }
             }
 
         }

@@ -24,6 +24,7 @@ import com.example.carsrecommendationapp.presentation.ui.components.VehicleSpecC
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
+import androidx.compose.ui.res.stringResource
 
 
 @Composable
@@ -139,7 +140,11 @@ fun VehicleDetailsScreen(
                 Spacer(modifier = Modifier.height(6.dp))
 
                 Text(
-                    text = "${selectedCar?.godiste ?: "-"} · ${formatVehicleMileage(selectedCar?.kilometraza)} km · Beograd",
+                    text = stringResource(
+                        R.string.vehicle_subtitle,
+                        selectedCar?.godiste?.toString() ?: "-",
+                        formatVehicleMileage(selectedCar?.kilometraza)
+                    ),
                     color = colorResource(R.color.light_gray),
                     fontSize = 15.sp
                 )
@@ -155,7 +160,7 @@ fun VehicleDetailsScreen(
                     Column {
 
                         Text(
-                            text = "Cena",
+                            text = stringResource(R.string.vehicle_price_label),
                             color = colorResource(R.color.light_gray),
                             fontSize = 14.sp
                         )
@@ -180,7 +185,10 @@ fun VehicleDetailsScreen(
                             )
                     ) {
                         Text(
-                            text = "${selectedCar?.skor ?: 0}% MATCH",
+                            text = stringResource(
+                                R.string.match_percentage,
+                                selectedCar?.skor ?: 0
+                            ),
                             color = colorResource(R.color.white),
                             fontWeight = FontWeight.Bold
                         )
@@ -190,7 +198,7 @@ fun VehicleDetailsScreen(
                 Spacer(modifier = Modifier.height(28.dp))
 
                 Text(
-                    text = "Specifikacije",
+                    text = stringResource(R.string.vehicle_specs_title),
                     color = colorResource(R.color.white),
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Black
@@ -204,32 +212,35 @@ fun VehicleDetailsScreen(
                     verticalArrangement = Arrangement.spacedBy(12.dp),
                     modifier = Modifier.height(190.dp)
                 ) {
-
                     item {
                         VehicleSpecCard(
-                            label = "Gorivo",
-                            value = selectedCar?.gorivo ?: "N/A"
+                            label = stringResource(R.string.fuel_label),
+                            value = selectedCar?.gorivo
+                                ?: stringResource(R.string.not_available)
                         )
                     }
 
                     item {
                         VehicleSpecCard(
-                            label = "Karoserija",
-                            value = selectedCar?.karoserija ?: "N/A"
+                            label = stringResource(R.string.body_type_label),
+                            value = selectedCar?.karoserija
+                                ?: stringResource(R.string.not_available)
                         )
                     }
 
                     item {
                         VehicleSpecCard(
-                            label = "Menjač",
-                            value = selectedCar?.menjac ?: "N/A"
+                            label = stringResource(R.string.transmission_label),
+                            value = selectedCar?.menjac
+                                ?: stringResource(R.string.not_available)
                         )
                     }
 
                     item {
                         VehicleSpecCard(
-                            label = "Pogon",
-                            value = selectedCar?.pogon ?: "N/A"
+                            label = stringResource(R.string.drive_type_label),
+                            value = selectedCar?.pogon
+                                ?: stringResource(R.string.not_available)
                         )
                     }
                 }

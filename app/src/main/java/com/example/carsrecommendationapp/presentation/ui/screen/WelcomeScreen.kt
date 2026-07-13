@@ -64,7 +64,7 @@ fun WelcomeScreen(
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.ic_car_logo),
-                    contentDescription = "Car Logo",
+                    contentDescription = stringResource(R.string.car_logo_description),
                     modifier = Modifier.size(screenHeight * 0.08f)
                 )
             }

@@ -2,7 +2,7 @@ package com.example.carsrecommendationapp.presentation.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.carsrecommendationapp.data.network.RetrofitInstance
+import com.example.carsrecommendationapp.data.repository.RepositoryProvider
 import com.example.carsrecommendationapp.domain.Recommendation
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -11,19 +11,20 @@ import kotlinx.coroutines.launch
 
 class RecommendationViewModel : ViewModel() {
 
+    private val carRepository = RepositoryProvider.carRepository
+
     private val _recommendations = MutableStateFlow<List<Recommendation>>(emptyList())
     val recommendations: StateFlow<List<Recommendation>> = _recommendations.asStateFlow()
+
+    private val _isLoading = MutableStateFlow(false)
+    val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
 
     private val _errorMessage = MutableStateFlow<String?>(null)
     val errorMessage: StateFlow<String?> = _errorMessage.asStateFlow()
 
-    init {
-        loadRecommendations()
-    }
-
     fun loadRecommendations(
         budgetMin: Int = 0,
-        budgetMax: Int = Int.MAX_VALUE,
+        budgetMax: Int = 100000,
         minYear: Int = 0,
         maxMileage: Int = Int.MAX_VALUE,
         brand: String = "",
@@ -35,9 +36,10 @@ class RecommendationViewModel : ViewModel() {
     ) {
         viewModelScope.launch {
             try {
+                _isLoading.value = true
                 _errorMessage.value = null
 
-                _recommendations.value = RetrofitInstance.api.getRecommendations(
+                _recommendations.value = carRepository.getRecommendations(
                     budgetMin = budgetMin,
                     budgetMax = budgetMax,
                     minYear = minYear,
@@ -49,10 +51,11 @@ class RecommendationViewModel : ViewModel() {
                     transmission = transmission,
                     driveType = driveType
                 )
-
             } catch (e: Exception) {
-                _errorMessage.value = e.message
+                _errorMessage.value = "Unable to load recommendations."
                 e.printStackTrace()
+            } finally {
+                _isLoading.value = false
             }
         }
     }

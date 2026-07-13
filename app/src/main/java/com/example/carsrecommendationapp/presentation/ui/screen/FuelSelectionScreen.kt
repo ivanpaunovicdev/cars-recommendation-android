@@ -21,6 +21,8 @@ import com.example.carsrecommendationapp.presentation.ui.components.PrimaryButto
 import com.example.carsrecommendationapp.presentation.ui.components.StepProgressIndicator
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.FuelsViewModel
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.stringResource
 
 @Composable
 fun FuelSelectionScreen(
@@ -31,7 +33,14 @@ fun FuelSelectionScreen(
     val fuelsViewModel: FuelsViewModel = viewModel()
     val fuels by fuelsViewModel.fuels.collectAsState()
 
-    var selectedFuels by remember { mutableStateOf(setOf<String>()) }
+    val isLoading by fuelsViewModel.isLoading.collectAsState()
+    val errorMessage by fuelsViewModel.errorMessage.collectAsState()
+
+    val savedSelectedFuels by onboardingViewModel.selectedFuels.collectAsState()
+
+    var selectedFuels by remember(savedSelectedFuels) {
+        mutableStateOf(savedSelectedFuels)
+    }
 
     BoxWithConstraints(
         modifier = Modifier
@@ -70,7 +79,7 @@ fun FuelSelectionScreen(
             Spacer(modifier = Modifier.height(screenHeight * 0.035f))
 
             Text(
-                text = "KORAK 3 OD 5",
+                text = stringResource(R.string.step_3_of_5),
                 color = colorResource(R.color.orange),
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Bold
@@ -79,7 +88,7 @@ fun FuelSelectionScreen(
             Spacer(modifier = Modifier.height(screenHeight * 0.012f))
 
             Text(
-                text = "Tip goriva",
+                text = stringResource(R.string.fuel_type_title),
                 color = colorResource(R.color.white),
                 fontSize = 34.sp,
                 fontWeight = FontWeight.Black
@@ -88,43 +97,75 @@ fun FuelSelectionScreen(
             Spacer(modifier = Modifier.height(screenHeight * 0.012f))
 
             Text(
-                text = "Izaberi jedan ili više tipova goriva.",
+                text = stringResource(R.string.fuel_type_description),
                 color = colorResource(R.color.light_gray),
                 fontSize = 15.sp
             )
 
             Spacer(modifier = Modifier.height(screenHeight * 0.035f))
 
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
-                modifier = Modifier.weight(1f)
-            ) {
-                items(fuels.take(4)) { fuel ->
-                    val name = fuel.naziv ?: ""
+            when {
+                isLoading -> {
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = stringResource(R.string.loading),
+                            color = colorResource(R.color.white)
+                        )
+                    }
+                }
 
-                    FuelTypeCard(
-                        title = name,
-                        description = fuelDescription(name),
-                        icon = fuelIcon(name),
-                        isSelected = selectedFuels.contains(name),
-                        onClick = {
-                            selectedFuels =
-                                if (selectedFuels.contains(name)) {
-                                    selectedFuels - name
-                                } else {
-                                    selectedFuels + name
+                errorMessage != null -> {
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = stringResource(R.string.unable_to_load_data),
+                            color = colorResource(R.color.orange)
+                        )
+                    }
+                }
+
+                else -> {
+                    LazyVerticalGrid(
+                        columns = GridCells.Fixed(2),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        verticalArrangement = Arrangement.spacedBy(12.dp),
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        items(fuels.take(4)) { fuel ->
+                            val name = fuel.naziv ?: ""
+
+                            FuelTypeCard(
+                                title = name,
+                                description = fuelDescription(name),
+                                icon = fuelIcon(name),
+                                isSelected = selectedFuels.contains(name),
+                                onClick = {
+                                    selectedFuels =
+                                        if (selectedFuels.contains(name)) {
+                                            selectedFuels - name
+                                        } else {
+                                            selectedFuels + name
+                                        }
                                 }
+                            )
                         }
-                    )
+                    }
                 }
             }
 
             Spacer(modifier = Modifier.height(screenHeight * 0.025f))
 
             PrimaryButton(
-                text = "Nastavi",
+                text = stringResource(R.string.continue_text_simple),
                 enabled = selectedFuels.isNotEmpty(),
                 onClick = {
                     onboardingViewModel.updateFuels(selectedFuels)

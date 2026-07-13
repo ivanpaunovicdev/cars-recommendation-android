@@ -28,6 +28,7 @@ import com.example.carsrecommendationapp.presentation.ui.viewmodel.BodyTypesView
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.navigationBarsPadding
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
+import androidx.compose.ui.Alignment
 
 @Composable
 fun BodyAndFuelScreen(
@@ -40,8 +41,15 @@ fun BodyAndFuelScreen(
 
     val bodyTypes by bodyTypesViewModel.bodyTypes.collectAsState()
 
+    val isLoading by bodyTypesViewModel.isLoading.collectAsState()
+    val errorMessage by bodyTypesViewModel.errorMessage.collectAsState()
 
-    var selectedBodyTypes by remember { mutableStateOf(setOf<String>()) }
+
+    val savedSelectedBodyTypes by onboardingViewModel.selectedBodyTypes.collectAsState()
+
+    var selectedBodyTypes by remember(savedSelectedBodyTypes) {
+        mutableStateOf(savedSelectedBodyTypes)
+    }
 
     BoxWithConstraints(
         modifier = Modifier
@@ -81,7 +89,7 @@ fun BodyAndFuelScreen(
             Spacer(modifier = Modifier.height(screenHeight * 0.03f))
 
             Text(
-                text = "KORAK 2 OD 5",
+                text = stringResource(R.string.step_2_of_5),
                 color = colorResource(R.color.orange),
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Bold
@@ -90,7 +98,7 @@ fun BodyAndFuelScreen(
             Spacer(modifier = Modifier.height(screenHeight * 0.012f))
 
             Text(
-                text = "Tip karoserije",
+                text = stringResource(R.string.body_type_title),
                 color = colorResource(R.color.white),
                 fontSize = 34.sp,
                 fontWeight = FontWeight.Black
@@ -99,7 +107,7 @@ fun BodyAndFuelScreen(
             Spacer(modifier = Modifier.height(screenHeight * 0.01f))
 
             Text(
-                text = "Izaberi jedan ili više tipova karoserije.",
+                text = stringResource(R.string.body_type_description),
                 color = colorResource(R.color.light_gray),
                 fontSize = 15.sp
             )
@@ -111,7 +119,7 @@ fun BodyAndFuelScreen(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = "Karoserija",
+                    text = stringResource(R.string.body_type_section),
                     color = colorResource(R.color.white),
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Black
@@ -126,27 +134,59 @@ fun BodyAndFuelScreen(
 
             Spacer(modifier = Modifier.height(screenHeight * 0.018f))
 
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
-                modifier = Modifier.weight(1f)
-            ) {
-                items(bodyTypes.take(6)) { bodyType ->
-                    val name = bodyType.naziv ?: ""
+            when {
+                isLoading -> {
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Loading...",
+                            color = colorResource(R.color.white)
+                        )
+                    }
+                }
 
-                    BodyTypeCard(
-                        title = name,
-                        isSelected = selectedBodyTypes.contains(name),
-                        onClick = {
-                            selectedBodyTypes =
-                                if (selectedBodyTypes.contains(name)) {
-                                    selectedBodyTypes - name
-                                } else {
-                                    selectedBodyTypes + name
+                errorMessage != null -> {
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Unable to load data.",
+                            color = colorResource(R.color.orange)
+                        )
+                    }
+                }
+
+                else -> {
+                    LazyVerticalGrid(
+                        columns = GridCells.Fixed(2),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        verticalArrangement = Arrangement.spacedBy(12.dp),
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        items(bodyTypes.take(6)) { bodyType ->
+                            val name = bodyType.naziv ?: ""
+
+                            BodyTypeCard(
+                                title = name,
+                                isSelected = selectedBodyTypes.contains(name),
+                                onClick = {
+                                    selectedBodyTypes =
+                                        if (selectedBodyTypes.contains(name)) {
+                                            selectedBodyTypes - name
+                                        } else {
+                                            selectedBodyTypes + name
+                                        }
                                 }
+                            )
                         }
-                    )
+                    }
                 }
             }
 

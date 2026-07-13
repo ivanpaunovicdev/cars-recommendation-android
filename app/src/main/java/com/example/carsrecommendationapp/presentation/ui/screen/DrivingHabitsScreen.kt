@@ -12,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -41,9 +42,13 @@ fun DrivingHabitsScreen(
     val drivingTerrains by drivingTerrainsViewModel.drivingTerrains.collectAsState()
     val drivingPhilosophies by drivingPhilosophiesViewModel.drivingPhilosophies.collectAsState()
 
-    var selectedDailyRoute by remember { mutableStateOf("") }
-    var selectedDrivingTerrain by remember { mutableStateOf("") }
-    var selectedDrivingPhilosophy by remember { mutableStateOf("") }
+    val savedDailyRoute by onboardingViewModel.selectedDailyRoute.collectAsState()
+    val savedDrivingTerrain by onboardingViewModel.selectedDrivingTerrain.collectAsState()
+    val savedDrivingPhilosophy by onboardingViewModel.selectedDrivingPhilosophy.collectAsState()
+
+    var selectedDailyRoute by remember(savedDailyRoute) { mutableStateOf(savedDailyRoute) }
+    var selectedDrivingTerrain by remember(savedDrivingTerrain) { mutableStateOf(savedDrivingTerrain) }
+    var selectedDrivingPhilosophy by remember(savedDrivingPhilosophy) { mutableStateOf(savedDrivingPhilosophy) }
 
     BoxWithConstraints(
         modifier = Modifier
@@ -74,10 +79,7 @@ fun DrivingHabitsScreen(
 
             Spacer(modifier = Modifier.height(screenHeight * 0.03f))
 
-            StepProgressIndicator(
-                currentStep = 5,
-                totalSteps = 5
-            )
+            StepProgressIndicator(currentStep = 5, totalSteps = 5)
 
             Spacer(modifier = Modifier.height(screenHeight * 0.03f))
 
@@ -87,7 +89,7 @@ fun DrivingHabitsScreen(
                     .verticalScroll(rememberScrollState())
             ) {
                 Text(
-                    text = "KORAK 5 OD 5",
+                    text = stringResource(R.string.step_5_of_5),
                     color = colorResource(R.color.orange),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold
@@ -96,7 +98,7 @@ fun DrivingHabitsScreen(
                 Spacer(modifier = Modifier.height(screenHeight * 0.01f))
 
                 Text(
-                    text = "Tvoje navike vožnje",
+                    text = stringResource(R.string.driving_habits_title),
                     color = colorResource(R.color.white),
                     fontSize = 34.sp,
                     fontWeight = FontWeight.Black
@@ -105,7 +107,7 @@ fun DrivingHabitsScreen(
                 Spacer(modifier = Modifier.height(screenHeight * 0.01f))
 
                 Text(
-                    text = "Poslednji korak - reci nam nešto o tome kako voziš.",
+                    text = stringResource(R.string.driving_habits_description),
                     color = colorResource(R.color.light_gray),
                     fontSize = 15.sp
                 )
@@ -113,7 +115,7 @@ fun DrivingHabitsScreen(
                 Spacer(modifier = Modifier.height(screenHeight * 0.035f))
 
                 Text(
-                    text = "DNEVNA RUTA",
+                    text = stringResource(R.string.daily_route),
                     color = colorResource(R.color.white),
                     fontSize = 15.sp,
                     fontWeight = FontWeight.Black
@@ -137,9 +139,7 @@ fun DrivingHabitsScreen(
                             title = name,
                             subtitle = subtitle,
                             isSelected = selectedDailyRoute == name,
-                            onClick = {
-                                selectedDailyRoute = name
-                            }
+                            onClick = { selectedDailyRoute = name }
                         )
                     }
                 }
@@ -147,7 +147,7 @@ fun DrivingHabitsScreen(
                 Spacer(modifier = Modifier.height(screenHeight * 0.035f))
 
                 Text(
-                    text = "PRIMARNI TEREN VOŽNJE",
+                    text = stringResource(R.string.primary_driving_terrain),
                     color = colorResource(R.color.white),
                     fontSize = 15.sp,
                     fontWeight = FontWeight.Black
@@ -155,9 +155,7 @@ fun DrivingHabitsScreen(
 
                 Spacer(modifier = Modifier.height(12.dp))
 
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
-                ) {
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     drivingTerrains.chunked(2).forEach { rowItems ->
                         Row(
                             modifier = Modifier.fillMaxWidth(),
@@ -172,9 +170,7 @@ fun DrivingHabitsScreen(
                                         title = name,
                                         description = description,
                                         isSelected = selectedDrivingTerrain == name,
-                                        onClick = {
-                                            selectedDrivingTerrain = name
-                                        }
+                                        onClick = { selectedDrivingTerrain = name }
                                     )
                                 }
                             }
@@ -182,11 +178,10 @@ fun DrivingHabitsScreen(
                     }
                 }
 
-
                 Spacer(modifier = Modifier.height(screenHeight * 0.02f))
 
                 Text(
-                    text = "MOJA FILOZOFIJA VOŽNJE",
+                    text = stringResource(R.string.driving_philosophy),
                     color = colorResource(R.color.white),
                     fontSize = 15.sp,
                     fontWeight = FontWeight.Black
@@ -194,9 +189,7 @@ fun DrivingHabitsScreen(
 
                 Spacer(modifier = Modifier.height(12.dp))
 
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
-                ) {
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     drivingPhilosophies.chunked(2).forEach { rowItems ->
                         Row(
                             modifier = Modifier.fillMaxWidth(),
@@ -211,9 +204,7 @@ fun DrivingHabitsScreen(
                                         title = name,
                                         description = description,
                                         isSelected = selectedDrivingPhilosophy == name,
-                                        onClick = {
-                                            selectedDrivingPhilosophy = name
-                                        }
+                                        onClick = { selectedDrivingPhilosophy = name }
                                     )
                                 }
                             }
@@ -225,7 +216,7 @@ fun DrivingHabitsScreen(
             }
 
             PrimaryButton(
-                text = "Pronađi auto za mene",
+                text = stringResource(R.string.find_car_for_me),
                 enabled = selectedDailyRoute.isNotBlank() &&
                         selectedDrivingTerrain.isNotBlank() &&
                         selectedDrivingPhilosophy.isNotBlank(),

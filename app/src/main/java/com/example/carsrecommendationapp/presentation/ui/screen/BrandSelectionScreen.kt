@@ -24,6 +24,8 @@ import com.example.carsrecommendationapp.presentation.ui.components.StepProgress
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.navigationBarsPadding
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.stringResource
 
 @Composable
 fun BrandSelectionScreen(
@@ -34,7 +36,14 @@ fun BrandSelectionScreen(
     val brandsViewModel: BrandsViewModel = viewModel()
     val brands by brandsViewModel.brands.collectAsState()
 
-    var selectedBrands by remember { mutableStateOf(setOf<String>()) }
+    val isLoading by brandsViewModel.isLoading.collectAsState()
+    val errorMessage by brandsViewModel.errorMessage.collectAsState()
+
+    val savedSelectedBrands by onboardingViewModel.selectedBrands.collectAsState()
+
+    var selectedBrands by remember(savedSelectedBrands) {
+        mutableStateOf(savedSelectedBrands)
+    }
 
     BoxWithConstraints(
         modifier = Modifier
@@ -76,7 +85,7 @@ fun BrandSelectionScreen(
             Spacer(modifier = Modifier.height(screenHeight * 0.035f))
 
             Text(
-                text = "KORAK 1 OD 5",
+                text = stringResource(R.string.step_1_of_5),
                 color = colorResource(R.color.orange),
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold
@@ -85,7 +94,7 @@ fun BrandSelectionScreen(
             Spacer(modifier = Modifier.height(screenHeight * 0.018f))
 
             Text(
-                text = "Koji brendovi te\nnajviše interesuju?",
+                text = stringResource(R.string.brand_selection_title),
                 color = colorResource(R.color.white),
                 fontSize = 34.sp,
                 fontWeight = FontWeight.Black,
@@ -95,7 +104,7 @@ fun BrandSelectionScreen(
             Spacer(modifier = Modifier.height(screenHeight * 0.016f))
 
             Text(
-                text = "Izaberi jedan ili više brendova. Možeš preskočiti ovaj korak.",
+                text = stringResource(R.string.brand_selection_description),
                 color = colorResource(R.color.light_gray),
                 fontSize = 16.sp,
                 lineHeight = 24.sp
@@ -103,27 +112,58 @@ fun BrandSelectionScreen(
 
             Spacer(modifier = Modifier.height(screenHeight * 0.035f))
 
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(3),
-                horizontalArrangement = Arrangement.spacedBy(14.dp),
-                verticalArrangement = Arrangement.spacedBy(14.dp),
-                modifier = Modifier.weight(1f)
-            ) {
-                items(brands) { brand ->
-                    val brandName = brand.naziv ?: ""
+            when {
+                isLoading -> {
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Loading...",
+                            color = colorResource(R.color.white)
+                        )
+                    }
+                }
 
-                    BrandCard(
-                        brand = brandName,
-                        isSelected = selectedBrands.contains(brandName),
-                        onClick = {
-                            selectedBrands =
-                                if (selectedBrands.contains(brandName)) {
-                                    selectedBrands - brandName
-                                } else {
-                                    selectedBrands + brandName
+                errorMessage != null -> {
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = errorMessage ?: "",
+                            color = colorResource(R.color.orange)
+                        )
+                    }
+                }
+
+                else -> {
+                    LazyVerticalGrid(
+                        columns = GridCells.Fixed(3),
+                        horizontalArrangement = Arrangement.spacedBy(14.dp),
+                        verticalArrangement = Arrangement.spacedBy(14.dp),
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        items(brands) { brand ->
+                            val brandName = brand.naziv ?: ""
+
+                            BrandCard(
+                                brand = brandName,
+                                isSelected = selectedBrands.contains(brandName),
+                                onClick = {
+                                    selectedBrands =
+                                        if (selectedBrands.contains(brandName))
+                                            selectedBrands - brandName
+                                        else
+                                            selectedBrands + brandName
                                 }
+                            )
                         }
-                    )
+                    }
                 }
             }
 
@@ -131,9 +171,12 @@ fun BrandSelectionScreen(
 
             PrimaryButton(
                 text = if (selectedBrands.isEmpty()) {
-                    "Dalje"
+                    stringResource(R.string.next)
                 } else {
-                    "Dalje (${selectedBrands.size} izabrano)"
+                    stringResource(
+                        R.string.next_selected,
+                        selectedBrands.size
+                    )
                 },
                 onClick = {
                     onboardingViewModel.updateBrands(selectedBrands)
