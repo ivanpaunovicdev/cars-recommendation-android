@@ -21,7 +21,7 @@ import androidx.compose.ui.Alignment
 import com.example.carsrecommendationapp.presentation.ui.components.AvatarCircle
 import com.example.carsrecommendationapp.presentation.ui.components.CarResultCard
 import com.example.carsrecommendationapp.presentation.ui.components.SortChip
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
@@ -35,7 +35,7 @@ fun ResultsScreen(
     onCarClick: () -> Unit
 ) {
 
-    val recommendationViewModel: RecommendationViewModel = viewModel()
+    val recommendationViewModel: RecommendationViewModel = hiltViewModel()
     val recommendations by recommendationViewModel.recommendations.collectAsState()
     val isLoading by recommendationViewModel.isLoading.collectAsState()
     val errorMessage by recommendationViewModel.errorMessage.collectAsState()

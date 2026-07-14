@@ -6,7 +6,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.*
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.BrandsViewModel
@@ -33,7 +33,7 @@ fun BrandSelectionScreen(
     onBackClick: () -> Unit,
     onContinueClick: () -> Unit
 ) {
-    val brandsViewModel: BrandsViewModel = viewModel()
+    val brandsViewModel: BrandsViewModel = hiltViewModel()
     val brands by brandsViewModel.brands.collectAsState()
 
     val isLoading by brandsViewModel.isLoading.collectAsState()
@@ -121,7 +121,7 @@ fun BrandSelectionScreen(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = "Loading...",
+                            text = stringResource(R.string.loading),
                             color = colorResource(R.color.white)
                         )
                     }

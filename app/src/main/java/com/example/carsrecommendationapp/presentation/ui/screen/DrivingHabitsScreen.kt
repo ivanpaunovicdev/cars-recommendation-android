@@ -16,7 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.carsrecommendationapp.R
 import com.example.carsrecommendationapp.presentation.ui.components.BackButton
 import com.example.carsrecommendationapp.presentation.ui.components.DrivingHabitCard
@@ -34,9 +34,9 @@ fun DrivingHabitsScreen(
     onBackClick: () -> Unit,
     onFindCarClick: () -> Unit
 ) {
-    val dailyRoutesViewModel: DailyRoutesViewModel = viewModel()
-    val drivingTerrainsViewModel: DrivingTerrainsViewModel = viewModel()
-    val drivingPhilosophiesViewModel: DrivingPhilosophiesViewModel = viewModel()
+    val dailyRoutesViewModel: DailyRoutesViewModel = hiltViewModel()
+    val drivingTerrainsViewModel: DrivingTerrainsViewModel = hiltViewModel()
+    val drivingPhilosophiesViewModel: DrivingPhilosophiesViewModel = hiltViewModel()
 
     val dailyRoutes by dailyRoutesViewModel.dailyRoutes.collectAsState()
     val drivingTerrains by drivingTerrainsViewModel.drivingTerrains.collectAsState()

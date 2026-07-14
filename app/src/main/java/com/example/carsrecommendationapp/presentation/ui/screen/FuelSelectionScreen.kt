@@ -13,7 +13,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.carsrecommendationapp.R
 import com.example.carsrecommendationapp.presentation.ui.components.BackButton
 import com.example.carsrecommendationapp.presentation.ui.components.FuelTypeCard
@@ -30,7 +30,7 @@ fun FuelSelectionScreen(
     onBackClick: () -> Unit,
     onContinueClick: () -> Unit
 ) {
-    val fuelsViewModel: FuelsViewModel = viewModel()
+    val fuelsViewModel: FuelsViewModel = hiltViewModel()
     val fuels by fuelsViewModel.fuels.collectAsState()
 
     val isLoading by fuelsViewModel.isLoading.collectAsState()

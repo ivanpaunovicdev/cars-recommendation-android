@@ -16,7 +16,9 @@ import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingVie
 import com.example.carsrecommendationapp.presentation.ui.screen.FuelSelectionScreen
 import com.example.carsrecommendationapp.presentation.ui.screen.DrivingHabitsScreen
 import com.example.carsrecommendationapp.presentation.ui.screen.VehicleDetailsScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

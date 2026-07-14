@@ -2,15 +2,15 @@ package com.example.carsrecommendationapp.presentation.ui.viewmodel.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.carsrecommendationapp.data.repository.RepositoryProvider
+import com.example.carsrecommendationapp.data.repository.CarRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-abstract class BaseListViewModel<T> : ViewModel() {
-
-    protected val carRepository = RepositoryProvider.carRepository
+abstract class BaseListViewModel<T>(
+    protected val carRepository: CarRepository
+) : ViewModel() {
 
     private val _items = MutableStateFlow<List<T>>(emptyList())
     val items: StateFlow<List<T>> = _items.asStateFlow()
@@ -34,7 +34,8 @@ abstract class BaseListViewModel<T> : ViewModel() {
                 _errorMessage.value = null
                 _items.value = loadData()
             } catch (e: Exception) {
-                _errorMessage.value = e.message ?: "Došlo je do greške pri učitavanju podataka."
+                _errorMessage.value =
+                    e.message ?: "Došlo je do greške pri učitavanju podataka."
                 e.printStackTrace()
             } finally {
                 _isLoading.value = false

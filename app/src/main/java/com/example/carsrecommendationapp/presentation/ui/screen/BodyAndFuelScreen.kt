@@ -16,11 +16,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+
 import com.example.carsrecommendationapp.R
 import com.example.carsrecommendationapp.presentation.ui.components.BackButton
 import com.example.carsrecommendationapp.presentation.ui.components.BodyTypeCard
-
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.carsrecommendationapp.presentation.ui.components.PrimaryButton
 import com.example.carsrecommendationapp.presentation.ui.components.StepProgressIndicator
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.BodyTypesViewModel
@@ -36,7 +36,7 @@ fun BodyAndFuelScreen(
     onBackClick: () -> Unit,
     onContinueClick: () -> Unit
 ) {
-    val bodyTypesViewModel: BodyTypesViewModel = viewModel()
+    val bodyTypesViewModel: BodyTypesViewModel = hiltViewModel()
 
 
     val bodyTypes by bodyTypesViewModel.bodyTypes.collectAsState()
@@ -143,7 +143,7 @@ fun BodyAndFuelScreen(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = "Loading...",
+                            text = stringResource(R.string.loading),
                             color = colorResource(R.color.white)
                         )
                     }
@@ -157,7 +157,7 @@ fun BodyAndFuelScreen(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = "Unable to load data.",
+                            text = stringResource(R.string.unable_to_load_data),
                             color = colorResource(R.color.orange)
                         )
                     }

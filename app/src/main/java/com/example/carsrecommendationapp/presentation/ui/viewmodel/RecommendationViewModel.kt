@@ -2,16 +2,19 @@ package com.example.carsrecommendationapp.presentation.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.carsrecommendationapp.data.repository.RepositoryProvider
+import com.example.carsrecommendationapp.data.repository.CarRepository
 import com.example.carsrecommendationapp.domain.Recommendation
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class RecommendationViewModel : ViewModel() {
-
-    private val carRepository = RepositoryProvider.carRepository
+@HiltViewModel
+class RecommendationViewModel @Inject constructor(
+    private val carRepository: CarRepository
+) : ViewModel() {
 
     private val _recommendations = MutableStateFlow<List<Recommendation>>(emptyList())
     val recommendations: StateFlow<List<Recommendation>> = _recommendations.asStateFlow()
@@ -52,7 +55,8 @@ class RecommendationViewModel : ViewModel() {
                     driveType = driveType
                 )
             } catch (e: Exception) {
-                _errorMessage.value = "Unable to load recommendations."
+                _errorMessage.value =
+                    e.message ?: "Došlo je do greške pri učitavanju preporuka."
                 e.printStackTrace()
             } finally {
                 _isLoading.value = false

@@ -1,9 +1,15 @@
 package com.example.carsrecommendationapp.presentation.ui.viewmodel
 
+import com.example.carsrecommendationapp.data.repository.CarRepository
 import com.example.carsrecommendationapp.domain.Transmission
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.base.BaseListViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class TransmissionsViewModel : BaseListViewModel<Transmission>() {
+@HiltViewModel
+class TransmissionsViewModel @Inject constructor(
+    carRepository: CarRepository
+) : BaseListViewModel<Transmission>(carRepository) {
 
     val transmissions = items
 

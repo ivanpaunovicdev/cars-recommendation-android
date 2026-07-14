@@ -1,9 +1,15 @@
 package com.example.carsrecommendationapp.presentation.ui.viewmodel
 
+import com.example.carsrecommendationapp.data.repository.CarRepository
 import com.example.carsrecommendationapp.domain.DailyRoute
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.base.BaseListViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class DailyRoutesViewModel : BaseListViewModel<DailyRoute>() {
+@HiltViewModel
+class DailyRoutesViewModel @Inject constructor(
+    carRepository: CarRepository
+) : BaseListViewModel<DailyRoute>(carRepository) {
 
     val dailyRoutes = items
 
