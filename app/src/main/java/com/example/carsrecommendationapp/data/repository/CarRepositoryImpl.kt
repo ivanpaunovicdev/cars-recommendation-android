@@ -2,7 +2,7 @@ package com.example.carsrecommendationapp.data.repository
 
 import com.example.carsrecommendationapp.data.mapper.toDomain
 import com.example.carsrecommendationapp.data.network.RecommendationApi
-import com.example.carsrecommendationapp.domain.*
+import com.example.carsrecommendationapp.domain.Recommendation
 
 class CarRepositoryImpl(
     private val api: RecommendationApi

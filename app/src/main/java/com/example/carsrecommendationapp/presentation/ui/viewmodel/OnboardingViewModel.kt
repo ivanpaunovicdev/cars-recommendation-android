@@ -1,10 +1,10 @@
 package com.example.carsrecommendationapp.presentation.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.example.carsrecommendationapp.domain.Recommendation
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import com.example.carsrecommendationapp.domain.Recommendation
 
 class OnboardingViewModel : ViewModel() {
 

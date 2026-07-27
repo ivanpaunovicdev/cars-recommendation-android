@@ -1,9 +1,11 @@
 package com.example.carsrecommendationapp.presentation.ui.components
 
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,9 +18,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.carsrecommendationapp.R
-
-
-import androidx.compose.foundation.layout.offset
 import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 
 @Composable

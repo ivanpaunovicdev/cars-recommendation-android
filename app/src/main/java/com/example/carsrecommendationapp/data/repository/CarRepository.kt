@@ -1,6 +1,16 @@
 package com.example.carsrecommendationapp.data.repository
 
-import com.example.carsrecommendationapp.domain.*
+import com.example.carsrecommendationapp.domain.BodyType
+import com.example.carsrecommendationapp.domain.Brand
+import com.example.carsrecommendationapp.domain.Car
+import com.example.carsrecommendationapp.domain.DailyRoute
+import com.example.carsrecommendationapp.domain.DriveType
+import com.example.carsrecommendationapp.domain.DrivingPhilosophy
+import com.example.carsrecommendationapp.domain.DrivingTerrain
+import com.example.carsrecommendationapp.domain.Fuel
+import com.example.carsrecommendationapp.domain.Recommendation
+import com.example.carsrecommendationapp.domain.SafetyEquipment
+import com.example.carsrecommendationapp.domain.Transmission
 
 interface CarRepository {
 

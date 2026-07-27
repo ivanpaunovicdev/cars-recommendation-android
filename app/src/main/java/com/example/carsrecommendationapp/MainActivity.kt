@@ -1,21 +1,21 @@
 package com.example.carsrecommendationapp
-import com.example.carsrecommendationapp.presentation.ui.screen.BrandSelectionScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.carsrecommendationapp.presentation.ui.screen.NameInputScreen
-import com.example.carsrecommendationapp.presentation.ui.screen.WelcomeScreen
 import com.example.carsrecommendationapp.presentation.ui.screen.BodyAndFuelScreen
+import com.example.carsrecommendationapp.presentation.ui.screen.BrandSelectionScreen
 import com.example.carsrecommendationapp.presentation.ui.screen.BudgetAndDetailsScreen
-import com.example.carsrecommendationapp.presentation.ui.screen.ResultsScreen
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
-import com.example.carsrecommendationapp.presentation.ui.screen.FuelSelectionScreen
 import com.example.carsrecommendationapp.presentation.ui.screen.DrivingHabitsScreen
+import com.example.carsrecommendationapp.presentation.ui.screen.FuelSelectionScreen
+import com.example.carsrecommendationapp.presentation.ui.screen.NameInputScreen
+import com.example.carsrecommendationapp.presentation.ui.screen.ResultsScreen
 import com.example.carsrecommendationapp.presentation.ui.screen.VehicleDetailsScreen
+import com.example.carsrecommendationapp.presentation.ui.screen.WelcomeScreen
+import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

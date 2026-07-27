@@ -1,15 +1,15 @@
 package com.example.carsrecommendationapp.data.network
-import com.example.carsrecommendationapp.domain.Car
-import com.example.carsrecommendationapp.domain.Fuel
+import com.example.carsrecommendationapp.data.dto.RecommendationDto
 import com.example.carsrecommendationapp.domain.BodyType
 import com.example.carsrecommendationapp.domain.Brand
-import com.example.carsrecommendationapp.domain.Transmission
-import com.example.carsrecommendationapp.domain.DriveType
-import com.example.carsrecommendationapp.domain.SafetyEquipment
-import com.example.carsrecommendationapp.data.dto.RecommendationDto
+import com.example.carsrecommendationapp.domain.Car
 import com.example.carsrecommendationapp.domain.DailyRoute
-import com.example.carsrecommendationapp.domain.DrivingTerrain
+import com.example.carsrecommendationapp.domain.DriveType
 import com.example.carsrecommendationapp.domain.DrivingPhilosophy
+import com.example.carsrecommendationapp.domain.DrivingTerrain
+import com.example.carsrecommendationapp.domain.Fuel
+import com.example.carsrecommendationapp.domain.SafetyEquipment
+import com.example.carsrecommendationapp.domain.Transmission
 import retrofit2.http.GET
 import retrofit2.http.Query
 
