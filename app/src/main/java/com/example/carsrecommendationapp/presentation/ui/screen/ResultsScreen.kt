@@ -1,5 +1,7 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
 
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
@@ -50,6 +52,7 @@ fun ResultsScreen(
     val selectedDrivingTerrain by onboardingViewModel.selectedDrivingTerrain.collectAsState()
     val selectedDrivingPhilosophy by onboardingViewModel.selectedDrivingPhilosophy.collectAsState()
     val userName by onboardingViewModel.userName.collectAsState()
+    val favoriteCars = remember { mutableStateListOf<String>() }
 
     LaunchedEffect(
         selectedBrands,
@@ -228,6 +231,7 @@ fun ResultsScreen(
                 else -> {
                     items(recommendations.size) { index ->
                         val car = recommendations[index]
+                        val carId = "${car.brand}-${car.model}-${car.year}"
 
                         CarResultCard(
                             title = "${car.brand} ${car.model}",
@@ -237,8 +241,14 @@ fun ResultsScreen(
                             fuel = car.fuel,
                             transmission = car.transmission,
                             driveType = car.driveType,
-                            isFavorite = index == 0,
-                            onFavoriteClick = { },
+                            isFavorite = carId in favoriteCars,
+                            onFavoriteClick = {
+                                if (carId in favoriteCars) {
+                                    favoriteCars.remove(carId)
+                                } else {
+                                    favoriteCars.add(carId)
+                                }
+                            },
                             onClick = {
                                 onboardingViewModel.updateSelectedRecommendation(car)
                                 onCarClick()
