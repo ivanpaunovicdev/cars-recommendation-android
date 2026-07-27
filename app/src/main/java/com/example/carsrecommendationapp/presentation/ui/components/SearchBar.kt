@@ -14,6 +14,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.carsrecommendationapp.R
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 
 @Composable
 fun SearchBar(
@@ -30,9 +31,9 @@ fun SearchBar(
                 .height(50.dp)
                 .background(
                     color = colorResource(R.color.card_dark),
-                    shape = RoundedCornerShape(16.dp)
+                    shape = RoundedCornerShape(Dimens.Medium)
                 )
-                .padding(horizontal = 16.dp),
+                .padding(horizontal = Dimens.Medium),
             verticalAlignment = Alignment.CenterVertically
         ) {
 
@@ -56,7 +57,7 @@ fun SearchBar(
                 .size(50.dp)
                 .background(
                     color = colorResource(R.color.orange),
-                    shape = RoundedCornerShape(16.dp)
+                    shape = RoundedCornerShape(Dimens.Medium)
                 )
                 .clickable {
                     onFilterClick()

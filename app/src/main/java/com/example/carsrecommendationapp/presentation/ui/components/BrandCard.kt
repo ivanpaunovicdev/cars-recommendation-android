@@ -15,6 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.carsrecommendationapp.R
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 
 @Composable
 fun BrandCard(
@@ -25,21 +26,21 @@ fun BrandCard(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(118.dp)
+            .height(Dimens.BrandImageSize)
             .background(
                 color = if (isSelected)
                     colorResource(R.color.dark_orange_brown)
                 else
                     colorResource(R.color.card_dark),
-                shape = RoundedCornerShape(20.dp)
+                shape = RoundedCornerShape(Dimens.LargePlus)
             )
             .border(
-                width = if (isSelected) 2.dp else 1.dp,
+                width = if (isSelected) Dimens.ExtraTiny else Dimens.Tiny,
                 color = if (isSelected)
                     colorResource(R.color.orange)
                 else
                     colorResource(R.color.card_dark),
-                shape = RoundedCornerShape(20.dp)
+                shape = RoundedCornerShape(Dimens.LargePlus)
             )
             .clickable { onClick() },
         contentAlignment = Alignment.Center
@@ -69,7 +70,7 @@ fun BrandCard(
                 )
             }
 
-            Spacer(modifier = Modifier.height(14.dp))
+            Spacer(modifier = Modifier.height(Dimens.MediumSmall))
 
             Text(
                 text = brand,

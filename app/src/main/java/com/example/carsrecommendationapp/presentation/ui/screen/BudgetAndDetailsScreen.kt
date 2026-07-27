@@ -30,6 +30,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Slider
 import androidx.compose.ui.res.stringResource
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -139,12 +140,12 @@ fun BudgetAndDetailsScreen(
                         .height(180.dp)
                         .background(
                             color = colorResource(R.color.card_dark),
-                            shape = RoundedCornerShape(24.dp)
+                            shape = RoundedCornerShape(Dimens.ExtraLarge)
                         )
                         .border(
                             width = 1.dp,
                             color = colorResource(R.color.card_dark),
-                            shape = RoundedCornerShape(24.dp)
+                            shape = RoundedCornerShape(Dimens.ExtraLarge)
                         )
                         .padding(20.dp)
                 ) {
@@ -160,7 +161,7 @@ fun BudgetAndDetailsScreen(
                             fontSize = 15.sp
                         )
 
-                        Spacer(modifier = Modifier.height(8.dp))
+                        Spacer(modifier = Modifier.height(Dimens.Small))
 
                         Text(
                             text = "€ ${price.toInt()}",
@@ -233,7 +234,7 @@ fun BudgetAndDetailsScreen(
                             color = colorResource(R.color.card_dark),
                             shape = RoundedCornerShape(22.dp)
                         )
-                        .padding(16.dp)
+                        .padding(Dimens.Medium)
                 ) {
                     Column {
                         Row(
@@ -258,8 +259,8 @@ fun BudgetAndDetailsScreen(
                         Spacer(modifier = Modifier.height(14.dp))
 
                         FlowRow(
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                            horizontalArrangement = Arrangement.spacedBy(Dimens.Small),
+                            verticalArrangement = Arrangement.spacedBy(Dimens.Small)
                         ) {
                             years.forEach { year ->
                                 OptionChip(

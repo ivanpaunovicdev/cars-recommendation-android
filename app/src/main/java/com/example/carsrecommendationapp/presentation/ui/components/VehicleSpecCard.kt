@@ -12,6 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.carsrecommendationapp.R
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 
 @Composable
 fun VehicleSpecCard(
@@ -24,7 +25,7 @@ fun VehicleSpecCard(
             .height(82.dp)
             .background(
                 color = colorResource(R.color.card_dark),
-                shape = RoundedCornerShape(18.dp)
+                shape = RoundedCornerShape(Dimens.Large)
             )
             .padding(14.dp),
         verticalArrangement = Arrangement.Center,
@@ -36,7 +37,7 @@ fun VehicleSpecCard(
             fontSize = 12.sp
         )
 
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(modifier = Modifier.height(Dimens.ExtraSmall))
 
         Text(
             text = value,

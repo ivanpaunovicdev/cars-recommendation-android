@@ -14,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.carsrecommendationapp.R
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 
 @Composable
 fun DrivingRouteCard(
@@ -31,7 +32,7 @@ fun DrivingRouteCard(
                     colorResource(R.color.dark_orange_brown)
                 else
                     colorResource(R.color.card_dark),
-                shape = RoundedCornerShape(18.dp)
+                shape = RoundedCornerShape(Dimens.Large)
             )
             .border(
                 width = 1.dp,
@@ -39,7 +40,7 @@ fun DrivingRouteCard(
                     colorResource(R.color.orange)
                 else
                     colorResource(R.color.circle_dark),
-                shape = RoundedCornerShape(18.dp)
+                shape = RoundedCornerShape(Dimens.Large)
             )
             .clickable { onClick() }
             .padding(12.dp),

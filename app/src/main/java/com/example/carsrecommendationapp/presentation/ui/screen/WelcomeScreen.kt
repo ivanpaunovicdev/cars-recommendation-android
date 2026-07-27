@@ -23,6 +23,8 @@ import androidx.compose.ui.unit.sp
 import com.example.carsrecommendationapp.presentation.ui.components.PrimaryButton
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.navigationBarsPadding
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
+
 @Composable
 fun WelcomeScreen(
     onStartClick: () -> Unit
@@ -39,7 +41,7 @@ fun WelcomeScreen(
                     )
                 )
             )
-            .padding(horizontal = 28.dp)
+            .padding(horizontal = Dimens.XXLarge)
     ) {
         val screenHeight = maxHeight
 
@@ -58,7 +60,7 @@ fun WelcomeScreen(
                     .rotate(-7f)
                     .background(
                         colorResource(R.color.orange),
-                        RoundedCornerShape(32.dp)
+                        RoundedCornerShape(Dimens.ScreenBottom)
                     ),
                 contentAlignment = Alignment.Center
             ) {

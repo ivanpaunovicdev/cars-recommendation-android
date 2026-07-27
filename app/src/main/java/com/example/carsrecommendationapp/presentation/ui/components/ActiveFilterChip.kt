@@ -13,6 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.carsrecommendationapp.R
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 
 @Composable
 fun ActiveFilterChip(
@@ -22,16 +23,16 @@ fun ActiveFilterChip(
         modifier = Modifier
             .background(
                 color = colorResource(R.color.dark_orange_brown),
-                shape = RoundedCornerShape(50.dp)
+                shape = RoundedCornerShape(Dimens.ChipCornerRadius)
             )
             .border(
-                width = 1.dp,
+                width = Dimens.Tiny,
                 color = colorResource(R.color.orange),
-                shape = RoundedCornerShape(50.dp)
+                shape = RoundedCornerShape(Dimens.ChipCornerRadius)
             )
             .padding(
-                horizontal = 12.dp,
-                vertical = 8.dp
+                horizontal = Dimens.CompactPlus,
+                vertical = Dimens.Small
             ),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -43,7 +44,7 @@ fun ActiveFilterChip(
             fontWeight = FontWeight.Medium
         )
 
-        Spacer(modifier = Modifier.width(6.dp))
+        Spacer(modifier = Modifier.width(Dimens.ExtraSmall))
 
         Text(
             text = "×",

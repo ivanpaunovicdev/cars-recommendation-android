@@ -19,6 +19,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.carsrecommendationapp.R
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 
 @Composable
 fun CarResultCard(
@@ -44,9 +45,9 @@ fun CarResultCard(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(150.dp)
+                    .height(Dimens.ResultCardHeight)
                     .background(colorResource(R.color.dark_orange_brown))
-                    .padding(14.dp)
+                    .padding(Dimens.MediumSmall)
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -57,7 +58,7 @@ fun CarResultCard(
                         modifier = Modifier
                             .background(
                                 color = colorResource(R.color.orange),
-                                shape = RoundedCornerShape(50.dp)
+                                shape = RoundedCornerShape(Dimens.ChipCornerRadius)
                             )
                             .padding(horizontal = 12.dp, vertical = 7.dp)
                     ) {
@@ -104,7 +105,7 @@ fun CarResultCard(
             }
 
             Column(
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier.padding(Dimens.Medium)
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),

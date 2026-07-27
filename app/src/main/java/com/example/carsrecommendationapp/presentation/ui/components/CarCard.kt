@@ -11,19 +11,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.carsrecommendationapp.domain.Recommendation
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 
 @Composable
 fun CarCard(car: Recommendation) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 6.dp)
+            .padding(vertical = Dimens.ExtraSmall)
     ) {
         Column(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(Dimens.Medium)
         ) {
             Text(text = "${car.brand} ${car.model}")
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(Dimens.Mini))
             Text(text = "Cena: ${car.price}€")
             Text(text = "Gorivo: ${car.fuel}")
             Text(text = "Godište: ${car.year}")

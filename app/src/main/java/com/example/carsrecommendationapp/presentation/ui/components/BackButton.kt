@@ -14,6 +14,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.carsrecommendationapp.R
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 
 @Composable
 fun BackButton(
@@ -21,15 +22,15 @@ fun BackButton(
 ) {
     Box(
         modifier = Modifier
-            .size(38.dp)
+            .size(Dimens.AvatarSize)
             .background(
                 color = colorResource(R.color.card_dark),
-                shape = RoundedCornerShape(8.dp)
+                shape = RoundedCornerShape(Dimens.Small)
             )
             .border(
-                width = 1.dp,
+                width = Dimens.Tiny,
                 color = colorResource(R.color.light_gray),
-                shape = RoundedCornerShape(8.dp)
+                shape = RoundedCornerShape(Dimens.Small)
             )
             .clickable {
                 onClick()
@@ -40,7 +41,7 @@ fun BackButton(
             painter = painterResource(R.drawable.baseline_arrow_back),
             contentDescription = "Back",
             tint = colorResource(R.color.white),
-            modifier = Modifier.size(20.dp)
+            modifier = Modifier.size(Dimens.LargePlus)
         )
     }
 }

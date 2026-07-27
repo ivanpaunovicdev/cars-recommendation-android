@@ -31,6 +31,7 @@ import androidx.compose.ui.res.stringResource
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.RecommendationViewModel
 import androidx.compose.material3.CircularProgressIndicator
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 
 
 @Composable
@@ -92,13 +93,13 @@ fun ResultsScreen(
                     )
                 )
             )
-            .padding(horizontal = 24.dp)
+            .padding(horizontal = Dimens.ExtraLarge)
     ) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(
-                top = 54.dp,
-                bottom = 32.dp
+                top = Dimens.ScreenTop,
+                bottom = Dimens.ScreenBottom
             )
         ) {
 
@@ -120,7 +121,7 @@ fun ResultsScreen(
                             fontSize = 13.sp
                         )
 
-                        Spacer(modifier = Modifier.height(6.dp))
+                        Spacer(modifier = Modifier.height(Dimens.ExtraSmall))
 
                         Text(
                             text = stringResource(R.string.your_recommendations),
@@ -135,15 +136,15 @@ fun ResultsScreen(
                     )
                 }
 
-                Spacer(modifier = Modifier.height(18.dp))
+                Spacer(modifier = Modifier.height(Dimens.Large))
 
                 SearchBar()
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(Dimens.Medium))
 
                 Row(
                     modifier = Modifier.horizontalScroll(rememberScrollState()),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    horizontalArrangement = Arrangement.spacedBy(Dimens.Small)
                 ) {
                     if (selectedBrands.isNotEmpty()) {
                         ActiveFilterChip(selectedBrands.joinToString(", "))
@@ -194,7 +195,7 @@ fun ResultsScreen(
                     SortChip()
                 }
 
-                Spacer(modifier = Modifier.height(18.dp))
+                Spacer(modifier = Modifier.height(Dimens.Large))
             }
 
             when {
@@ -203,7 +204,7 @@ fun ResultsScreen(
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(260.dp),
+                                .height(Dimens.LoadingHeight),
                             contentAlignment = Alignment.Center
                         ) {
                             CircularProgressIndicator(
@@ -218,7 +219,7 @@ fun ResultsScreen(
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(260.dp),
+                                .height(Dimens.LoadingHeight),
                             contentAlignment = Alignment.Center
                         ) {
                             Text(
@@ -256,7 +257,7 @@ fun ResultsScreen(
                             }
                         )
 
-                        Spacer(modifier = Modifier.height(18.dp))
+                        Spacer(modifier = Modifier.height(Dimens.Large))
                     }
                 }
             }

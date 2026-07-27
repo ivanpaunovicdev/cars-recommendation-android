@@ -15,6 +15,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.carsrecommendationapp.R
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 
 @Composable
 fun FuelChip(
@@ -29,18 +30,18 @@ fun FuelChip(
                     colorResource(R.color.dark_orange_brown)
                 else
                     colorResource(R.color.card_dark),
-                shape = RoundedCornerShape(16.dp)
+                shape = RoundedCornerShape(Dimens.Medium)
             )
             .border(
-                width = 1.dp,
+                width = Dimens.Tiny,
                 color = if (isSelected)
                     colorResource(R.color.orange)
                 else
                     colorResource(R.color.card_dark),
-                shape = RoundedCornerShape(16.dp)
+                shape = RoundedCornerShape(Dimens.Medium)
             )
             .clickable { onClick() }
-            .padding(horizontal = 20.dp, vertical = 14.dp)
+            .padding(horizontal = Dimens.LargePlus, vertical = Dimens.MediumSmall)
     ) {
         Text(
             text = text,

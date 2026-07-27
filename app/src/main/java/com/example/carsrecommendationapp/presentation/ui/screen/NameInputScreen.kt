@@ -26,6 +26,7 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.BoxWithConstraints
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
 
 @Composable
@@ -52,7 +53,7 @@ fun NameInputScreen(
                     )
                 )
             )
-            .padding(horizontal = 28.dp)
+            .padding(horizontal = Dimens.XXLarge)
     ) {
         val screenHeight = maxHeight
 
@@ -75,15 +76,15 @@ fun NameInputScreen(
 
             Box(
                 modifier = Modifier
-                    .size(118.dp)
-                    .border(1.dp, colorResource(R.color.orange), CircleShape),
+                    .size(Dimens.BrandImageSize)
+                    .border(Dimens.Tiny, colorResource(R.color.orange), CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
                     painter = painterResource(R.drawable.baseline_person),
                     contentDescription = stringResource(R.string.user_icon_description),
                     tint = colorResource(R.color.orange),
-                    modifier = Modifier.size(54.dp)
+                    modifier = Modifier.size(Dimens.ScreenTop)
                 )
             }
 
@@ -112,13 +113,13 @@ fun NameInputScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(68.dp)
+                    .height(Dimens.IconSize)
                     .border(
-                        width = 1.5.dp,
+                        width = Dimens.Divider,
                         color = colorResource(R.color.orange),
-                        shape = RoundedCornerShape(18.dp)
+                        shape = RoundedCornerShape(Dimens.Large)
                     )
-                    .padding(horizontal = 18.dp),
+                    .padding(horizontal = Dimens.Large),
                 contentAlignment = Alignment.CenterStart
             ) {
                 Row(
@@ -128,10 +129,10 @@ fun NameInputScreen(
                         painter = painterResource(R.drawable.baseline_person),
                         contentDescription = stringResource(R.string.name_icon_description),
                         tint = colorResource(R.color.orange),
-                        modifier = Modifier.size(22.dp)
+                        modifier = Modifier.size(Dimens.CornerRadius)
                     )
 
-                    Spacer(modifier = Modifier.width(14.dp))
+                    Spacer(modifier = Modifier.width(Dimens.MediumSmall))
 
                     Column(
                         modifier = Modifier.weight(1f)
@@ -168,10 +169,10 @@ fun NameInputScreen(
                     painter = painterResource(R.drawable.baseline_info),
                     contentDescription = stringResource(R.string.info_icon_description),
                     tint = colorResource(R.color.light_gray),
-                    modifier = Modifier.size(14.dp)
+                    modifier = Modifier.size(Dimens.MediumSmall)
                 )
 
-                Spacer(modifier = Modifier.width(6.dp))
+                Spacer(modifier = Modifier.width(Dimens.ExtraSmall))
 
                 Text(
                     text = stringResource(R.string.name_privacy_info),

@@ -14,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.carsrecommendationapp.R
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 
 @Composable
 fun OptionChip(
@@ -28,18 +29,18 @@ fun OptionChip(
                     colorResource(R.color.orange)
                 else
                     colorResource(R.color.card_dark),
-                shape = RoundedCornerShape(16.dp)
+                shape = RoundedCornerShape(Dimens.Medium)
             )
             .border(
-                width = 1.dp,
+                width = Dimens.Tiny,
                 color = if (isSelected)
                     colorResource(R.color.orange)
                 else
                     colorResource(R.color.card_dark),
-                shape = RoundedCornerShape(16.dp)
+                shape = RoundedCornerShape(Dimens.Medium)
             )
             .clickable { onClick() }
-            .padding(horizontal = 12.dp, vertical = 8.dp)
+            .padding(horizontal = Dimens.CompactPlus, vertical = Dimens.Small)
     ) {
         Text(
             text = text,

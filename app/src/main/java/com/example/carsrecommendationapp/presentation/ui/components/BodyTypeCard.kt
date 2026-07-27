@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.carsrecommendationapp.R
 import androidx.compose.ui.Alignment
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 
 @Composable
 fun BodyTypeCard(
@@ -24,7 +25,7 @@ fun BodyTypeCard(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(145.dp)
+            .height(Dimens.CardHeight)
             .background(
                 color = if (isSelected)
                     colorResource(R.color.dark_orange_brown)
@@ -33,7 +34,7 @@ fun BodyTypeCard(
                 shape = RoundedCornerShape(22.dp)
             )
             .border(
-                width = 1.dp,
+                width = Dimens.Tiny,
                 color = if (isSelected)
                     colorResource(R.color.orange)
                 else
@@ -41,7 +42,7 @@ fun BodyTypeCard(
                 shape = RoundedCornerShape(22.dp)
             )
             .clickable { onClick() }
-            .padding(18.dp)
+            .padding(Dimens.Large)
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -54,7 +55,7 @@ fun BodyTypeCard(
                 fontSize = 34.sp
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(Dimens.Medium))
 
             Text(
                 text = title,

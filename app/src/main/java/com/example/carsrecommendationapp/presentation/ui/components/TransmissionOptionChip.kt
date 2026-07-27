@@ -15,6 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.carsrecommendationapp.R
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 
 @Composable
 fun TransmissionOptionChip(
@@ -30,7 +31,7 @@ fun TransmissionOptionChip(
                     colorResource(R.color.dark_orange_brown)
                 else
                     colorResource(R.color.card_dark),
-                shape = RoundedCornerShape(16.dp)
+                shape = RoundedCornerShape(Dimens.Medium)
             )
             .border(
                 width = 1.dp,
@@ -38,7 +39,7 @@ fun TransmissionOptionChip(
                     colorResource(R.color.orange)
                 else
                     colorResource(R.color.card_dark),
-                shape = RoundedCornerShape(16.dp)
+                shape = RoundedCornerShape(Dimens.Medium)
             )
             .clickable { onClick() }
             .padding(horizontal = 12.dp, vertical = 14.dp)

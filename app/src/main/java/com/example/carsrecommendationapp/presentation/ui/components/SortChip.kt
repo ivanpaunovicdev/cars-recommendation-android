@@ -19,6 +19,7 @@ import com.example.carsrecommendationapp.R
 
 
 import androidx.compose.foundation.layout.offset
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 
 @Composable
 fun SortChip(
@@ -41,7 +42,7 @@ fun SortChip(
             fontWeight = FontWeight.Medium
         )
 
-        Spacer(modifier = Modifier.width(6.dp))
+        Spacer(modifier = Modifier.width(Dimens.ExtraSmall))
 
         Text(
             text = "▼",

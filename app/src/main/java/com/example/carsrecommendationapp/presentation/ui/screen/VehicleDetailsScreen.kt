@@ -25,6 +25,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
 import androidx.compose.ui.res.stringResource
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 
 
 @Composable
@@ -75,7 +76,7 @@ fun VehicleDetailsScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            horizontal = 24.dp,
+                            horizontal = Dimens.ExtraLarge,
                             vertical = 56.dp
                         ),
                     horizontalArrangement = Arrangement.SpaceBetween
@@ -125,7 +126,7 @@ fun VehicleDetailsScreen(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = 24.dp)
+                    .padding(horizontal = Dimens.ExtraLarge)
             ) {
 
                 Spacer(modifier = Modifier.height(20.dp))
@@ -137,7 +138,7 @@ fun VehicleDetailsScreen(
                     fontWeight = FontWeight.Black
                 )
 
-                Spacer(modifier = Modifier.height(6.dp))
+                Spacer(modifier = Modifier.height(Dimens.ExtraSmall))
 
                 Text(
                     text = stringResource(
@@ -149,7 +150,7 @@ fun VehicleDetailsScreen(
                     fontSize = 15.sp
                 )
 
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(Dimens.ExtraLarge))
 
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -180,7 +181,7 @@ fun VehicleDetailsScreen(
                                 RoundedCornerShape(50.dp)
                             )
                             .padding(
-                                horizontal = 18.dp,
+                                horizontal = Dimens.Large,
                                 vertical = 10.dp
                             )
                     ) {
@@ -204,7 +205,7 @@ fun VehicleDetailsScreen(
                     fontWeight = FontWeight.Black
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(Dimens.Medium))
 
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),

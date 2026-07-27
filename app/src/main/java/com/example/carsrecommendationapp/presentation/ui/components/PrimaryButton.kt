@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
 import com.example.carsrecommendationapp.R
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 
 @Composable
 fun PrimaryButton(
@@ -32,8 +33,8 @@ fun PrimaryButton(
         enabled = enabled,
         modifier = Modifier
             .fillMaxWidth()
-            .height(58.dp),
-        shape = RoundedCornerShape(18.dp),
+            .height(Dimens.PrimaryButtonHeight),
+        shape = RoundedCornerShape(Dimens.Large),
         colors = ButtonDefaults.buttonColors(
             containerColor = if (enabled)
                 colorResource(R.color.orange)
@@ -58,7 +59,7 @@ fun PrimaryButton(
                 fontWeight = FontWeight.Bold
             )
 
-            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.width(Dimens.Small))
 
             Icon(
                 painter = painterResource(R.drawable.baseline_arrow_forward),

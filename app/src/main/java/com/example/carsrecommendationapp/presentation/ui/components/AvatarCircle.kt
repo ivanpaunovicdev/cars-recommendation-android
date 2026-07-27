@@ -14,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.carsrecommendationapp.R
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 
 @Composable
 fun AvatarCircle(
@@ -21,13 +22,13 @@ fun AvatarCircle(
 ) {
     Box(
         modifier = Modifier
-            .size(38.dp)
+            .size(Dimens.AvatarSize)
             .background(
                 color = colorResource(R.color.orange),
                 shape = CircleShape
             )
             .border(
-                width = 2.dp,
+                width = Dimens.ExtraTiny,
                 color = colorResource(R.color.card_dark),
                 shape = CircleShape
             ),
