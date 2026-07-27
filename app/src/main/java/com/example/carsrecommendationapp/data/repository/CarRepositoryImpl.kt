@@ -45,22 +45,28 @@ class CarRepositoryImpl(
         budgetMax: Int,
         minYear: Int,
         maxMileage: Int,
-        brand: String,
+        brands: List<String>,
         model: String,
-        fuel: String,
-        bodyType: String,
+        fuels: List<String>,
+        bodyTypes: List<String>,
         transmission: String,
-        driveType: String
+        driveType: String,
+        dailyRoute: String,
+        drivingTerrain: String,
+        drivingPhilosophy: String
     ) = api.getRecommendations(
         budgetMin = budgetMin,
         budgetMax = budgetMax,
         minYear = minYear,
         maxMileage = maxMileage,
-        brand = brand,
+        brands = brands,
         model = model,
-        fuel = fuel,
-        bodyType = bodyType,
+        fuels = fuels,
+        bodyTypes = bodyTypes,
         transmission = transmission,
-        driveType = driveType
+        driveType = driveType,
+        dailyRoute = dailyRoute,
+        drivingTerrain = drivingTerrain,
+        drivingPhilosophy = drivingPhilosophy
     )
 }

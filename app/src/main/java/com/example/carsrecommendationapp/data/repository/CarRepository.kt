@@ -28,14 +28,17 @@ interface CarRepository {
 
     suspend fun getRecommendations(
         budgetMin: Int = 0,
-        budgetMax: Int = Int.MAX_VALUE,
+        budgetMax: Int = 100000,
         minYear: Int = 0,
         maxMileage: Int = Int.MAX_VALUE,
-        brand: String = "",
+        brands: List<String> = emptyList(),
         model: String = "",
-        fuel: String = "",
-        bodyType: String = "",
+        fuels: List<String> = emptyList(),
+        bodyTypes: List<String> = emptyList(),
         transmission: String = "",
-        driveType: String = ""
+        driveType: String = "",
+        dailyRoute: String = "",
+        drivingTerrain: String = "",
+        drivingPhilosophy: String = ""
     ): List<Recommendation>
 }

@@ -17,16 +17,19 @@ interface RecommendationApi {
     @GET("recommendations")
     suspend fun getRecommendations(
         @Query("budgetMin") budgetMin: Int = 0,
-        @Query("budgetMax") budgetMax: Int = Int.MAX_VALUE,
+        @Query("budgetMax") budgetMax: Int = 100000,
         @Query("minYear") minYear: Int = 0,
         @Query("maxMileage") maxMileage: Int = Int.MAX_VALUE,
 
-        @Query("brand") brand: String = "",
+        @Query("brand") brands: List<String> = emptyList(),
         @Query("model") model: String = "",
-        @Query("fuel") fuel: String = "",
-        @Query("bodyType") bodyType: String = "",
+        @Query("fuel") fuels: List<String> = emptyList(),
+        @Query("bodyType") bodyTypes: List<String> = emptyList(),
         @Query("transmission") transmission: String = "",
-        @Query("driveType") driveType: String = ""
+        @Query("driveType") driveType: String = "",
+        @Query("dailyRoute") dailyRoute: String = "",
+        @Query("drivingTerrain") drivingTerrain: String = "",
+        @Query("drivingPhilosophy") drivingPhilosophy: String = ""
     ): List<Recommendation>
 
     @GET("cars")

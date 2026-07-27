@@ -65,10 +65,13 @@ fun ResultsScreen(
             budgetMin = 0,
             budgetMax = budgetMax,
             minYear = minYear,
-            brand = selectedBrands.firstOrNull() ?: "",
-            bodyType = selectedBodyTypes.firstOrNull() ?: "",
-            fuel = selectedFuels.firstOrNull() ?: "",
-            transmission = transmission
+            brands = selectedBrands.toList(),
+            bodyTypes = selectedBodyTypes.toList(),
+            fuels = selectedFuels.toList(),
+            transmission = transmission,
+            dailyRoute = selectedDailyRoute,
+            drivingTerrain = selectedDrivingTerrain,
+            drivingPhilosophy = selectedDrivingPhilosophy
         )
     }
 

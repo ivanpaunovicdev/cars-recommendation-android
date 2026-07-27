@@ -53,8 +53,12 @@ fun BudgetAndDetailsScreen(
 
     var selectedTransmission by remember(savedTransmission) {
         mutableStateOf(
-            if (savedTransmission.isBlank()) "Automatik"
-            else savedTransmission
+            when (savedTransmission) {
+                "Automatski / poluautomatski" -> "Automatik"
+                "Manuelni" -> "Manuelni"
+                "" -> "Svejedno"
+                else -> "Svejedno"
+            }
         )
     }
 
@@ -297,9 +301,19 @@ fun BudgetAndDetailsScreen(
             PrimaryButton(
                 text = stringResource(R.string.continue_text_simple),
                 onClick = {
+                    val transmissionForApi = when (selectedTransmission) {
+                        "Automatik" -> "Automatski / poluautomatski"
+                        "Manuelni" -> "Manuelni"
+                        "Svejedno" -> ""
+                        else -> ""
+                    }
+
                     onboardingViewModel.updateBudgetMax(price.toInt())
-                    onboardingViewModel.updateMinYear(selectedYear.removeSuffix("+").toInt())
-                    onboardingViewModel.updateTransmission(selectedTransmission)
+                    onboardingViewModel.updateMinYear(
+                        selectedYear.removeSuffix("+").toInt()
+                    )
+                    onboardingViewModel.updateTransmission(transmissionForApi)
+
                     onContinueClick()
                 }
             )
