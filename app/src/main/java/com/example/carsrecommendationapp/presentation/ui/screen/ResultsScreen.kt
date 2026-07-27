@@ -27,6 +27,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
 import com.example.carsrecommendationapp.presentation.ui.viewmodel.RecommendationViewModel
+import androidx.compose.material3.CircularProgressIndicator
 
 
 @Composable
@@ -201,9 +202,8 @@ fun ResultsScreen(
                                 .height(260.dp),
                             contentAlignment = Alignment.Center
                         ) {
-                            Text(
-                                text = stringResource(R.string.loading),
-                                color = colorResource(R.color.white)
+                            CircularProgressIndicator(
+                                color = colorResource(R.color.orange)
                             )
                         }
                     }
