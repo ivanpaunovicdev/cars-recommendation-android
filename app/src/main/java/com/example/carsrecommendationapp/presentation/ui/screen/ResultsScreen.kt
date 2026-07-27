@@ -236,7 +236,7 @@ fun ResultsScreen(
                             matchPercent = car.score,
                             fuel = car.fuel,
                             transmission = car.transmission,
-                            power = car.driveType,
+                            driveType = car.driveType,
                             isFavorite = index == 0,
                             onFavoriteClick = { },
                             onClick = {

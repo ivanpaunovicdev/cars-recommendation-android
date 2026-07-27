@@ -28,7 +28,7 @@ fun CarResultCard(
     matchPercent: Int,
     fuel: String,
     transmission: String,
-    power: String,
+    driveType: String,
     isFavorite: Boolean,
     onFavoriteClick: () -> Unit,
     onClick: () -> Unit
@@ -158,7 +158,7 @@ fun CarResultCard(
                 ) {
                     CarInfoItem(icon = "⚡", text = fuel)
                     CarInfoItem(icon = "↗", text = transmission)
-                    CarInfoItem(icon = "◷", text = power)
+                    CarInfoItem(icon = "◉", text = driveType)
                 }
             }
         }
