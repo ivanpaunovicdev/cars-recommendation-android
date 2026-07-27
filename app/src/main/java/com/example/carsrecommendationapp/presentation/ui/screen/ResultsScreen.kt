@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
-
+import com.example.carsrecommendationapp.util.formatMileage
+import com.example.carsrecommendationapp.util.formatPrice
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.foundation.background
@@ -264,21 +265,7 @@ fun ResultsScreen(
     }
 }
 
-fun formatPrice(price: Int?): String {
-    return "€ " + (price ?: 0).toString()
-        .reversed()
-        .chunked(3)
-        .joinToString(".")
-        .reversed()
-}
 
-fun formatMileage(mileage: Int?): String {
-    return (mileage ?: 0).toString()
-        .reversed()
-        .chunked(3)
-        .joinToString(".")
-        .reversed()
-}
 
 
 
