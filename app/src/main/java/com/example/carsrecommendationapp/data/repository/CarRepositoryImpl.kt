@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.data.repository
 
+import com.example.carsrecommendationapp.data.mapper.toDomain
 import com.example.carsrecommendationapp.data.network.RecommendationApi
 import com.example.carsrecommendationapp.domain.*
 
@@ -54,19 +55,24 @@ class CarRepositoryImpl(
         dailyRoute: String,
         drivingTerrain: String,
         drivingPhilosophy: String
-    ) = api.getRecommendations(
-        budgetMin = budgetMin,
-        budgetMax = budgetMax,
-        minYear = minYear,
-        maxMileage = maxMileage,
-        brands = brands,
-        model = model,
-        fuels = fuels,
-        bodyTypes = bodyTypes,
-        transmission = transmission,
-        driveType = driveType,
-        dailyRoute = dailyRoute,
-        drivingTerrain = drivingTerrain,
-        drivingPhilosophy = drivingPhilosophy
-    )
+    ): List<Recommendation> {
+        return api.getRecommendations(
+            budgetMin = budgetMin,
+            budgetMax = budgetMax,
+            minYear = minYear,
+            maxMileage = maxMileage,
+            brands = brands,
+            model = model,
+            fuels = fuels,
+            bodyTypes = bodyTypes,
+            transmission = transmission,
+            driveType = driveType,
+            dailyRoute = dailyRoute,
+            drivingTerrain = drivingTerrain,
+            drivingPhilosophy = drivingPhilosophy
+        ).map { dto ->
+            dto.toDomain()
+        }
+    }
+
 }

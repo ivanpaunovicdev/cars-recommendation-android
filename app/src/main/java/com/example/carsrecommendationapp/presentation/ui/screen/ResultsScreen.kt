@@ -230,13 +230,13 @@ fun ResultsScreen(
                         val car = recommendations[index]
 
                         CarResultCard(
-                            title = "${car.marka ?: ""} ${car.model ?: ""}",
-                            subtitle = "${car.marka ?: ""} · ${car.godiste ?: "-"} · ${formatMileage(car.kilometraza)} km",
-                            price = formatPrice(car.cena),
-                            matchPercent = car.skor ?: 0,
-                            fuel = car.gorivo ?: "N/A",
-                            transmission = car.menjac ?: "N/A",
-                            power = car.pogon ?: "N/A",
+                            title = "${car.brand} ${car.model}",
+                            subtitle = "${car.brand} · ${car.year} · ${formatMileage(car.mileage)} km",
+                            price = formatPrice(car.price),
+                            matchPercent = car.score,
+                            fuel = car.fuel,
+                            transmission = car.transmission,
+                            power = car.driveType,
                             isFavorite = index == 0,
                             onFavoriteClick = { },
                             onClick = {

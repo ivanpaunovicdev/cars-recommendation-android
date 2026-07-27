@@ -22,16 +22,16 @@ fun CarCard(car: Recommendation) {
         Column(
             modifier = Modifier.padding(16.dp)
         ) {
-            Text(text = "${car.marka} ${car.model}")
+            Text(text = "${car.brand} ${car.model}")
             Spacer(modifier = Modifier.height(4.dp))
-            Text(text = "Cena: ${car.cena}€")
-            Text(text = "Gorivo: ${car.gorivo}")
-            Text(text = "Godište: ${car.godiste}")
-            Text(text = "Kilometraža: ${car.kilometraza} km")
-            Text(text = "Menjač: ${car.menjac}")
-            Text(text = "Karoserija: ${car.karoserija}")
-            Text(text = "Pogon: ${car.pogon}")
-            Text(text = "Skor: ${car.skor}")
+            Text(text = "Cena: ${car.price}€")
+            Text(text = "Gorivo: ${car.fuel}")
+            Text(text = "Godište: ${car.year}")
+            Text(text = "Kilometraža: ${car.mileage} km")
+            Text(text = "Menjač: ${car.transmission}")
+            Text(text = "Karoserija: ${car.bodyType}")
+            Text(text = "Pogon: ${car.driveType}")
+            Text(text = "Skor: ${car.score}")
         }
     }
 }

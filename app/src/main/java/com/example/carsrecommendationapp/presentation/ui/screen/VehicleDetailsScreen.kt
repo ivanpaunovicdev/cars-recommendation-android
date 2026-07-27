@@ -131,7 +131,7 @@ fun VehicleDetailsScreen(
                 Spacer(modifier = Modifier.height(20.dp))
 
                 Text(
-                    text = "${selectedCar?.marka ?: ""} ${selectedCar?.model ?: ""}",
+                    text = "${selectedCar?.brand ?: ""} ${selectedCar?.model ?: ""}",
                     color = colorResource(R.color.white),
                     fontSize = 28.sp,
                     fontWeight = FontWeight.Black
@@ -142,8 +142,8 @@ fun VehicleDetailsScreen(
                 Text(
                     text = stringResource(
                         R.string.vehicle_subtitle,
-                        selectedCar?.godiste?.toString() ?: "-",
-                        formatVehicleMileage(selectedCar?.kilometraza)
+                        selectedCar?.year?.toString() ?: "-",
+                        formatVehicleMileage(selectedCar?.mileage)
                     ),
                     color = colorResource(R.color.light_gray),
                     fontSize = 15.sp
@@ -166,7 +166,7 @@ fun VehicleDetailsScreen(
                         )
 
                         Text(
-                            text = formatVehiclePrice(selectedCar?.cena),
+                            text = formatVehiclePrice(selectedCar?.price),
                             color = colorResource(R.color.orange),
                             fontSize = 30.sp,
                             fontWeight = FontWeight.Black
@@ -187,7 +187,7 @@ fun VehicleDetailsScreen(
                         Text(
                             text = stringResource(
                                 R.string.match_percentage,
-                                selectedCar?.skor ?: 0
+                                selectedCar?.score ?: 0
                             ),
                             color = colorResource(R.color.white),
                             fontWeight = FontWeight.Bold
@@ -215,7 +215,7 @@ fun VehicleDetailsScreen(
                     item {
                         VehicleSpecCard(
                             label = stringResource(R.string.fuel_label),
-                            value = selectedCar?.gorivo
+                            value = selectedCar?.fuel
                                 ?: stringResource(R.string.not_available)
                         )
                     }
@@ -223,7 +223,7 @@ fun VehicleDetailsScreen(
                     item {
                         VehicleSpecCard(
                             label = stringResource(R.string.body_type_label),
-                            value = selectedCar?.karoserija
+                            value = selectedCar?.bodyType
                                 ?: stringResource(R.string.not_available)
                         )
                     }
@@ -231,7 +231,7 @@ fun VehicleDetailsScreen(
                     item {
                         VehicleSpecCard(
                             label = stringResource(R.string.transmission_label),
-                            value = selectedCar?.menjac
+                            value = selectedCar?.transmission
                                 ?: stringResource(R.string.not_available)
                         )
                     }
@@ -239,7 +239,7 @@ fun VehicleDetailsScreen(
                     item {
                         VehicleSpecCard(
                             label = stringResource(R.string.drive_type_label),
-                            value = selectedCar?.pogon
+                            value = selectedCar?.driveType
                                 ?: stringResource(R.string.not_available)
                         )
                     }

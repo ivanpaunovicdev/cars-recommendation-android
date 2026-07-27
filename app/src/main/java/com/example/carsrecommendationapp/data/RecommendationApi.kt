@@ -6,12 +6,13 @@ import com.example.carsrecommendationapp.domain.Brand
 import com.example.carsrecommendationapp.domain.Transmission
 import com.example.carsrecommendationapp.domain.DriveType
 import com.example.carsrecommendationapp.domain.SafetyEquipment
-import com.example.carsrecommendationapp.domain.Recommendation
+import com.example.carsrecommendationapp.data.dto.RecommendationDto
 import com.example.carsrecommendationapp.domain.DailyRoute
 import com.example.carsrecommendationapp.domain.DrivingTerrain
 import com.example.carsrecommendationapp.domain.DrivingPhilosophy
 import retrofit2.http.GET
 import retrofit2.http.Query
+
 
 interface RecommendationApi {
     @GET("recommendations")
@@ -30,7 +31,7 @@ interface RecommendationApi {
         @Query("dailyRoute") dailyRoute: String = "",
         @Query("drivingTerrain") drivingTerrain: String = "",
         @Query("drivingPhilosophy") drivingPhilosophy: String = ""
-    ): List<Recommendation>
+    ): List<RecommendationDto>
 
     @GET("cars")
     suspend fun getCars(): List<Car>

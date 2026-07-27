@@ -1,14 +1,14 @@
 package com.example.carsrecommendationapp.domain
 
 data class Recommendation(
-    val marka: String?,
-    val model: String?,
-    val godiste: Int?,
-    val kilometraza: Int?,
-    val cena: Int?,
-    val gorivo: String?,
-    val karoserija: String?,
-    val menjac: String?,
-    val pogon: String?,
-    val skor: Int?
+    val brand: String,
+    val model: String,
+    val year: Int,
+    val mileage: Int,
+    val price: Int,
+    val fuel: String,
+    val bodyType: String,
+    val transmission: String,
+    val driveType: String,
+    val score: Int
 )
