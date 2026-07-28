@@ -1,4 +1,5 @@
 package com.example.carsrecommendationapp
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -6,6 +7,15 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.carsrecommendationapp.navigation.BodyAndFuelRoute
+import com.example.carsrecommendationapp.navigation.BrandsRoute
+import com.example.carsrecommendationapp.navigation.BudgetDetailsRoute
+import com.example.carsrecommendationapp.navigation.DrivingHabitsRoute
+import com.example.carsrecommendationapp.navigation.FuelSelectionRoute
+import com.example.carsrecommendationapp.navigation.NameInputRoute
+import com.example.carsrecommendationapp.navigation.ResultsRoute
+import com.example.carsrecommendationapp.navigation.VehicleDetailsRoute
+import com.example.carsrecommendationapp.navigation.WelcomeRoute
 import com.example.carsrecommendationapp.presentation.ui.screen.BodyAndFuelScreen
 import com.example.carsrecommendationapp.presentation.ui.screen.BrandSelectionScreen
 import com.example.carsrecommendationapp.presentation.ui.screen.BudgetAndDetailsScreen
@@ -30,94 +40,98 @@ class MainActivity : ComponentActivity() {
 
             NavHost(
                 navController = navController,
-                startDestination = "welcome"
+                startDestination = WelcomeRoute
             ) {
-                composable("welcome") {
+                composable<WelcomeRoute> {
                     WelcomeScreen(
                         onStartClick = {
-                            navController.navigate("name_input")
+                            navController.navigate(NameInputRoute)
                         }
                     )
                 }
 
-                composable("name_input") {
+                composable<NameInputRoute> {
                     NameInputScreen(
                         onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         },
                         onContinueClick = {
-                            navController.navigate("brands")
+                            navController.navigate(BrandsRoute)
                         }
                     )
                 }
-                composable("brands") {
+
+                composable<BrandsRoute> {
                     BrandSelectionScreen(
                         onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         },
                         onContinueClick = {
-                            navController.navigate("body_fuel")
+                            navController.navigate(BodyAndFuelRoute)
                         }
                     )
                 }
-                composable("body_fuel") {
+
+                composable<BodyAndFuelRoute> {
                     BodyAndFuelScreen(
                         onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         },
                         onContinueClick = {
-                            navController.navigate("fuel_selection")
+                            navController.navigate(FuelSelectionRoute)
                         }
                     )
                 }
 
-                composable("fuel_selection") {
+                composable<FuelSelectionRoute> {
                     FuelSelectionScreen(
                         onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         },
                         onContinueClick = {
-                            navController.navigate("budget_details")
+                            navController.navigate(BudgetDetailsRoute)
                         }
                     )
                 }
-                composable("budget_details") {
+
+                composable<BudgetDetailsRoute> {
                     BudgetAndDetailsScreen(
                         onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         },
                         onContinueClick = {
-                            navController.navigate("driving_habits")
+                            navController.navigate(DrivingHabitsRoute)
                         }
                     )
                 }
 
-                composable("driving_habits") {
+                composable<DrivingHabitsRoute> {
                     DrivingHabitsScreen(
                         onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         },
                         onFindCarClick = {
-                            navController.navigate("results")
+                            navController.navigate(ResultsRoute)
                         }
                     )
                 }
 
-                composable("results") {
+                composable<ResultsRoute> {
                     ResultsScreen(
                         onboardingViewModel = onboardingViewModel,
                         onCarClick = {
-                            navController.navigate("vehicle_details")
+                            navController.navigate(VehicleDetailsRoute)
                         }
                     )
                 }
-                composable("vehicle_details") {
+
+                composable<VehicleDetailsRoute> {
                     VehicleDetailsScreen(
                         onboardingViewModel = onboardingViewModel,
                         onBackClick = {

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
 }
@@ -79,7 +80,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
-    implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation(libs.androidx.navigation.compose)
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
