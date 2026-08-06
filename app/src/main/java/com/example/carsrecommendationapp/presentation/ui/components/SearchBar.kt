@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.carsrecommendationapp.R
@@ -54,7 +55,7 @@ fun SearchBar(
             Spacer(modifier = Modifier.width(10.dp))
 
             Text(
-                text = "Pretraži model...",
+                stringResource(R.string.search_model_hint),
                 color = colorResource(R.color.light_gray),
                 fontSize = 15.sp
             )

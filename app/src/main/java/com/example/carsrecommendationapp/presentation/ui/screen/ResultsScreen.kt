@@ -141,7 +141,8 @@ fun ResultsScreen(
                     }
 
                     AvatarCircle(
-                        initial = userName.firstOrNull()?.uppercase() ?: "K"
+                        initial = userName.firstOrNull()?.uppercase()
+                            ?: stringResource(R.string.avatar_fallback)
                     )
                 }
 

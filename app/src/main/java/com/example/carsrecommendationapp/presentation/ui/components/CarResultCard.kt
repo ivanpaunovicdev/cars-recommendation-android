@@ -23,6 +23,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -72,7 +73,10 @@ fun CarResultCard(
                             .padding(horizontal = 12.dp, vertical = 7.dp)
                     ) {
                         Text(
-                            text = "★ ${matchPercent}% match",
+                            text = stringResource(
+                                R.string.match_percentage_with_star,
+                                matchPercent
+                            ),
                             color = colorResource(R.color.white),
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold

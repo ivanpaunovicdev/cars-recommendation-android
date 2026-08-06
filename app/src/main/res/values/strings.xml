@@ -23,7 +23,6 @@
 </string>
 
     <string name="next">Dalje</string>
-
     <string name="next_selected">Dalje (%1$d izabrano)</string>
 
     <string name="step_2_of_5">KORAK 2 OD 5</string>
@@ -44,6 +43,7 @@
     <string name="price_range">Cenovni rang</string>
     <string name="monthly_estimate">≈ približno mesečna procena</string>
     <string name="year">Godište</string>
+    <string name="year_range">2018 - 2026</string>
     <string name="transmission">Menjač</string>
 
     <string name="step_5_of_5">KORAK 5 OD 5</string>
@@ -64,6 +64,11 @@
     <string name="year_filter">%1$d+</string>
     <string name="unable_to_load_recommendations">Unable to load recommendations.</string>
 
+    <string name="sort">Sortiraj</string>
+    <string name="search_model_hint">Pretraži model...</string>
+    <string name="match_percentage_with_star">★ %1$d%% match</string>
+    <string name="avatar_fallback">K</string>
+
     <string name="vehicle_price_label">Cena</string>
     <string name="vehicle_specs_title">Specifikacije</string>
     <string name="fuel_label">Gorivo</string>
@@ -79,5 +84,4 @@
     <string name="user_icon_description">User icon</string>
     <string name="name_icon_description">Name icon</string>
     <string name="info_icon_description">Info icon</string>
-
 </resources>

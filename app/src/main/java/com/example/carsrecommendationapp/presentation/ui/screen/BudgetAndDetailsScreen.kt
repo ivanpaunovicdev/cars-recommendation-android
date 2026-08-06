@@ -264,7 +264,7 @@ fun BudgetAndDetailsScreen(
                             )
 
                             Text(
-                                text = "2018 - 2026",
+                                text = stringResource(R.string.year_range),
                                 color = colorResource(R.color.orange),
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.Bold

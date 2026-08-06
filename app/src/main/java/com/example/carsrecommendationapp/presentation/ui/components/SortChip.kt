@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -35,7 +36,7 @@ fun SortChip(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = "Sortiraj",
+            text = stringResource(R.string.sort),
             color = colorResource(R.color.light_gray),
             fontSize = 14.sp,
             fontWeight = FontWeight.Medium
