@@ -1,4 +1,4 @@
-package com.example.carsrecommendationapp.presentation.ui.viewmodel.base
+package com.example.carsrecommendationapp.presentation.viewmodel.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

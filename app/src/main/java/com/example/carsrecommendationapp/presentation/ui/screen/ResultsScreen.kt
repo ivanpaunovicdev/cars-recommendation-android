@@ -38,8 +38,8 @@ import com.example.carsrecommendationapp.presentation.ui.components.CarResultCar
 import com.example.carsrecommendationapp.presentation.ui.components.SearchBar
 import com.example.carsrecommendationapp.presentation.ui.components.SortChip
 import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
-import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
-import com.example.carsrecommendationapp.presentation.ui.viewmodel.RecommendationViewModel
+import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewModel
+import com.example.carsrecommendationapp.presentation.viewmodel.RecommendationViewModel
 import com.example.carsrecommendationapp.util.formatMileage
 import com.example.carsrecommendationapp.util.formatPrice
 

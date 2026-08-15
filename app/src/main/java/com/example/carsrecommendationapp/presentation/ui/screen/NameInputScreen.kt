@@ -39,7 +39,7 @@ import com.example.carsrecommendationapp.R
 import com.example.carsrecommendationapp.presentation.ui.components.BackButton
 import com.example.carsrecommendationapp.presentation.ui.components.PrimaryButton
 import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
-import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
+import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewModel
 
 @Composable
 fun NameInputScreen(

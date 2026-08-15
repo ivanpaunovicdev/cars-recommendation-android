@@ -25,7 +25,7 @@ import com.example.carsrecommendationapp.presentation.ui.screen.NameInputScreen
 import com.example.carsrecommendationapp.presentation.ui.screen.ResultsScreen
 import com.example.carsrecommendationapp.presentation.ui.screen.VehicleDetailsScreen
 import com.example.carsrecommendationapp.presentation.ui.screen.WelcomeScreen
-import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
+import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

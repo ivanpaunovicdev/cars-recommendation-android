@@ -36,8 +36,8 @@ import com.example.carsrecommendationapp.presentation.ui.components.BackButton
 import com.example.carsrecommendationapp.presentation.ui.components.BodyTypeCard
 import com.example.carsrecommendationapp.presentation.ui.components.PrimaryButton
 import com.example.carsrecommendationapp.presentation.ui.components.StepProgressIndicator
-import com.example.carsrecommendationapp.presentation.ui.viewmodel.BodyTypesViewModel
-import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
+import com.example.carsrecommendationapp.presentation.viewmodel.BodyTypesViewModel
+import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewModel
 
 @Composable
 fun BodyAndFuelScreen(

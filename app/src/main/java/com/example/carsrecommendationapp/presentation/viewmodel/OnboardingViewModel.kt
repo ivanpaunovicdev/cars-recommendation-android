@@ -1,4 +1,4 @@
-package com.example.carsrecommendationapp.presentation.ui.viewmodel
+package com.example.carsrecommendationapp.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.carsrecommendationapp.domain.Recommendation

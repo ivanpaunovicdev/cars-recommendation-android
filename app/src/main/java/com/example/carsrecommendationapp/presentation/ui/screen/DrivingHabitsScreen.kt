@@ -38,10 +38,10 @@ import com.example.carsrecommendationapp.presentation.ui.components.DrivingHabit
 import com.example.carsrecommendationapp.presentation.ui.components.DrivingRouteCard
 import com.example.carsrecommendationapp.presentation.ui.components.PrimaryButton
 import com.example.carsrecommendationapp.presentation.ui.components.StepProgressIndicator
-import com.example.carsrecommendationapp.presentation.ui.viewmodel.DailyRoutesViewModel
-import com.example.carsrecommendationapp.presentation.ui.viewmodel.DrivingPhilosophiesViewModel
-import com.example.carsrecommendationapp.presentation.ui.viewmodel.DrivingTerrainsViewModel
-import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
+import com.example.carsrecommendationapp.presentation.viewmodel.DailyRoutesViewModel
+import com.example.carsrecommendationapp.presentation.viewmodel.DrivingPhilosophiesViewModel
+import com.example.carsrecommendationapp.presentation.viewmodel.DrivingTerrainsViewModel
+import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewModel
 
 @Composable
 fun DrivingHabitsScreen(

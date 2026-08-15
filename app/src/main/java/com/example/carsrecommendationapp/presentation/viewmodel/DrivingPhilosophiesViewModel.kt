@@ -1,8 +1,8 @@
-package com.example.carsrecommendationapp.presentation.ui.viewmodel
+package com.example.carsrecommendationapp.presentation.viewmodel
 
 import com.example.carsrecommendationapp.data.repository.CarRepository
 import com.example.carsrecommendationapp.domain.DrivingPhilosophy
-import com.example.carsrecommendationapp.presentation.ui.viewmodel.base.BaseListViewModel
+import com.example.carsrecommendationapp.presentation.viewmodel.base.BaseListViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

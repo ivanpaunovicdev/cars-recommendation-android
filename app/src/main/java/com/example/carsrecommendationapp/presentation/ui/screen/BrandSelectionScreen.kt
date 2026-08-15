@@ -35,8 +35,8 @@ import com.example.carsrecommendationapp.presentation.ui.components.BackButton
 import com.example.carsrecommendationapp.presentation.ui.components.BrandCard
 import com.example.carsrecommendationapp.presentation.ui.components.PrimaryButton
 import com.example.carsrecommendationapp.presentation.ui.components.StepProgressIndicator
-import com.example.carsrecommendationapp.presentation.ui.viewmodel.BrandsViewModel
-import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
+import com.example.carsrecommendationapp.presentation.viewmodel.BrandsViewModel
+import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewModel
 
 @Composable
 fun BrandSelectionScreen(

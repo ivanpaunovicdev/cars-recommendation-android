@@ -45,8 +45,7 @@ import com.example.carsrecommendationapp.presentation.ui.components.PrimaryButto
 import com.example.carsrecommendationapp.presentation.ui.components.StepProgressIndicator
 import com.example.carsrecommendationapp.presentation.ui.components.TransmissionOptionChip
 import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
-import com.example.carsrecommendationapp.presentation.ui.viewmodel.OnboardingViewModel
-import androidx.compose.foundation.layout.widthIn
+import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
