@@ -14,7 +14,6 @@ import com.example.carsrecommendationapp.domain.Transmission
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-
 interface RecommendationApi {
     @GET("recommendations")
     suspend fun getRecommendations(
