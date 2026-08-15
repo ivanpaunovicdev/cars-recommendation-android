@@ -1,4 +1,5 @@
 package com.example.carsrecommendationapp.data.network
+
 import com.example.carsrecommendationapp.data.dto.RecommendationDto
 import com.example.carsrecommendationapp.domain.BodyType
 import com.example.carsrecommendationapp.domain.Brand

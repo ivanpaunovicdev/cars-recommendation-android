@@ -1,4 +1,5 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
