@@ -192,21 +192,6 @@ fun ResultsScreen(
 
                 Spacer(modifier = Modifier.height(22.dp))
 
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text(
-                        text = stringResource(R.string.results_count, recommendations.size),
-                        color = colorResource(R.color.orange),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-
-                    SortChip()
-                }
-
-                Spacer(modifier = Modifier.height(Dimens.Large))
             }
 
             when {
@@ -242,6 +227,28 @@ fun ResultsScreen(
                 }
 
                 else -> {
+
+                    item {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Text(
+                                text = stringResource(
+                                    R.string.results_count,
+                                    recommendations.size
+                                ),
+                                color = colorResource(R.color.orange),
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+
+                            SortChip()
+                        }
+
+                        Spacer(modifier = Modifier.height(Dimens.Large))
+                    }
+
                     items(recommendations.size) { index ->
                         val car = recommendations[index]
                         val carId = "${car.brand}-${car.model}-${car.year}"
