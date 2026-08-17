@@ -149,7 +149,11 @@ fun ResultsScreen(
 
                 Spacer(modifier = Modifier.height(Dimens.Large))
 
-                SearchBar()
+                SearchBar(
+                    onFilterClick = {
+                        // TODO: Implement filter dialog and search functionality.
+                    }
+                )
 
                 Spacer(modifier = Modifier.height(Dimens.Medium))
 
@@ -243,7 +247,11 @@ fun ResultsScreen(
                                 fontWeight = FontWeight.Bold
                             )
 
-                            SortChip()
+                            SortChip(
+                                onClick = {
+                                    // TODO: Implement recommendation sorting.
+                                }
+                            )
                         }
 
                         Spacer(modifier = Modifier.height(Dimens.Large))
