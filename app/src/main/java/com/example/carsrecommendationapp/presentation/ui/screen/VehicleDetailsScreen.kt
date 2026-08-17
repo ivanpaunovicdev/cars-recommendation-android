@@ -226,6 +226,7 @@ fun VehicleDetailsScreen(
                         VehicleSpecCard(
                             label = stringResource(R.string.fuel_label),
                             value = selectedCar?.fuel
+                                ?.takeIf { it.isNotBlank() }
                                 ?: stringResource(R.string.not_available)
                         )
                     }
@@ -234,6 +235,7 @@ fun VehicleDetailsScreen(
                         VehicleSpecCard(
                             label = stringResource(R.string.body_type_label),
                             value = selectedCar?.bodyType
+                                ?.takeIf { it.isNotBlank() }
                                 ?: stringResource(R.string.not_available)
                         )
                     }
@@ -242,6 +244,7 @@ fun VehicleDetailsScreen(
                         VehicleSpecCard(
                             label = stringResource(R.string.transmission_label),
                             value = selectedCar?.transmission
+                                ?.takeIf { it.isNotBlank() }
                                 ?: stringResource(R.string.not_available)
                         )
                     }
@@ -250,6 +253,7 @@ fun VehicleDetailsScreen(
                         VehicleSpecCard(
                             label = stringResource(R.string.drive_type_label),
                             value = selectedCar?.driveType
+                                ?.takeIf { it.isNotBlank() }
                                 ?: stringResource(R.string.not_available)
                         )
                     }
