@@ -37,12 +37,12 @@ interface CarRepository {
     suspend fun getDrivingPhilosophies(): List<DrivingPhilosophy>
 
     suspend fun getRecommendations(
-        budgetMin: Int = 0,
+        budgetMin: Int? = null,
         budgetMax: Int = 100000,
         minYear: Int = 0,
-        maxMileage: Int = Int.MAX_VALUE,
+        maxMileage: Int? = null,
         brands: List<String> = emptyList(),
-        model: String = "",
+        model: String? = null,
         fuels: List<String> = emptyList(),
         bodyTypes: List<String> = emptyList(),
         transmission: String = "",

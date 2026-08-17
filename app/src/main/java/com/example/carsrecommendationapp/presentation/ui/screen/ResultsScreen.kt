@@ -78,7 +78,7 @@ fun ResultsScreen(
         selectedDrivingPhilosophy
     ) {
         recommendationViewModel.loadRecommendations(
-            budgetMin = 0,
+            budgetMin = null,
             budgetMax = budgetMax,
             minYear = minYear,
             brands = selectedBrands.toList(),

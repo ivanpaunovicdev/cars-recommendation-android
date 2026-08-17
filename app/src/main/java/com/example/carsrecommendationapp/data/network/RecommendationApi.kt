@@ -17,13 +17,13 @@ import retrofit2.http.Query
 interface RecommendationApi {
     @GET("recommendations")
     suspend fun getRecommendations(
-        @Query("budgetMin") budgetMin: Int = 0,
+        @Query("budgetMin") budgetMin: Int? = null,
         @Query("budgetMax") budgetMax: Int = 100000,
         @Query("minYear") minYear: Int = 0,
-        @Query("maxMileage") maxMileage: Int = Int.MAX_VALUE,
+        @Query("maxMileage") maxMileage: Int? = null,
 
         @Query("brand") brands: List<String> = emptyList(),
-        @Query("model") model: String = "",
+        @Query("model") model: String? = null,
         @Query("fuel") fuels: List<String> = emptyList(),
         @Query("bodyType") bodyTypes: List<String> = emptyList(),
         @Query("transmission") transmission: String = "",

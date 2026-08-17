@@ -42,12 +42,12 @@ class CarRepositoryImpl(
         api.getDrivingPhilosophies()
 
     override suspend fun getRecommendations(
-        budgetMin: Int,
+        budgetMin: Int?,
         budgetMax: Int,
         minYear: Int,
-        maxMileage: Int,
+        maxMileage: Int?,
         brands: List<String>,
-        model: String,
+        model: String?,
         fuels: List<String>,
         bodyTypes: List<String>,
         transmission: String,
