@@ -19,3 +19,15 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Gson
+-keepattributes Signature
+-keepattributes *Annotation*
+
+# Keep DTO classes
+-keep class com.example.carsrecommendationapp.data.dto.** { *; }
+
+# Keep fields annotated with SerializedName
+-keepclassmembers class * {
+    @com.google.gson.annotations.SerializedName <fields>;
+}

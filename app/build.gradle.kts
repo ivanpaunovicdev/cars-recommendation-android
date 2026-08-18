@@ -36,7 +36,7 @@ android {
         }
 
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
 
             buildConfigField(
                 "String",
