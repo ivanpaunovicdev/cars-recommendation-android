@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -5,6 +7,15 @@ plugins {
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
 }
+
+
+
+val localProperties = Properties().apply {
+    rootProject.file("local.properties").inputStream().use { load(it) }
+}
+
+val baseUrl = localProperties.getProperty("BASE_URL")
+    ?: error("BASE_URL is missing from local.properties")
 
 android {
     namespace = "com.example.carsrecommendationapp"
@@ -31,7 +42,7 @@ android {
             buildConfigField(
                 "String",
                 "BASE_URL",
-                "\"http://192.168.0.22:8080/\""
+                "\"$baseUrl\""
             )
         }
 
@@ -41,7 +52,7 @@ android {
             buildConfigField(
                 "String",
                 "BASE_URL",
-                "\"https://example.com/\""
+                "\"$baseUrl\""
             )
 
             proguardFiles(
