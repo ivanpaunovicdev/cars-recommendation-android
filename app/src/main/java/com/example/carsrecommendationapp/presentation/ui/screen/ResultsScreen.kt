@@ -70,9 +70,10 @@ private fun Recommendation.stableId(): String = buildString {
 
 @Composable
 fun ResultsScreen(
-    onboardingViewModel: OnboardingViewModel,
     onCarClick: () -> Unit
 ) {
+
+    val onboardingViewModel: OnboardingViewModel = hiltViewModel()
 
     val recommendationViewModel: RecommendationViewModel = hiltViewModel()
     val recommendations by recommendationViewModel.recommendations.collectAsState()

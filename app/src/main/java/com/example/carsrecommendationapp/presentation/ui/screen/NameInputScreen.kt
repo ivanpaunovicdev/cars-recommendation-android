@@ -1,5 +1,7 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
 
+
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
@@ -44,10 +46,11 @@ import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewMo
 
 @Composable
 fun NameInputScreen(
-    onboardingViewModel: OnboardingViewModel,
     onBackClick: () -> Unit,
     onContinueClick: () -> Unit
 ) {
+
+    val onboardingViewModel: OnboardingViewModel = hiltViewModel()
     val savedUserName by onboardingViewModel.userName.collectAsState()
 
     var name by rememberSaveable(savedUserName) {

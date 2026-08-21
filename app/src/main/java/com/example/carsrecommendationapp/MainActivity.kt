@@ -3,7 +3,6 @@ package com.example.carsrecommendationapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -28,6 +27,7 @@ import com.example.carsrecommendationapp.presentation.ui.screen.WelcomeScreen
 import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
@@ -36,7 +36,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val navController = rememberNavController()
-            val onboardingViewModel: OnboardingViewModel = viewModel()
+
+
 
             NavHost(
                 navController = navController,
@@ -55,7 +56,6 @@ class MainActivity : ComponentActivity() {
 
                 composable<NameInputRoute> {
                     NameInputScreen(
-                        onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         },
@@ -69,7 +69,6 @@ class MainActivity : ComponentActivity() {
 
                 composable<BrandsRoute> {
                     BrandSelectionScreen(
-                        onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         },
@@ -83,7 +82,6 @@ class MainActivity : ComponentActivity() {
 
                 composable<BodyAndFuelRoute> {
                     BodyAndFuelScreen(
-                        onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         },
@@ -97,7 +95,6 @@ class MainActivity : ComponentActivity() {
 
                 composable<FuelSelectionRoute> {
                     FuelSelectionScreen(
-                        onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         },
@@ -111,7 +108,6 @@ class MainActivity : ComponentActivity() {
 
                 composable<BudgetDetailsRoute> {
                     BudgetAndDetailsScreen(
-                        onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         },
@@ -125,7 +121,6 @@ class MainActivity : ComponentActivity() {
 
                 composable<DrivingHabitsRoute> {
                     DrivingHabitsScreen(
-                        onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         },
@@ -140,7 +135,6 @@ class MainActivity : ComponentActivity() {
 
                 composable<ResultsRoute> {
                     ResultsScreen(
-                        onboardingViewModel = onboardingViewModel,
                         onCarClick = {
                             navController.navigate(VehicleDetailsRoute) {
                                 launchSingleTop = true
@@ -151,7 +145,6 @@ class MainActivity : ComponentActivity() {
 
                 composable<VehicleDetailsRoute> {
                     VehicleDetailsScreen(
-                        onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         }

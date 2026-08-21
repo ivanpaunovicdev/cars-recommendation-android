@@ -46,10 +46,11 @@ import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewMo
 
 @Composable
 fun DrivingHabitsScreen(
-    onboardingViewModel: OnboardingViewModel,
     onBackClick: () -> Unit,
     onFindCarClick: () -> Unit
 ) {
+
+    val onboardingViewModel: OnboardingViewModel = hiltViewModel()
     val dailyRoutesViewModel: DailyRoutesViewModel = hiltViewModel()
     val drivingTerrainsViewModel: DrivingTerrainsViewModel = hiltViewModel()
     val drivingPhilosophiesViewModel: DrivingPhilosophiesViewModel = hiltViewModel()

@@ -42,10 +42,11 @@ import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewMo
 
 @Composable
 fun FuelSelectionScreen(
-    onboardingViewModel: OnboardingViewModel,
     onBackClick: () -> Unit,
     onContinueClick: () -> Unit
 ) {
+
+    val onboardingViewModel: OnboardingViewModel = hiltViewModel()
     val fuelsViewModel: FuelsViewModel = hiltViewModel()
     val fuels by fuelsViewModel.fuels.collectAsState()
 

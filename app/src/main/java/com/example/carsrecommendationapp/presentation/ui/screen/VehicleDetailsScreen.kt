@@ -37,13 +37,15 @@ import com.example.carsrecommendationapp.presentation.ui.components.BackButton
 import com.example.carsrecommendationapp.presentation.ui.components.VehicleSpecCard
 import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 
 
 @Composable
 fun VehicleDetailsScreen(
-    onboardingViewModel: OnboardingViewModel,
     onBackClick: () -> Unit
 ) {
+
+    val onboardingViewModel: OnboardingViewModel = hiltViewModel()
 
     val selectedCar by onboardingViewModel.selectedRecommendation.collectAsState()
 

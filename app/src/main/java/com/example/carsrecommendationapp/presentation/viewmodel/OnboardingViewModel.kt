@@ -5,8 +5,11 @@ import com.example.carsrecommendationapp.domain.Recommendation
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class OnboardingViewModel : ViewModel() {
+@HiltViewModel
+class OnboardingViewModel @Inject constructor() : ViewModel() {
 
     private val _selectedBrands = MutableStateFlow<Set<String>>(emptySet())
     val selectedBrands: StateFlow<Set<String>> = _selectedBrands.asStateFlow()

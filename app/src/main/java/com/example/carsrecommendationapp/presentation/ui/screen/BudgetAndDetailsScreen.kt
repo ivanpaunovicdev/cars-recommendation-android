@@ -56,10 +56,11 @@ import com.example.carsrecommendationapp.presentation.viewmodel.DriveTypesViewMo
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BudgetAndDetailsScreen(
-    onboardingViewModel: OnboardingViewModel,
     onBackClick: () -> Unit,
     onContinueClick: () -> Unit
 ) {
+
+    val onboardingViewModel: OnboardingViewModel = hiltViewModel()
     val savedBudgetMax by onboardingViewModel.budgetMax.collectAsState()
     val savedMinYear by onboardingViewModel.minYear.collectAsState()
     val savedTransmission by onboardingViewModel.transmission.collectAsState()

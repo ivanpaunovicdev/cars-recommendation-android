@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
 
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -31,7 +32,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.example.carsrecommendationapp.R
 import com.example.carsrecommendationapp.presentation.ui.components.BackButton
 import com.example.carsrecommendationapp.presentation.ui.components.BodyTypeCard
@@ -42,10 +42,11 @@ import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewMo
 
 @Composable
 fun BodyAndFuelScreen(
-    onboardingViewModel: OnboardingViewModel,
     onBackClick: () -> Unit,
     onContinueClick: () -> Unit
 ) {
+
+    val onboardingViewModel: OnboardingViewModel = hiltViewModel()
     val bodyTypesViewModel: BodyTypesViewModel = hiltViewModel()
 
 
@@ -202,7 +203,6 @@ fun BodyAndFuelScreen(
 
             Spacer(modifier = Modifier.height(screenHeight * 0.025f))
 
-            Spacer(modifier = Modifier.height(screenHeight * 0.025f))
 
             PrimaryButton(
                 text = stringResource(R.string.continue_text),
