@@ -21,6 +21,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -56,7 +57,7 @@ fun BodyAndFuelScreen(
 
     val savedSelectedBodyTypes by onboardingViewModel.selectedBodyTypes.collectAsState()
 
-    var selectedBodyTypes by remember(savedSelectedBodyTypes) {
+    var selectedBodyTypes by rememberSaveable(savedSelectedBodyTypes) {
         mutableStateOf(savedSelectedBodyTypes)
     }
 

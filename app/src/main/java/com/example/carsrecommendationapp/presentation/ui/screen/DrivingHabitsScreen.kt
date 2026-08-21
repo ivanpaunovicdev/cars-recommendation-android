@@ -23,6 +23,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -61,9 +62,9 @@ fun DrivingHabitsScreen(
     val savedDrivingTerrain by onboardingViewModel.selectedDrivingTerrain.collectAsState()
     val savedDrivingPhilosophy by onboardingViewModel.selectedDrivingPhilosophy.collectAsState()
 
-    var selectedDailyRoute by remember(savedDailyRoute) { mutableStateOf(savedDailyRoute) }
-    var selectedDrivingTerrain by remember(savedDrivingTerrain) { mutableStateOf(savedDrivingTerrain) }
-    var selectedDrivingPhilosophy by remember(savedDrivingPhilosophy) { mutableStateOf(savedDrivingPhilosophy) }
+    var selectedDailyRoute by rememberSaveable(savedDailyRoute) { mutableStateOf(savedDailyRoute) }
+    var selectedDrivingTerrain by rememberSaveable(savedDrivingTerrain) { mutableStateOf(savedDrivingTerrain) }
+    var selectedDrivingPhilosophy by rememberSaveable(savedDrivingPhilosophy) { mutableStateOf(savedDrivingPhilosophy) }
 
     BoxWithConstraints(
         modifier = Modifier

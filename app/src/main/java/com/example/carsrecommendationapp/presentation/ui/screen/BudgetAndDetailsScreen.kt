@@ -28,6 +28,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -64,15 +65,15 @@ fun BudgetAndDetailsScreen(
 
     val savedDriveType by onboardingViewModel.driveType.collectAsState()
 
-    var price by remember(savedBudgetMax) {
+    var price by rememberSaveable(savedBudgetMax) {
         mutableStateOf(savedBudgetMax.toFloat())
     }
 
-    var selectedYear by remember(savedMinYear) {
+    var selectedYear by rememberSaveable(savedMinYear) {
         mutableStateOf("${savedMinYear}+")
     }
 
-    var selectedTransmission by remember(savedTransmission) {
+    var selectedTransmission by rememberSaveable(savedTransmission) {
         mutableStateOf(
             when (savedTransmission) {
                 "Automatski / poluautomatski" -> "Automatik"
@@ -83,7 +84,7 @@ fun BudgetAndDetailsScreen(
         )
     }
 
-    var selectedDriveType by remember(savedDriveType) {
+    var selectedDriveType by rememberSaveable(savedDriveType) {
         mutableStateOf(savedDriveType)
     }
 

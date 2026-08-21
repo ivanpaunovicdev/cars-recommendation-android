@@ -22,6 +22,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -42,6 +43,7 @@ import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewMo
 import com.example.carsrecommendationapp.presentation.viewmodel.RecommendationViewModel
 import com.example.carsrecommendationapp.util.formatMileage
 import com.example.carsrecommendationapp.util.formatPrice
+
 
 
 @Composable
@@ -65,7 +67,7 @@ fun ResultsScreen(
     val selectedDrivingTerrain by onboardingViewModel.selectedDrivingTerrain.collectAsState()
     val selectedDrivingPhilosophy by onboardingViewModel.selectedDrivingPhilosophy.collectAsState()
     val userName by onboardingViewModel.userName.collectAsState()
-    val favoriteCars = remember { mutableStateListOf<String>() }
+    val favoriteCars = rememberSaveable { mutableStateListOf<String>() }
 
     LaunchedEffect(
         selectedBrands,
