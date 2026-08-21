@@ -1,5 +1,7 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
 
+import com.example.carsrecommendationapp.util.apiToUiTransmission
+import com.example.carsrecommendationapp.util.uiToApiTransmission
 import com.example.carsrecommendationapp.util.formatPrice
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -75,14 +77,7 @@ fun BudgetAndDetailsScreen(
     }
 
     var selectedTransmission by rememberSaveable(savedTransmission) {
-        mutableStateOf(
-            when (savedTransmission) {
-                "Automatski / poluautomatski" -> "Automatik"
-                "Manuelni" -> "Manuelni"
-                "" -> "Svejedno"
-                else -> "Svejedno"
-            }
-        )
+        mutableStateOf(apiToUiTransmission(savedTransmission))
     }
 
     var selectedDriveType by rememberSaveable(savedDriveType) {
@@ -355,12 +350,7 @@ fun BudgetAndDetailsScreen(
             PrimaryButton(
                 text = stringResource(R.string.continue_text_simple),
                 onClick = {
-                    val transmissionForApi = when (selectedTransmission) {
-                        "Automatik" -> "Automatski / poluautomatski"
-                        "Manuelni" -> "Manuelni"
-                        "Svejedno" -> ""
-                        else -> ""
-                    }
+                    val transmissionForApi = uiToApiTransmission(selectedTransmission)
 
                     onboardingViewModel.updateBudgetMax(price.toInt())
                     onboardingViewModel.updateMinYear(
