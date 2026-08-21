@@ -1,5 +1,7 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
 
+import com.example.carsrecommendationapp.domain.Recommendation
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -45,6 +47,26 @@ import com.example.carsrecommendationapp.util.formatMileage
 import com.example.carsrecommendationapp.util.formatPrice
 
 
+
+
+
+private fun Recommendation.stableId(): String = buildString {
+    append(brand)
+    append('|')
+    append(model)
+    append('|')
+    append(year)
+    append('|')
+    append(mileage)
+    append('|')
+    append(price)
+    append('|')
+    append(fuel)
+    append('|')
+    append(transmission)
+    append('|')
+    append(driveType)
+}
 
 @Composable
 fun ResultsScreen(
@@ -262,9 +284,12 @@ fun ResultsScreen(
                         Spacer(modifier = Modifier.height(Dimens.Large))
                     }
 
-                    items(recommendations.size) { index ->
-                        val car = recommendations[index]
-                        val carId = "${car.brand}-${car.model}-${car.year}"
+                    items(
+                        items = recommendations,
+                        key = { it.stableId() }
+                    ) { car ->
+
+                        val carId = car.stableId()
 
                         CarResultCard(
                             title = "${car.brand} ${car.model}",
