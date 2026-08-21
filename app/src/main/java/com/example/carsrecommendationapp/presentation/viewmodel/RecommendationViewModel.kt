@@ -1,5 +1,7 @@
 package com.example.carsrecommendationapp.presentation.viewmodel
 
+import com.example.carsrecommendationapp.di.IoDispatcher
+import kotlinx.coroutines.CoroutineDispatcher
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.carsrecommendationapp.data.repository.CarRepository
@@ -13,7 +15,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RecommendationViewModel @Inject constructor(
-    private val carRepository: CarRepository
+    private val carRepository: CarRepository,
+    @IoDispatcher
+    private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private val _recommendations = MutableStateFlow<List<Recommendation>>(emptyList())
@@ -40,7 +44,7 @@ class RecommendationViewModel @Inject constructor(
         drivingTerrain: String = "",
         drivingPhilosophy: String = ""
     ) {
-        viewModelScope.launch {
+        viewModelScope.launch(ioDispatcher) {
             try {
                 _isLoading.value = true
                 _errorMessage.value = null
