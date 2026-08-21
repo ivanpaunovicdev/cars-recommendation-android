@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.viewmodel.base
 
+import kotlinx.coroutines.CancellationException
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.carsrecommendationapp.data.repository.CarRepository
@@ -33,6 +34,8 @@ abstract class BaseListViewModel<T>(
                 _isLoading.value = true
                 _errorMessage.value = null
                 _items.value = loadData()
+            } catch (e: CancellationException) {
+                throw e
             } catch (e: Exception) {
                 _errorMessage.value =
                     e.message ?: "Došlo je do greške pri učitavanju podataka."

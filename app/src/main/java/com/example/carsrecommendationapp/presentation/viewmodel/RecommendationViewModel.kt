@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.viewmodel
 
+import kotlinx.coroutines.CancellationException
 import com.example.carsrecommendationapp.di.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import androidx.lifecycle.ViewModel
@@ -64,6 +65,8 @@ class RecommendationViewModel @Inject constructor(
                     drivingTerrain = drivingTerrain,
                     drivingPhilosophy = drivingPhilosophy
                 )
+            } catch (e: CancellationException) {
+                throw e
             } catch (e: Exception) {
                 _errorMessage.value =
                     e.message ?: "Došlo je do greške pri učitavanju preporuka."
