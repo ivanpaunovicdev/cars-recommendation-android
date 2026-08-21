@@ -1,5 +1,7 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
 
+import com.example.carsrecommendationapp.util.formatMileage
+import com.example.carsrecommendationapp.util.formatPrice
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -153,7 +155,7 @@ fun VehicleDetailsScreen(
                     text = stringResource(
                         R.string.vehicle_subtitle,
                         selectedCar?.year?.toString() ?: "-",
-                        formatVehicleMileage(selectedCar?.mileage)
+                        formatMileage(selectedCar?.mileage ?: 0)
                     ),
                     color = colorResource(R.color.light_gray),
                     fontSize = 15.sp
@@ -176,7 +178,7 @@ fun VehicleDetailsScreen(
                         )
 
                         Text(
-                            text = formatVehiclePrice(selectedCar?.price),
+                            text = formatPrice(selectedCar?.price ?: 0),
                             color = colorResource(R.color.orange),
                             fontSize = 30.sp,
                             fontWeight = FontWeight.Black
@@ -262,19 +264,4 @@ fun VehicleDetailsScreen(
             }
         }
     }
-}
-fun formatVehiclePrice(price: Int?): String {
-    return "€ " + (price ?: 0).toString()
-        .reversed()
-        .chunked(3)
-        .joinToString(".")
-        .reversed()
-}
-
-fun formatVehicleMileage(mileage: Int?): String {
-    return (mileage ?: 0).toString()
-        .reversed()
-        .chunked(3)
-        .joinToString(".")
-        .reversed()
 }

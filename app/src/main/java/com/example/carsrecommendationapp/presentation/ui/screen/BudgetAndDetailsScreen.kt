@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
 
+import com.example.carsrecommendationapp.util.formatPrice
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -190,7 +191,7 @@ fun BudgetAndDetailsScreen(
                         Spacer(modifier = Modifier.height(Dimens.Small))
 
                         Text(
-                            text = "€ ${price.toInt()}",
+                            text = formatPrice(price.toInt()),
                             color = colorResource(R.color.orange),
                             fontSize = 30.sp,
                             fontWeight = FontWeight.Black,
@@ -248,7 +249,7 @@ fun BudgetAndDetailsScreen(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text("€ 0", color = colorResource(R.color.light_gray), fontSize = 13.sp)
-                    Text("€ 100.000+", color = colorResource(R.color.light_gray), fontSize = 13.sp)
+                    Text("${formatPrice(100000)}+", color = colorResource(R.color.light_gray), fontSize = 13.sp)
                 }
 
                 Spacer(modifier = Modifier.height(screenHeight * 0.025f))
