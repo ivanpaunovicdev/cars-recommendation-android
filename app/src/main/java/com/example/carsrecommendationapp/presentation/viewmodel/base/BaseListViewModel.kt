@@ -22,9 +22,6 @@ abstract class BaseListViewModel<T>(
     private val _errorMessage = MutableStateFlow<String?>(null)
     val errorMessage: StateFlow<String?> = _errorMessage.asStateFlow()
 
-    init {
-        loadItems()
-    }
 
     protected abstract suspend fun loadData(): List<T>
 

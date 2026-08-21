@@ -11,6 +11,10 @@ class DailyRoutesViewModel @Inject constructor(
     carRepository: CarRepository
 ) : BaseListViewModel<DailyRoute>(carRepository) {
 
+    init {
+        loadItems()
+    }
+
     val dailyRoutes = items
 
     override suspend fun loadData(): List<DailyRoute> {

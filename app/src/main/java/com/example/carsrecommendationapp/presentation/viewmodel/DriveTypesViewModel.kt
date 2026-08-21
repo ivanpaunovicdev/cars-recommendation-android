@@ -11,6 +11,10 @@ class DriveTypesViewModel @Inject constructor(
     carRepository: CarRepository
 ) : BaseListViewModel<DriveType>(carRepository) {
 
+    init {
+        loadItems()
+    }
+
     val driveTypes = items
 
     override suspend fun loadData(): List<DriveType> {

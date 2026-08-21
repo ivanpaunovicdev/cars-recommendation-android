@@ -10,6 +10,10 @@ class ModelsViewModel @Inject constructor(
     carRepository: CarRepository
 ) : BaseListViewModel<String>(carRepository) {
 
+    init {
+        loadItems()
+    }
+
     val models = items
 
     override suspend fun loadData(): List<String> {
