@@ -147,7 +147,7 @@ fun BrandSelectionScreen(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = errorMessage ?: "",
+                            text = stringResource(R.string.unable_to_load_data),
                             color = colorResource(R.color.orange)
                         )
                     }

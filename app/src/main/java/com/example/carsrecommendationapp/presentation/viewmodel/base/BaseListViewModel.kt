@@ -37,9 +37,8 @@ abstract class BaseListViewModel<T>(
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {
-                _errorMessage.value =
-                    e.message ?: "Došlo je do greške pri učitavanju podataka."
-                e.printStackTrace()
+                _errorMessage.value = ""
+
             } finally {
                 _isLoading.value = false
             }
