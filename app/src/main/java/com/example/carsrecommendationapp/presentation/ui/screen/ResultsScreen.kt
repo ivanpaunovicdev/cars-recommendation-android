@@ -60,6 +60,7 @@ fun ResultsScreen(
     val budgetMax by onboardingViewModel.budgetMax.collectAsState()
     val minYear by onboardingViewModel.minYear.collectAsState()
     val transmission by onboardingViewModel.transmission.collectAsState()
+    val driveType by onboardingViewModel.driveType.collectAsState()
     val selectedDailyRoute by onboardingViewModel.selectedDailyRoute.collectAsState()
     val selectedDrivingTerrain by onboardingViewModel.selectedDrivingTerrain.collectAsState()
     val selectedDrivingPhilosophy by onboardingViewModel.selectedDrivingPhilosophy.collectAsState()
@@ -73,6 +74,7 @@ fun ResultsScreen(
         budgetMax,
         minYear,
         transmission,
+        driveType,
         selectedDailyRoute,
         selectedDrivingTerrain,
         selectedDrivingPhilosophy
@@ -85,6 +87,7 @@ fun ResultsScreen(
             bodyTypes = selectedBodyTypes.toList(),
             fuels = selectedFuels.toList(),
             transmission = transmission,
+            driveType = driveType,
             dailyRoute = selectedDailyRoute,
             drivingTerrain = selectedDrivingTerrain,
             drivingPhilosophy = selectedDrivingPhilosophy

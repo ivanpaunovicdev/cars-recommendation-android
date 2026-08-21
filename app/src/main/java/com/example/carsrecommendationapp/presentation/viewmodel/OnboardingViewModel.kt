@@ -26,6 +26,9 @@ class OnboardingViewModel : ViewModel() {
     private val _transmission = MutableStateFlow("")
     val transmission: StateFlow<String> = _transmission.asStateFlow()
 
+    private val _driveType = MutableStateFlow("")
+    val driveType: StateFlow<String> = _driveType.asStateFlow()
+
     private val _selectedDailyRoute = MutableStateFlow("")
     val selectedDailyRoute: StateFlow<String> = _selectedDailyRoute.asStateFlow()
 
@@ -71,6 +74,10 @@ class OnboardingViewModel : ViewModel() {
 
     fun updateTransmission(transmission: String) {
         _transmission.value = transmission
+    }
+
+    fun updateDriveType(driveType: String) {
+        _driveType.value = driveType
     }
 
     fun updateDailyRoute(route: String) {

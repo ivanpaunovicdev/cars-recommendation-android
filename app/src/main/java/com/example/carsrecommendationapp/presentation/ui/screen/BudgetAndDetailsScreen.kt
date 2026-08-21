@@ -46,6 +46,8 @@ import com.example.carsrecommendationapp.presentation.ui.components.StepProgress
 import com.example.carsrecommendationapp.presentation.ui.components.TransmissionOptionChip
 import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.example.carsrecommendationapp.presentation.viewmodel.DriveTypesViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -57,6 +59,10 @@ fun BudgetAndDetailsScreen(
     val savedBudgetMax by onboardingViewModel.budgetMax.collectAsState()
     val savedMinYear by onboardingViewModel.minYear.collectAsState()
     val savedTransmission by onboardingViewModel.transmission.collectAsState()
+    val driveTypesViewModel: DriveTypesViewModel = hiltViewModel()
+    val driveTypes by driveTypesViewModel.driveTypes.collectAsState()
+
+    val savedDriveType by onboardingViewModel.driveType.collectAsState()
 
     var price by remember(savedBudgetMax) {
         mutableStateOf(savedBudgetMax.toFloat())
@@ -77,8 +83,13 @@ fun BudgetAndDetailsScreen(
         )
     }
 
+    var selectedDriveType by remember(savedDriveType) {
+        mutableStateOf(savedDriveType)
+    }
+
     val years = listOf("2018+", "2019+", "2020+", "2022+", "2024+" , "2025+", "2026+")
     val transmissions = listOf("Automatik", "Manuelni", "Svejedno")
+    val driveTypeOptions = driveTypes.mapNotNull { it.naziv }
 
     BoxWithConstraints(
         modifier = Modifier
@@ -310,6 +321,32 @@ fun BudgetAndDetailsScreen(
                     }
                 }
 
+                Spacer(modifier = Modifier.height(screenHeight * 0.03f))
+
+                Text(
+                    text = "Pogon",
+                    color = colorResource(R.color.white),
+                    fontSize = 22.sp,
+                    fontWeight = FontWeight.Black
+                )
+
+                Spacer(modifier = Modifier.height(screenHeight * 0.015f))
+
+                FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    driveTypeOptions.forEach { driveType ->
+                        TransmissionOptionChip(
+                            text = driveType,
+                            isSelected = selectedDriveType == driveType,
+                            onClick = {
+                                selectedDriveType = driveType
+                            }
+                        )
+                    }
+                }
+
                 Spacer(modifier = Modifier.height(screenHeight * 0.04f))
             }
 
@@ -328,6 +365,7 @@ fun BudgetAndDetailsScreen(
                         selectedYear.removeSuffix("+").toInt()
                     )
                     onboardingViewModel.updateTransmission(transmissionForApi)
+                    onboardingViewModel.updateDriveType(selectedDriveType)
 
                     onContinueClick()
                 }
