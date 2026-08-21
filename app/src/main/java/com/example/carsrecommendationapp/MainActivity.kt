@@ -42,10 +42,13 @@ class MainActivity : ComponentActivity() {
                 navController = navController,
                 startDestination = WelcomeRoute
             ) {
+
                 composable<WelcomeRoute> {
                     WelcomeScreen(
                         onStartClick = {
-                            navController.navigate(NameInputRoute)
+                            navController.navigate(NameInputRoute) {
+                                launchSingleTop = true
+                            }
                         }
                     )
                 }
@@ -57,7 +60,9 @@ class MainActivity : ComponentActivity() {
                             navController.popBackStack()
                         },
                         onContinueClick = {
-                            navController.navigate(BrandsRoute)
+                            navController.navigate(BrandsRoute) {
+                                launchSingleTop = true
+                            }
                         }
                     )
                 }
@@ -69,7 +74,9 @@ class MainActivity : ComponentActivity() {
                             navController.popBackStack()
                         },
                         onContinueClick = {
-                            navController.navigate(BodyAndFuelRoute)
+                            navController.navigate(BodyAndFuelRoute) {
+                                launchSingleTop = true
+                            }
                         }
                     )
                 }
@@ -81,7 +88,9 @@ class MainActivity : ComponentActivity() {
                             navController.popBackStack()
                         },
                         onContinueClick = {
-                            navController.navigate(FuelSelectionRoute)
+                            navController.navigate(FuelSelectionRoute) {
+                                launchSingleTop = true
+                            }
                         }
                     )
                 }
@@ -93,7 +102,9 @@ class MainActivity : ComponentActivity() {
                             navController.popBackStack()
                         },
                         onContinueClick = {
-                            navController.navigate(BudgetDetailsRoute)
+                            navController.navigate(BudgetDetailsRoute) {
+                                launchSingleTop = true
+                            }
                         }
                     )
                 }
@@ -105,7 +116,9 @@ class MainActivity : ComponentActivity() {
                             navController.popBackStack()
                         },
                         onContinueClick = {
-                            navController.navigate(DrivingHabitsRoute)
+                            navController.navigate(DrivingHabitsRoute) {
+                                launchSingleTop = true
+                            }
                         }
                     )
                 }
@@ -117,7 +130,10 @@ class MainActivity : ComponentActivity() {
                             navController.popBackStack()
                         },
                         onFindCarClick = {
-                            navController.navigate(ResultsRoute)
+                            navController.navigate(ResultsRoute) {
+                                launchSingleTop = true
+                                popUpTo(DrivingHabitsRoute)
+                            }
                         }
                     )
                 }
@@ -126,7 +142,9 @@ class MainActivity : ComponentActivity() {
                     ResultsScreen(
                         onboardingViewModel = onboardingViewModel,
                         onCarClick = {
-                            navController.navigate(VehicleDetailsRoute)
+                            navController.navigate(VehicleDetailsRoute) {
+                                launchSingleTop = true
+                            }
                         }
                     )
                 }
