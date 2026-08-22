@@ -9,37 +9,57 @@ class CarRepositoryImpl(
 ) : CarRepository {
 
     override suspend fun getCars() =
-        api.getCars()
+        api.getCars().map { dto ->
+            dto.toDomain()
+        }
 
     override suspend fun getBrands() =
-        api.getBrands()
+        api.getBrands().map { dto ->
+            dto.toDomain()
+        }
 
     override suspend fun getFuels() =
-        api.getFuels()
+        api.getFuels().map { dto ->
+            dto.toDomain()
+        }
 
     override suspend fun getBodyTypes() =
-        api.getBodyTypes()
+        api.getBodyTypes().map { dto ->
+            dto.toDomain()
+        }
 
     override suspend fun getTransmissions() =
-        api.getTransmissions()
+        api.getTransmissions().map { dto ->
+            dto.toDomain()
+        }
 
     override suspend fun getDriveTypes() =
-        api.getDriveTypes()
+        api.getDriveTypes().map { dto ->
+            dto.toDomain()
+        }
 
     override suspend fun getSafetyEquipments() =
-        api.getSafetyEquipments()
+        api.getSafetyEquipments().map { dto ->
+            dto.toDomain()
+        }
 
     override suspend fun getModels() =
         api.getModels()
 
     override suspend fun getDailyRoutes() =
-        api.getDailyRoutes()
+        api.getDailyRoutes().map { dto ->
+            dto.toDomain()
+        }
 
     override suspend fun getDrivingTerrains() =
-        api.getDrivingTerrains()
+        api.getDrivingTerrains().map { dto ->
+            dto.toDomain()
+        }
 
     override suspend fun getDrivingPhilosophies() =
-        api.getDrivingPhilosophies()
+        api.getDrivingPhilosophies().map { dto ->
+            dto.toDomain()
+        }
 
     override suspend fun getRecommendations(
         budgetMin: Int?,

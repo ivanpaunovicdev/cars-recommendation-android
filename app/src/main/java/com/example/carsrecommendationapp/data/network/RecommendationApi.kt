@@ -1,16 +1,16 @@
 package com.example.carsrecommendationapp.data.network
 
 import com.example.carsrecommendationapp.data.dto.RecommendationDto
-import com.example.carsrecommendationapp.domain.BodyType
-import com.example.carsrecommendationapp.domain.Brand
-import com.example.carsrecommendationapp.domain.Car
-import com.example.carsrecommendationapp.domain.DailyRoute
-import com.example.carsrecommendationapp.domain.DriveType
-import com.example.carsrecommendationapp.domain.DrivingPhilosophy
-import com.example.carsrecommendationapp.domain.DrivingTerrain
-import com.example.carsrecommendationapp.domain.Fuel
-import com.example.carsrecommendationapp.domain.SafetyEquipment
-import com.example.carsrecommendationapp.domain.Transmission
+import com.example.carsrecommendationapp.data.dto.BodyTypeDto
+import com.example.carsrecommendationapp.data.dto.BrandDto
+import com.example.carsrecommendationapp.data.dto.CarDto
+import com.example.carsrecommendationapp.data.dto.DailyRouteDto
+import com.example.carsrecommendationapp.data.dto.DrivingPhilosophyDto
+import com.example.carsrecommendationapp.data.dto.DriveTypeDto
+import com.example.carsrecommendationapp.data.dto.DrivingTerrainDto
+import com.example.carsrecommendationapp.data.dto.FuelDto
+import com.example.carsrecommendationapp.data.dto.SafetyEquipmentDto
+import com.example.carsrecommendationapp.data.dto.TransmissionDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -34,35 +34,35 @@ interface RecommendationApi {
     ): List<RecommendationDto>
 
     @GET("cars")
-    suspend fun getCars(): List<Car>
+    suspend fun getCars(): List<CarDto>
 
     @GET("fuels")
-    suspend fun getFuels(): List<Fuel>
+    suspend fun getFuels(): List<FuelDto>
 
     @GET("bodytypes")
-    suspend fun getBodyTypes(): List<BodyType>
+    suspend fun getBodyTypes(): List<BodyTypeDto>
 
     @GET("brands")
-    suspend fun getBrands(): List<Brand>
+    suspend fun getBrands(): List<BrandDto>
 
     @GET("transmissions")
-    suspend fun getTransmissions(): List<Transmission>
+    suspend fun getTransmissions(): List<TransmissionDto>
 
     @GET("drivetypes")
-    suspend fun getDriveTypes(): List<DriveType>
+    suspend fun getDriveTypes(): List<DriveTypeDto>
 
     @GET("safetyequipments")
-    suspend fun getSafetyEquipments(): List<SafetyEquipment>
+    suspend fun getSafetyEquipments(): List<SafetyEquipmentDto>
 
     @GET("models")
     suspend fun getModels(): List<String>
 
     @GET("dailyroutes")
-    suspend fun getDailyRoutes(): List<DailyRoute>
+    suspend fun getDailyRoutes(): List<DailyRouteDto>
 
     @GET("drivingterrains")
-    suspend fun getDrivingTerrains(): List<DrivingTerrain>
+    suspend fun getDrivingTerrains(): List<DrivingTerrainDto>
 
     @GET("drivingphilosophies")
-    suspend fun getDrivingPhilosophies(): List<DrivingPhilosophy>
+    suspend fun getDrivingPhilosophies(): List<DrivingPhilosophyDto>
 }
