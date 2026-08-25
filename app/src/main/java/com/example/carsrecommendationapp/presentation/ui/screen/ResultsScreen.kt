@@ -33,7 +33,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.example.carsrecommendationapp.R
 import com.example.carsrecommendationapp.presentation.ui.components.ActiveFilterChip
 import com.example.carsrecommendationapp.presentation.ui.components.AvatarCircle
@@ -45,6 +44,7 @@ import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewMo
 import com.example.carsrecommendationapp.presentation.viewmodel.RecommendationViewModel
 import com.example.carsrecommendationapp.util.formatMileage
 import com.example.carsrecommendationapp.util.formatPrice
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 
 
 
@@ -53,10 +53,11 @@ import com.example.carsrecommendationapp.util.formatPrice
 
 @Composable
 fun ResultsScreen(
+    onboardingViewModel: OnboardingViewModel,
     onCarClick: (Long) -> Unit
 ){
 
-    val onboardingViewModel: OnboardingViewModel = hiltViewModel()
+
 
     val recommendationViewModel: RecommendationViewModel = hiltViewModel()
     val recommendations by recommendationViewModel.recommendations.collectAsState()

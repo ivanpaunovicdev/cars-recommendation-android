@@ -38,7 +38,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             val navController = rememberNavController()
 
-
+            val onboardingViewModel: OnboardingViewModel =
+                androidx.lifecycle.viewmodel.compose.viewModel()
 
             NavHost(
                 navController = navController,
@@ -57,6 +58,7 @@ class MainActivity : ComponentActivity() {
 
                 composable<NameInputRoute> {
                     NameInputScreen(
+                        onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         },
@@ -70,6 +72,7 @@ class MainActivity : ComponentActivity() {
 
                 composable<BrandsRoute> {
                     BrandSelectionScreen(
+                        onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         },
@@ -83,6 +86,7 @@ class MainActivity : ComponentActivity() {
 
                 composable<BodyAndFuelRoute> {
                     BodyAndFuelScreen(
+                        onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         },
@@ -96,6 +100,7 @@ class MainActivity : ComponentActivity() {
 
                 composable<FuelSelectionRoute> {
                     FuelSelectionScreen(
+                        onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         },
@@ -109,6 +114,7 @@ class MainActivity : ComponentActivity() {
 
                 composable<BudgetDetailsRoute> {
                     BudgetAndDetailsScreen(
+                        onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         },
@@ -122,6 +128,7 @@ class MainActivity : ComponentActivity() {
 
                 composable<DrivingHabitsRoute> {
                     DrivingHabitsScreen(
+                        onboardingViewModel = onboardingViewModel,
                         onBackClick = {
                             navController.popBackStack()
                         },
@@ -136,6 +143,7 @@ class MainActivity : ComponentActivity() {
 
                 composable<ResultsRoute> {
                     ResultsScreen(
+                        onboardingViewModel = onboardingViewModel,
                         onCarClick = { carId ->
                             navController.navigate(
                                 VehicleDetailsRoute(carId)

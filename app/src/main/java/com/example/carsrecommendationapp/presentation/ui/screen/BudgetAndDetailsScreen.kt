@@ -50,17 +50,18 @@ import com.example.carsrecommendationapp.presentation.ui.components.StepProgress
 import com.example.carsrecommendationapp.presentation.ui.components.TransmissionOptionChip
 import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewModel
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.example.carsrecommendationapp.presentation.viewmodel.DriveTypesViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BudgetAndDetailsScreen(
+    onboardingViewModel: OnboardingViewModel,
     onBackClick: () -> Unit,
     onContinueClick: () -> Unit
 ) {
 
-    val onboardingViewModel: OnboardingViewModel = hiltViewModel()
+
     val savedBudgetMax by onboardingViewModel.budgetMax.collectAsState()
     val savedMinYear by onboardingViewModel.minYear.collectAsState()
     val savedTransmission by onboardingViewModel.transmission.collectAsState()

@@ -31,7 +31,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.example.carsrecommendationapp.R
 import com.example.carsrecommendationapp.presentation.ui.components.BackButton
 import com.example.carsrecommendationapp.presentation.ui.components.FuelTypeCard
@@ -39,14 +38,16 @@ import com.example.carsrecommendationapp.presentation.ui.components.PrimaryButto
 import com.example.carsrecommendationapp.presentation.ui.components.StepProgressIndicator
 import com.example.carsrecommendationapp.presentation.viewmodel.FuelsViewModel
 import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 
 @Composable
 fun FuelSelectionScreen(
+    onboardingViewModel: OnboardingViewModel,
     onBackClick: () -> Unit,
     onContinueClick: () -> Unit
 ) {
 
-    val onboardingViewModel: OnboardingViewModel = hiltViewModel()
+
     val fuelsViewModel: FuelsViewModel = hiltViewModel()
     val fuels by fuelsViewModel.fuels.collectAsState()
 

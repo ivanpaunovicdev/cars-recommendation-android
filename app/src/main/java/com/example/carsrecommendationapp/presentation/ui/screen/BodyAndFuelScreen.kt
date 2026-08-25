@@ -1,6 +1,6 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
 
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -39,14 +39,16 @@ import com.example.carsrecommendationapp.presentation.ui.components.PrimaryButto
 import com.example.carsrecommendationapp.presentation.ui.components.StepProgressIndicator
 import com.example.carsrecommendationapp.presentation.viewmodel.BodyTypesViewModel
 import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 
 @Composable
 fun BodyAndFuelScreen(
+    onboardingViewModel: OnboardingViewModel,
     onBackClick: () -> Unit,
     onContinueClick: () -> Unit
 ) {
 
-    val onboardingViewModel: OnboardingViewModel = hiltViewModel()
+
     val bodyTypesViewModel: BodyTypesViewModel = hiltViewModel()
 
 
