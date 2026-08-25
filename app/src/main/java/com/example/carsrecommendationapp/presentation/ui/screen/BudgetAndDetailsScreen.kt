@@ -86,7 +86,17 @@ fun BudgetAndDetailsScreen(
         mutableStateOf(savedDriveType)
     }
 
-    val years = listOf("2018+", "2019+", "2020+", "2022+", "2024+" , "2025+", "2026+")
+    val years = listOf(
+        "2018+",
+        "2019+",
+        "2020+",
+        "2021+",
+        "2022+",
+        "2023+",
+        "2024+",
+        "2025+",
+        "2026+"
+    )
     val transmissions = listOf("Automatik", "Manuelni", "Svejedno")
     val driveTypeOptions = driveTypes.mapNotNull { it.naziv }
 
@@ -323,7 +333,7 @@ fun BudgetAndDetailsScreen(
                 Spacer(modifier = Modifier.height(screenHeight * 0.03f))
 
                 Text(
-                    text = "Pogon",
+                    text = stringResource(R.string.drive_type),
                     color = colorResource(R.color.white),
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Black

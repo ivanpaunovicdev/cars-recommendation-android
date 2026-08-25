@@ -36,7 +36,6 @@ import com.example.carsrecommendationapp.R
 import com.example.carsrecommendationapp.presentation.ui.components.BackButton
 import com.example.carsrecommendationapp.presentation.ui.components.VehicleSpecCard
 import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
-import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewModel
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.compose.runtime.LaunchedEffect
 import com.example.carsrecommendationapp.presentation.viewmodel.VehicleDetailsViewModel

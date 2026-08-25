@@ -45,6 +45,7 @@
     <string name="year">Godište</string>
     <string name="year_range">2018 - 2026</string>
     <string name="transmission">Menjač</string>
+    <string name="drive_type">Pogon</string>
 
     <string name="step_5_of_5">KORAK 5 OD 5</string>
     <string name="driving_habits_title">Tvoje navike vožnje</string>
