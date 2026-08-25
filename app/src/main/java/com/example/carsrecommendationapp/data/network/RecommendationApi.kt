@@ -13,6 +13,7 @@ import com.example.carsrecommendationapp.data.dto.SafetyEquipmentDto
 import com.example.carsrecommendationapp.data.dto.TransmissionDto
 import retrofit2.http.GET
 import retrofit2.http.Query
+import retrofit2.http.Path
 
 interface RecommendationApi {
     @GET("recommendations")
@@ -35,6 +36,11 @@ interface RecommendationApi {
 
     @GET("cars")
     suspend fun getCars(): List<CarDto>
+
+    @GET("cars/{id}")
+    suspend fun getCarById(
+        @Path("id") id: Long
+    ): CarDto
 
     @GET("fuels")
     suspend fun getFuels(): List<FuelDto>

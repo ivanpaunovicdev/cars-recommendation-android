@@ -13,6 +13,11 @@ class CarRepositoryImpl(
             dto.toDomain()
         }
 
+    override suspend fun getCarById(
+        id: Long
+    ) =
+        api.getCarById(id).toDomain()
+
     override suspend fun getBrands() =
         api.getBrands().map { dto ->
             dto.toDomain()

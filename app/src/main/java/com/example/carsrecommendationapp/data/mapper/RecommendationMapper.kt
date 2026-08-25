@@ -5,6 +5,7 @@ import com.example.carsrecommendationapp.domain.Recommendation
 
 fun RecommendationDto.toDomain(): Recommendation {
     return Recommendation(
+        id = id ?: 0L,
         brand = marka.orEmpty(),
         model = model.orEmpty(),
         year = godiste ?: 0,

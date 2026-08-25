@@ -16,6 +16,10 @@ interface CarRepository {
 
     suspend fun getCars(): List<Car>
 
+    suspend fun getCarById(
+        id: Long
+    ): Car
+
     suspend fun getBrands(): List<Brand>
 
     suspend fun getFuels(): List<Fuel>

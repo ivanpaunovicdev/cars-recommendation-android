@@ -27,4 +27,6 @@ data object DrivingHabitsRoute
 data object ResultsRoute
 
 @Serializable
-data object VehicleDetailsRoute
+data class VehicleDetailsRoute(
+    val id: Long
+)

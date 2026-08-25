@@ -42,6 +42,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 
 @Composable
 fun VehicleDetailsScreen(
+    carId: Long,
     onBackClick: () -> Unit
 ) {
 

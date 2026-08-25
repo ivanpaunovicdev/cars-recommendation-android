@@ -70,8 +70,8 @@ private fun Recommendation.stableId(): String = buildString {
 
 @Composable
 fun ResultsScreen(
-    onCarClick: () -> Unit
-) {
+    onCarClick: (Long) -> Unit
+){
 
     val onboardingViewModel: OnboardingViewModel = hiltViewModel()
 
@@ -309,8 +309,7 @@ fun ResultsScreen(
                                 }
                             },
                             onClick = {
-                                onboardingViewModel.updateSelectedRecommendation(car)
-                                onCarClick()
+                                onCarClick(car.id)
                             }
                         )
 

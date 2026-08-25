@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName
 
 data class RecommendationDto(
 
+    @SerializedName("id")
+    val id: Long?,
+
     @SerializedName("marka")
     val marka: String?,
 

@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp
 
+import androidx.navigation.toRoute
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -135,16 +136,22 @@ class MainActivity : ComponentActivity() {
 
                 composable<ResultsRoute> {
                     ResultsScreen(
-                        onCarClick = {
-                            navController.navigate(VehicleDetailsRoute) {
+                        onCarClick = { carId ->
+                            navController.navigate(
+                                VehicleDetailsRoute(carId)
+                            ) {
                                 launchSingleTop = true
                             }
                         }
                     )
                 }
 
-                composable<VehicleDetailsRoute> {
+                composable<VehicleDetailsRoute> { backStackEntry ->
+
+                    val route = backStackEntry.toRoute<VehicleDetailsRoute>()
+
                     VehicleDetailsScreen(
+                        carId = route.id,
                         onBackClick = {
                             navController.popBackStack()
                         }

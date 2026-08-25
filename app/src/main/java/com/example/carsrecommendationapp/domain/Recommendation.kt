@@ -1,6 +1,7 @@
 package com.example.carsrecommendationapp.domain
 
 data class Recommendation(
+    val id: Long,
     val brand: String,
     val model: String,
     val year: Int,
