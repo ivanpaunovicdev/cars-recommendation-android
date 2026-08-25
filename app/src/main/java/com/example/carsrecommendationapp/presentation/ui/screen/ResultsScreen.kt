@@ -50,23 +50,6 @@ import com.example.carsrecommendationapp.util.formatPrice
 
 
 
-private fun Recommendation.stableId(): String = buildString {
-    append(brand)
-    append('|')
-    append(model)
-    append('|')
-    append(year)
-    append('|')
-    append(mileage)
-    append('|')
-    append(price)
-    append('|')
-    append(fuel)
-    append('|')
-    append(transmission)
-    append('|')
-    append(driveType)
-}
 
 @Composable
 fun ResultsScreen(
@@ -90,7 +73,7 @@ fun ResultsScreen(
     val selectedDrivingTerrain by onboardingViewModel.selectedDrivingTerrain.collectAsState()
     val selectedDrivingPhilosophy by onboardingViewModel.selectedDrivingPhilosophy.collectAsState()
     val userName by onboardingViewModel.userName.collectAsState()
-    val favoriteCars = rememberSaveable { mutableStateListOf<String>() }
+    val favoriteCars = rememberSaveable { mutableStateListOf<Long>() }
 
     LaunchedEffect(
         selectedBrands,
@@ -287,10 +270,10 @@ fun ResultsScreen(
 
                     items(
                         items = recommendations,
-                        key = { it.stableId() }
+                        key = { it.id }
                     ) { car ->
 
-                        val carId = car.stableId()
+                        val carId = car.id
 
                         CarResultCard(
                             title = "${car.brand} ${car.model}",
