@@ -47,5 +47,20 @@ data class CarDto(
     val ostecenje: String?,
 
     @SerializedName("valuta")
-    val valuta: String?
+    val valuta: String?,
+
+    @SerializedName("gorivo")
+val gorivo: String?,
+
+@SerializedName("karoserija")
+val karoserija: String?,
+
+@SerializedName("menjac")
+val menjac: String?,
+
+@SerializedName("pogon")
+val pogon: String?,
+
+@SerializedName("skor")
+val skor: Int?
 )

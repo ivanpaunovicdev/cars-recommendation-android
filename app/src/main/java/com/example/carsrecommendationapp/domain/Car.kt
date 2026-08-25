@@ -15,5 +15,11 @@ data class Car(
     val brojSedista: String?,
     val brojVrata: String?,
     val ostecenje: String?,
-    val valuta: String?
+    val valuta: String?,
+
+    val gorivo: String?,
+    val karoserija: String?,
+    val menjac: String?,
+    val pogon: String?,
+    val skor: Int?
 )

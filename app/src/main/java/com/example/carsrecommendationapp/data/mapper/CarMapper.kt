@@ -19,6 +19,12 @@ fun CarDto.toDomain(): Car {
         brojSedista = brojSedista,
         brojVrata = brojVrata,
         ostecenje = ostecenje,
-        valuta = valuta
+        valuta = valuta,
+
+        gorivo = gorivo,
+        karoserija = karoserija,
+        menjac = menjac,
+        pogon = pogon,
+        skor = skor
     )
 }

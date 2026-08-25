@@ -38,6 +38,8 @@ import com.example.carsrecommendationapp.presentation.ui.components.VehicleSpecC
 import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 import com.example.carsrecommendationapp.presentation.viewmodel.OnboardingViewModel
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.compose.runtime.LaunchedEffect
+import com.example.carsrecommendationapp.presentation.viewmodel.VehicleDetailsViewModel
 
 
 @Composable
@@ -46,9 +48,13 @@ fun VehicleDetailsScreen(
     onBackClick: () -> Unit
 ) {
 
-    val onboardingViewModel: OnboardingViewModel = hiltViewModel()
+    val vehicleDetailsViewModel: VehicleDetailsViewModel = hiltViewModel()
 
-    val selectedCar by onboardingViewModel.selectedRecommendation.collectAsState()
+    val car by vehicleDetailsViewModel.car.collectAsState()
+
+    LaunchedEffect(carId) {
+        vehicleDetailsViewModel.loadCar(carId)
+    }
 
     Box(
         modifier = Modifier
@@ -146,7 +152,7 @@ fun VehicleDetailsScreen(
                 Spacer(modifier = Modifier.height(20.dp))
 
                 Text(
-                    text = "${selectedCar?.brand ?: ""} ${selectedCar?.model ?: ""}",
+                    text = "${car?.marka ?: ""} ${car?.model ?: ""}",
                     color = colorResource(R.color.white),
                     fontSize = 28.sp,
                     fontWeight = FontWeight.Black
@@ -157,8 +163,8 @@ fun VehicleDetailsScreen(
                 Text(
                     text = stringResource(
                         R.string.vehicle_subtitle,
-                        selectedCar?.year?.toString() ?: "-",
-                        formatMileage(selectedCar?.mileage ?: 0)
+                        car?.godiste?.toString() ?: "-",
+                        formatMileage(car?.kilometraza ?: 0)
                     ),
                     color = colorResource(R.color.light_gray),
                     fontSize = 15.sp
@@ -181,7 +187,7 @@ fun VehicleDetailsScreen(
                         )
 
                         Text(
-                            text = formatPrice(selectedCar?.price ?: 0),
+                            text = formatPrice(car?.cena ?: 0),
                             color = colorResource(R.color.orange),
                             fontSize = 30.sp,
                             fontWeight = FontWeight.Black
@@ -202,7 +208,7 @@ fun VehicleDetailsScreen(
                         Text(
                             text = stringResource(
                                 R.string.match_percentage,
-                                selectedCar?.score ?: 0
+                                car?.skor?: 0
                             ),
                             color = colorResource(R.color.white),
                             fontWeight = FontWeight.Bold
@@ -230,7 +236,7 @@ fun VehicleDetailsScreen(
                     item {
                         VehicleSpecCard(
                             label = stringResource(R.string.fuel_label),
-                            value = selectedCar?.fuel
+                            value = car?.gorivo
                                 ?.takeIf { it.isNotBlank() }
                                 ?: stringResource(R.string.not_available)
                         )
@@ -239,7 +245,7 @@ fun VehicleDetailsScreen(
                     item {
                         VehicleSpecCard(
                             label = stringResource(R.string.body_type_label),
-                            value = selectedCar?.bodyType
+                            value = car?.karoserija
                                 ?.takeIf { it.isNotBlank() }
                                 ?: stringResource(R.string.not_available)
                         )
@@ -248,7 +254,7 @@ fun VehicleDetailsScreen(
                     item {
                         VehicleSpecCard(
                             label = stringResource(R.string.transmission_label),
-                            value = selectedCar?.transmission
+                            value = car?.menjac
                                 ?.takeIf { it.isNotBlank() }
                                 ?: stringResource(R.string.not_available)
                         )
@@ -257,7 +263,7 @@ fun VehicleDetailsScreen(
                     item {
                         VehicleSpecCard(
                             label = stringResource(R.string.drive_type_label),
-                            value = selectedCar?.driveType
+                            value = car?.pogon
                                 ?.takeIf { it.isNotBlank() }
                                 ?: stringResource(R.string.not_available)
                         )
