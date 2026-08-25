@@ -11,12 +11,42 @@ plugins {
 
 
 
-val localProperties = Properties().apply {
-    rootProject.file("local.properties").inputStream().use { load(it) }
+val localPropertiesFile = rootProject.file("local.properties")
+
+require(localPropertiesFile.exists()) {
+    """
+    Missing local.properties file.
+
+    Please create local.properties in the project root and add:
+
+    DEBUG_BASE_URL=http://192.168.0.22:8080/
+    RELEASE_BASE_URL=https://example.com/
+    """.trimIndent()
 }
 
-val baseUrl = localProperties.getProperty("BASE_URL")
-    ?: error("BASE_URL is missing from local.properties")
+val localProperties = Properties().apply {
+    localPropertiesFile.inputStream().use(::load)
+}
+
+val debugBaseUrl = localProperties.getProperty("DEBUG_BASE_URL")
+    ?: error(
+        """
+        DEBUG_BASE_URL is missing from local.properties.
+
+        Example:
+        DEBUG_BASE_URL=http://192.168.0.22:8080/
+        """.trimIndent()
+    )
+
+val releaseBaseUrl = localProperties.getProperty("RELEASE_BASE_URL")
+    ?: error(
+        """
+        RELEASE_BASE_URL is missing from local.properties.
+
+        Example:
+        RELEASE_BASE_URL=https://example.com/
+        """.trimIndent()
+    )
 
 android {
     namespace = "com.example.carsrecommendationapp"
@@ -43,7 +73,7 @@ android {
             buildConfigField(
                 "String",
                 "BASE_URL",
-                "\"$baseUrl\""
+                "\"$debugBaseUrl\""
             )
         }
 
@@ -53,7 +83,7 @@ android {
             buildConfigField(
                 "String",
                 "BASE_URL",
-                "\"$baseUrl\""
+                "\"$releaseBaseUrl\""
             )
 
             proguardFiles(

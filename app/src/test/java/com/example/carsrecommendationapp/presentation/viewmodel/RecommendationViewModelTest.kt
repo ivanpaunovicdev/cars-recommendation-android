@@ -11,10 +11,9 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.kotlin.any
+import org.mockito.kotlin.eq
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.mockito.kotlin.eq
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class RecommendationViewModelTest {
@@ -29,6 +28,7 @@ class RecommendationViewModelTest {
 
         val expected = listOf(
             Recommendation(
+                id = 1L,
                 brand = "BMW",
                 model = "320d",
                 year = 2022,

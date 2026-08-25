@@ -10,6 +10,7 @@ class RecommendationMapperTest {
     fun `toDomain maps all fields correctly`() {
 
         val dto = RecommendationDto(
+            id = 1L,
             marka = "BMW",
             model = "320d",
             godiste = 2022,
@@ -24,6 +25,7 @@ class RecommendationMapperTest {
 
         val recommendation = dto.toDomain()
 
+        assertEquals(1L, recommendation.id)
         assertEquals("BMW", recommendation.brand)
         assertEquals("320d", recommendation.model)
         assertEquals(2022, recommendation.year)
@@ -40,6 +42,7 @@ class RecommendationMapperTest {
     fun `toDomain maps null values to defaults`() {
 
         val dto = RecommendationDto(
+            id = null,
             marka = null,
             model = null,
             godiste = null,
@@ -54,6 +57,7 @@ class RecommendationMapperTest {
 
         val recommendation = dto.toDomain()
 
+        assertEquals(0L, recommendation.id)
         assertEquals("", recommendation.brand)
         assertEquals("", recommendation.model)
         assertEquals(0, recommendation.year)
