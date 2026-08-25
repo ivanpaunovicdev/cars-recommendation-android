@@ -1,7 +1,6 @@
 package com.example.carsrecommendationapp.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.example.carsrecommendationapp.domain.Recommendation
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -41,8 +40,6 @@ class OnboardingViewModel @Inject constructor() : ViewModel() {
     private val _selectedDrivingPhilosophy = MutableStateFlow("")
     val selectedDrivingPhilosophy: StateFlow<String> = _selectedDrivingPhilosophy.asStateFlow()
 
-    private val _selectedRecommendation = MutableStateFlow<Recommendation?>(null)
-    val selectedRecommendation: StateFlow<Recommendation?> = _selectedRecommendation.asStateFlow()
 
     private val _userName = MutableStateFlow("")
     val userName: StateFlow<String> = _userName.asStateFlow()
@@ -51,9 +48,6 @@ class OnboardingViewModel @Inject constructor() : ViewModel() {
         _userName.value = name
     }
 
-    fun updateSelectedRecommendation(recommendation: Recommendation) {
-        _selectedRecommendation.value = recommendation
-    }
 
     fun updateBrands(brands: Set<String>) {
         _selectedBrands.value = brands
