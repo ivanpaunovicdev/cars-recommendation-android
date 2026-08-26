@@ -54,7 +54,7 @@ fun NameInputScreen(
 
     val savedUserName by onboardingViewModel.userName.collectAsState()
 
-    var name by rememberSaveable(savedUserName) {
+    var name by rememberSaveable {
         mutableStateOf(savedUserName)
     }
 

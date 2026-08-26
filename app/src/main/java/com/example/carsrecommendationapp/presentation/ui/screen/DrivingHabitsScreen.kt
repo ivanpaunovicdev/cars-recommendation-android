@@ -64,9 +64,9 @@ fun DrivingHabitsScreen(
     val savedDrivingTerrain by onboardingViewModel.selectedDrivingTerrain.collectAsState()
     val savedDrivingPhilosophy by onboardingViewModel.selectedDrivingPhilosophy.collectAsState()
 
-    var selectedDailyRoute by rememberSaveable(savedDailyRoute) { mutableStateOf(savedDailyRoute) }
-    var selectedDrivingTerrain by rememberSaveable(savedDrivingTerrain) { mutableStateOf(savedDrivingTerrain) }
-    var selectedDrivingPhilosophy by rememberSaveable(savedDrivingPhilosophy) { mutableStateOf(savedDrivingPhilosophy) }
+    var selectedDailyRoute by rememberSaveable { mutableStateOf(savedDailyRoute) }
+    var selectedDrivingTerrain by rememberSaveable { mutableStateOf(savedDrivingTerrain) }
+    var selectedDrivingPhilosophy by rememberSaveable { mutableStateOf(savedDrivingPhilosophy) }
 
     BoxWithConstraints(
         modifier = Modifier

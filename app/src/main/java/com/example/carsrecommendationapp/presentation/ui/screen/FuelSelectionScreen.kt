@@ -56,7 +56,7 @@ fun FuelSelectionScreen(
 
     val savedSelectedFuels by onboardingViewModel.selectedFuels.collectAsState()
 
-    var selectedFuels by rememberSaveable(savedSelectedFuels) {
+    var selectedFuels by rememberSaveable {
         mutableStateOf(savedSelectedFuels)
     }
 

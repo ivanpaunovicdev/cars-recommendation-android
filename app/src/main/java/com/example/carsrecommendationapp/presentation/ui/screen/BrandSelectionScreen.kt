@@ -57,7 +57,7 @@ fun BrandSelectionScreen(
 
     val savedSelectedBrands by onboardingViewModel.selectedBrands.collectAsState()
 
-    var selectedBrands by rememberSaveable(savedSelectedBrands) {
+    var selectedBrands by rememberSaveable {
         mutableStateOf(savedSelectedBrands)
     }
 

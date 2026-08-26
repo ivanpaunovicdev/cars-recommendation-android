@@ -60,7 +60,7 @@ fun BodyAndFuelScreen(
 
     val savedSelectedBodyTypes by onboardingViewModel.selectedBodyTypes.collectAsState()
 
-    var selectedBodyTypes by rememberSaveable(savedSelectedBodyTypes) {
+    var selectedBodyTypes by rememberSaveable {
         mutableStateOf(savedSelectedBodyTypes)
     }
 

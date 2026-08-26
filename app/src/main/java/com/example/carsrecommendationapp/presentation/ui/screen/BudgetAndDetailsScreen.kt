@@ -70,19 +70,19 @@ fun BudgetAndDetailsScreen(
 
     val savedDriveType by onboardingViewModel.driveType.collectAsState()
 
-    var price by rememberSaveable(savedBudgetMax) {
+    var price by rememberSaveable {
         mutableStateOf(savedBudgetMax.toFloat())
     }
 
-    var selectedYear by rememberSaveable(savedMinYear) {
+    var selectedYear by rememberSaveable {
         mutableStateOf("${savedMinYear}+")
     }
 
-    var selectedTransmission by rememberSaveable(savedTransmission) {
+    var selectedTransmission by rememberSaveable {
         mutableStateOf(apiToUiTransmission(savedTransmission))
     }
 
-    var selectedDriveType by rememberSaveable(savedDriveType) {
+    var selectedDriveType by rememberSaveable {
         mutableStateOf(savedDriveType)
     }
 
