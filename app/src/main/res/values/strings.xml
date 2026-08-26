@@ -85,4 +85,6 @@
     <string name="user_icon_description">User icon</string>
     <string name="name_icon_description">Name icon</string>
     <string name="info_icon_description">Info icon</string>
+
+    <string name="retry">Pokušaj ponovo</string>
 </resources>

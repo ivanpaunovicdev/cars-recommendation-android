@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
 
+import com.example.carsrecommendationapp.presentation.ui.components.PrimaryButton
 import com.example.carsrecommendationapp.domain.Recommendation
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.background
@@ -45,6 +46,7 @@ import com.example.carsrecommendationapp.presentation.viewmodel.RecommendationVi
 import com.example.carsrecommendationapp.util.formatMileage
 import com.example.carsrecommendationapp.util.formatPrice
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+
 
 
 
@@ -228,15 +230,38 @@ fun ResultsScreen(
 
                 errorMessage != null -> {
                     item {
-                        Box(
+                        Column(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(Dimens.LoadingHeight),
-                            contentAlignment = Alignment.Center
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
                         ) {
+
                             Text(
                                 text = stringResource(R.string.unable_to_load_recommendations),
                                 color = colorResource(R.color.orange)
+                            )
+
+                            Spacer(modifier = Modifier.height(Dimens.Large))
+
+                            PrimaryButton(
+                                text = stringResource(R.string.retry),
+                                onClick = {
+                                    recommendationViewModel.loadRecommendations(
+                                        budgetMin = null,
+                                        budgetMax = budgetMax,
+                                        minYear = minYear,
+                                        brands = selectedBrands.toList(),
+                                        bodyTypes = selectedBodyTypes.toList(),
+                                        fuels = selectedFuels.toList(),
+                                        transmission = transmission,
+                                        driveType = driveType,
+                                        dailyRoute = selectedDailyRoute,
+                                        drivingTerrain = selectedDrivingTerrain,
+                                        drivingPhilosophy = selectedDrivingPhilosophy
+                                    )
+                                }
                             )
                         }
                     }
