@@ -11,8 +11,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @HiltViewModel
 class RecommendationViewModel @Inject constructor(
@@ -30,6 +35,55 @@ class RecommendationViewModel @Inject constructor(
     private val _errorMessage = MutableStateFlow<String?>(null)
     val errorMessage: StateFlow<String?> = _errorMessage.asStateFlow()
 
+    private val _query = MutableStateFlow<RecommendationQuery?>(null)
+
+    init {
+        _query
+            .filterNotNull()
+            .flatMapLatest { query ->
+                flow {
+
+                    _isLoading.value = true
+                    _errorMessage.value = null
+
+                    try {
+
+                        emit(
+                            carRepository.getRecommendations(
+                                budgetMin = query.budgetMin,
+                                budgetMax = query.budgetMax,
+                                minYear = query.minYear,
+                                maxMileage = query.maxMileage,
+                                brands = query.brands,
+                                model = query.model,
+                                fuels = query.fuels,
+                                bodyTypes = query.bodyTypes,
+                                transmission = query.transmission,
+                                driveType = query.driveType,
+                                dailyRoute = query.dailyRoute,
+                                drivingTerrain = query.drivingTerrain,
+                                drivingPhilosophy = query.drivingPhilosophy
+                            )
+                        )
+
+                    } catch (e: CancellationException) {
+                        throw e
+                    } catch (e: Exception) {
+                        _errorMessage.value =
+                            e.message ?: "Došlo je do greške pri učitavanju preporuka."
+                        e.printStackTrace()
+                    } finally {
+                        _isLoading.value = false
+                    }
+
+                }.flowOn(ioDispatcher)
+            }
+            .onEach { recommendations ->
+                _recommendations.value = recommendations
+            }
+            .launchIn(viewModelScope)
+    }
+
     fun loadRecommendations(
         budgetMin: Int? = null,
         budgetMax: Int = 100000,
@@ -45,35 +99,20 @@ class RecommendationViewModel @Inject constructor(
         drivingTerrain: String = "",
         drivingPhilosophy: String = ""
     ) {
-        viewModelScope.launch(ioDispatcher) {
-            try {
-                _isLoading.value = true
-                _errorMessage.value = null
-
-                _recommendations.value = carRepository.getRecommendations(
-                    budgetMin = budgetMin,
-                    budgetMax = budgetMax,
-                    minYear = minYear,
-                    maxMileage = maxMileage,
-                    brands = brands,
-                    model = model,
-                    fuels = fuels,
-                    bodyTypes = bodyTypes,
-                    transmission = transmission,
-                    driveType = driveType,
-                    dailyRoute = dailyRoute,
-                    drivingTerrain = drivingTerrain,
-                    drivingPhilosophy = drivingPhilosophy
-                )
-            } catch (e: CancellationException) {
-                throw e
-            } catch (e: Exception) {
-                _errorMessage.value =
-                    e.message ?: "Došlo je do greške pri učitavanju preporuka."
-                e.printStackTrace()
-            } finally {
-                _isLoading.value = false
-            }
-        }
+        _query.value = RecommendationQuery(
+            budgetMin = budgetMin,
+            budgetMax = budgetMax,
+            minYear = minYear,
+            maxMileage = maxMileage,
+            brands = brands,
+            model = model,
+            fuels = fuels,
+            bodyTypes = bodyTypes,
+            transmission = transmission,
+            driveType = driveType,
+            dailyRoute = dailyRoute,
+            drivingTerrain = drivingTerrain,
+            drivingPhilosophy = drivingPhilosophy
+        )
     }
 }

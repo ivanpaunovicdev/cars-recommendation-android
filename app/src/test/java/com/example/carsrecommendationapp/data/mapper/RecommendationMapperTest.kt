@@ -38,8 +38,8 @@ class RecommendationMapperTest {
         assertEquals(95, recommendation.score)
     }
 
-    @Test
-    fun `toDomain maps null values to defaults`() {
+    @Test(expected = IllegalArgumentException::class)
+    fun `toDomain throws when id is null`() {
 
         val dto = RecommendationDto(
             id = null,
@@ -55,18 +55,6 @@ class RecommendationMapperTest {
             skor = null
         )
 
-        val recommendation = dto.toDomain()
-
-        assertEquals(0L, recommendation.id)
-        assertEquals("", recommendation.brand)
-        assertEquals("", recommendation.model)
-        assertEquals(0, recommendation.year)
-        assertEquals(0, recommendation.mileage)
-        assertEquals(0, recommendation.price)
-        assertEquals("", recommendation.fuel)
-        assertEquals("", recommendation.bodyType)
-        assertEquals("", recommendation.transmission)
-        assertEquals("", recommendation.driveType)
-        assertEquals(0, recommendation.score)
+        dto.toDomain()
     }
 }

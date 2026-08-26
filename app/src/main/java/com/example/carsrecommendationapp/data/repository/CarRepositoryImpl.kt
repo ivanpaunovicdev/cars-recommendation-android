@@ -95,8 +95,10 @@ class CarRepositoryImpl(
             dailyRoute = dailyRoute,
             drivingTerrain = drivingTerrain,
             drivingPhilosophy = drivingPhilosophy
-        ).map { dto ->
-            dto.toDomain()
+        ).mapNotNull { dto ->
+            dto.id?.let {
+                dto.toDomain()
+            }
         }
     }
 
