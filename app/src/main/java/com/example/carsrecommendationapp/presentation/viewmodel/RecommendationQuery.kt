@@ -13,5 +13,8 @@ data class RecommendationQuery(
     val driveType: String = "",
     val dailyRoute: String = "",
     val drivingTerrain: String = "",
-    val drivingPhilosophy: String = ""
+    val drivingPhilosophy: String = "",
+
+    // koristi se samo da bi svaki retry emitovao novu vrednost
+    val requestId: Long = System.nanoTime()
 )
