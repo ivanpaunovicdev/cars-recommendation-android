@@ -1,5 +1,7 @@
 package com.example.carsrecommendationapp
 
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.carsrecommendationapp.presentation.ui.theme.CarsRecommendationAppTheme
 import androidx.navigation.toRoute
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -36,15 +38,16 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            val navController = rememberNavController()
+            CarsRecommendationAppTheme {
 
-            val onboardingViewModel: OnboardingViewModel =
-                androidx.lifecycle.viewmodel.compose.viewModel()
+                val navController = rememberNavController()
+                val onboardingViewModel: OnboardingViewModel = viewModel()
 
-            NavHost(
-                navController = navController,
-                startDestination = WelcomeRoute
-            ) {
+
+                NavHost(
+                    navController = navController,
+                    startDestination = WelcomeRoute
+                ) {
 
                 composable<WelcomeRoute> {
                     WelcomeScreen(
@@ -168,4 +171,5 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
+        }
+    }
