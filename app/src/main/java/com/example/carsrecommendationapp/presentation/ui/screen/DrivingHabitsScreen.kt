@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
 
+import androidx.compose.ui.Alignment
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -60,6 +61,24 @@ fun DrivingHabitsScreen(
     val drivingTerrains by drivingTerrainsViewModel.drivingTerrains.collectAsState()
     val drivingPhilosophies by drivingPhilosophiesViewModel.drivingPhilosophies.collectAsState()
 
+    val dailyRoutesLoading by dailyRoutesViewModel.isLoading.collectAsState()
+    val terrainsLoading by drivingTerrainsViewModel.isLoading.collectAsState()
+    val philosophiesLoading by drivingPhilosophiesViewModel.isLoading.collectAsState()
+
+    val dailyRoutesError by dailyRoutesViewModel.errorMessage.collectAsState()
+    val terrainsError by drivingTerrainsViewModel.errorMessage.collectAsState()
+    val philosophiesError by drivingPhilosophiesViewModel.errorMessage.collectAsState()
+
+    val isLoading =
+        dailyRoutesLoading ||
+                terrainsLoading ||
+                philosophiesLoading
+
+    val hasError =
+        dailyRoutesError != null ||
+                terrainsError != null ||
+                philosophiesError != null
+
     val savedDailyRoute by onboardingViewModel.selectedDailyRoute.collectAsState()
     val savedDrivingTerrain by onboardingViewModel.selectedDrivingTerrain.collectAsState()
     val savedDrivingPhilosophy by onboardingViewModel.selectedDrivingPhilosophy.collectAsState()
@@ -100,6 +119,53 @@ fun DrivingHabitsScreen(
             StepProgressIndicator(currentStep = 5, totalSteps = 5)
 
             Spacer(modifier = Modifier.height(screenHeight * 0.03f))
+
+            when {
+                isLoading -> {
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = stringResource(R.string.loading),
+                            color = colorResource(R.color.white)
+                        )
+                    }
+                }
+
+                hasError -> {
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(
+                                text = stringResource(R.string.unable_to_load_data),
+                                color = colorResource(R.color.orange)
+                            )
+
+                            Spacer(modifier = Modifier.height(16.dp))
+
+                            PrimaryButton(
+                                text = stringResource(R.string.retry),
+                                onClick = {
+                                    dailyRoutesViewModel.loadItems()
+                                    drivingTerrainsViewModel.loadItems()
+                                    drivingPhilosophiesViewModel.loadItems()
+                                }
+                            )
+                        }
+                    }
+                }
+
+
+                else -> {
 
             Column(
                 modifier = Modifier
@@ -231,22 +297,26 @@ fun DrivingHabitsScreen(
                 }
 
                 Spacer(modifier = Modifier.height(screenHeight * 0.025f))
-            }
 
-            PrimaryButton(
-                text = stringResource(R.string.find_car_for_me),
-                enabled = selectedDailyRoute.isNotBlank() &&
-                        selectedDrivingTerrain.isNotBlank() &&
-                        selectedDrivingPhilosophy.isNotBlank(),
-                onClick = {
-                    onboardingViewModel.updateDailyRoute(selectedDailyRoute)
-                    onboardingViewModel.updateDrivingTerrain(selectedDrivingTerrain)
-                    onboardingViewModel.updateDrivingPhilosophy(selectedDrivingPhilosophy)
-                    onFindCarClick()
+
+                PrimaryButton(
+                    text = stringResource(R.string.find_car_for_me),
+                    enabled = selectedDailyRoute.isNotBlank() &&
+                            selectedDrivingTerrain.isNotBlank() &&
+                            selectedDrivingPhilosophy.isNotBlank(),
+                    onClick = {
+                        onboardingViewModel.updateDailyRoute(selectedDailyRoute)
+                        onboardingViewModel.updateDrivingTerrain(selectedDrivingTerrain)
+                        onboardingViewModel.updateDrivingPhilosophy(selectedDrivingPhilosophy)
+                        onFindCarClick()
+                    }
+                )
+
+                Spacer(modifier = Modifier.height(screenHeight * 0.035f))
+
                 }
-            )
-
-            Spacer(modifier = Modifier.height(screenHeight * 0.035f))
+            }
+                }
+            }
         }
     }
-}
