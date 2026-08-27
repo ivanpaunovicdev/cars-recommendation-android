@@ -1,7 +1,6 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
 
-
-
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
@@ -170,6 +169,7 @@ fun NameInputScreen(
                                 fontSize = 17.sp,
                                 fontWeight = FontWeight.Bold
                             ),
+                            cursorBrush = SolidColor(colorResource(R.color.orange)),
                             singleLine = true
                         )
                     }

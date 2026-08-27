@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.viewmodel
 
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.CancellationException
 import com.example.carsrecommendationapp.di.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
@@ -19,6 +20,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
+@OptIn(ExperimentalCoroutinesApi::class)
 @HiltViewModel
 class RecommendationViewModel @Inject constructor(
     private val carRepository: CarRepository,
@@ -41,10 +43,12 @@ class RecommendationViewModel @Inject constructor(
         _query
             .filterNotNull()
             .flatMapLatest { query ->
+
+                _isLoading.value = true
+                _errorMessage.value = null
+
                 flow {
 
-                    _isLoading.value = true
-                    _errorMessage.value = null
 
                     try {
 

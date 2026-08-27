@@ -150,10 +150,23 @@ fun BrandSelectionScreen(
                             .fillMaxWidth(),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text(
-                            text = stringResource(R.string.unable_to_load_data),
-                            color = colorResource(R.color.orange)
-                        )
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(
+                                text = stringResource(R.string.unable_to_load_data),
+                                color = colorResource(R.color.orange)
+                            )
+
+                            Spacer(modifier = Modifier.height(16.dp))
+
+                            PrimaryButton(
+                                text = stringResource(R.string.retry),
+                                onClick = {
+                                    brandsViewModel.loadItems()
+                                }
+                            )
+                        }
                     }
                 }
 

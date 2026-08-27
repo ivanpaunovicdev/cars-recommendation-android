@@ -38,6 +38,7 @@ import com.example.carsrecommendationapp.presentation.ui.components.VehicleSpecC
 import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.compose.runtime.LaunchedEffect
+import com.example.carsrecommendationapp.presentation.ui.components.PrimaryButton
 import com.example.carsrecommendationapp.presentation.viewmodel.VehicleDetailsViewModel
 
 
@@ -51,8 +52,74 @@ fun VehicleDetailsScreen(
 
     val car by vehicleDetailsViewModel.car.collectAsState()
 
+    val isLoading by vehicleDetailsViewModel.isLoading.collectAsState()
+    val errorMessage by vehicleDetailsViewModel.errorMessage.collectAsState()
+
     LaunchedEffect(carId) {
         vehicleDetailsViewModel.loadCar(carId)
+    }
+
+    when {
+        isLoading -> {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        Brush.verticalGradient(
+                            listOf(
+                                colorResource(R.color.pure_black),
+                                colorResource(R.color.deep_dark_blue),
+                                colorResource(R.color.dark_blue_gradient)
+                            )
+                        )
+                    ),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = stringResource(R.string.loading),
+                    color = colorResource(R.color.white)
+                )
+            }
+
+            return
+        }
+
+        errorMessage != null -> {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        Brush.verticalGradient(
+                            listOf(
+                                colorResource(R.color.pure_black),
+                                colorResource(R.color.deep_dark_blue),
+                                colorResource(R.color.dark_blue_gradient)
+                            )
+                        )
+                    ),
+                contentAlignment = Alignment.Center
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = stringResource(R.string.unable_to_load_data),
+                        color = colorResource(R.color.orange)
+                    )
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    PrimaryButton(
+                        text = stringResource(R.string.retry),
+                        onClick = {
+                            vehicleDetailsViewModel.loadCar(carId)
+                        }
+                    )
+                }
+            }
+
+            return
+        }
     }
 
     Box(
