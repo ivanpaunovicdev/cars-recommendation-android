@@ -49,127 +49,127 @@ class MainActivity : ComponentActivity() {
                     startDestination = WelcomeRoute
                 ) {
 
-                composable<WelcomeRoute> {
-                    WelcomeScreen(
-                        onStartClick = {
-                            navController.navigate(NameInputRoute) {
-                                launchSingleTop = true
+                    composable<WelcomeRoute> {
+                        WelcomeScreen(
+                            onStartClick = {
+                                navController.navigate(NameInputRoute) {
+                                    launchSingleTop = true
+                                }
                             }
-                        }
-                    )
-                }
+                        )
+                    }
 
-                composable<NameInputRoute> {
-                    NameInputScreen(
-                        onboardingViewModel = onboardingViewModel,
-                        onBackClick = {
-                            navController.popBackStack()
-                        },
-                        onContinueClick = {
-                            navController.navigate(BrandsRoute) {
-                                launchSingleTop = true
+                    composable<NameInputRoute> {
+                        NameInputScreen(
+                            onboardingViewModel = onboardingViewModel,
+                            onBackClick = {
+                                navController.popBackStack()
+                            },
+                            onContinueClick = {
+                                navController.navigate(BrandsRoute) {
+                                    launchSingleTop = true
+                                }
                             }
-                        }
-                    )
-                }
+                        )
+                    }
 
-                composable<BrandsRoute> {
-                    BrandSelectionScreen(
-                        onboardingViewModel = onboardingViewModel,
-                        onBackClick = {
-                            navController.popBackStack()
-                        },
-                        onContinueClick = {
-                            navController.navigate(BodyAndFuelRoute) {
-                                launchSingleTop = true
+                    composable<BrandsRoute> {
+                        BrandSelectionScreen(
+                            onboardingViewModel = onboardingViewModel,
+                            onBackClick = {
+                                navController.popBackStack()
+                            },
+                            onContinueClick = {
+                                navController.navigate(BodyAndFuelRoute) {
+                                    launchSingleTop = true
+                                }
                             }
-                        }
-                    )
-                }
+                        )
+                    }
 
-                composable<BodyAndFuelRoute> {
-                    BodyAndFuelScreen(
-                        onboardingViewModel = onboardingViewModel,
-                        onBackClick = {
-                            navController.popBackStack()
-                        },
-                        onContinueClick = {
-                            navController.navigate(FuelSelectionRoute) {
-                                launchSingleTop = true
+                    composable<BodyAndFuelRoute> {
+                        BodyAndFuelScreen(
+                            onboardingViewModel = onboardingViewModel,
+                            onBackClick = {
+                                navController.popBackStack()
+                            },
+                            onContinueClick = {
+                                navController.navigate(FuelSelectionRoute) {
+                                    launchSingleTop = true
+                                }
                             }
-                        }
-                    )
-                }
+                        )
+                    }
 
-                composable<FuelSelectionRoute> {
-                    FuelSelectionScreen(
-                        onboardingViewModel = onboardingViewModel,
-                        onBackClick = {
-                            navController.popBackStack()
-                        },
-                        onContinueClick = {
-                            navController.navigate(BudgetDetailsRoute) {
-                                launchSingleTop = true
+                    composable<FuelSelectionRoute> {
+                        FuelSelectionScreen(
+                            onboardingViewModel = onboardingViewModel,
+                            onBackClick = {
+                                navController.popBackStack()
+                            },
+                            onContinueClick = {
+                                navController.navigate(BudgetDetailsRoute) {
+                                    launchSingleTop = true
+                                }
                             }
-                        }
-                    )
-                }
+                        )
+                    }
 
-                composable<BudgetDetailsRoute> {
-                    BudgetAndDetailsScreen(
-                        onboardingViewModel = onboardingViewModel,
-                        onBackClick = {
-                            navController.popBackStack()
-                        },
-                        onContinueClick = {
-                            navController.navigate(DrivingHabitsRoute) {
-                                launchSingleTop = true
+                    composable<BudgetDetailsRoute> {
+                        BudgetAndDetailsScreen(
+                            onboardingViewModel = onboardingViewModel,
+                            onBackClick = {
+                                navController.popBackStack()
+                            },
+                            onContinueClick = {
+                                navController.navigate(DrivingHabitsRoute) {
+                                    launchSingleTop = true
+                                }
                             }
-                        }
-                    )
-                }
+                        )
+                    }
 
-                composable<DrivingHabitsRoute> {
-                    DrivingHabitsScreen(
-                        onboardingViewModel = onboardingViewModel,
-                        onBackClick = {
-                            navController.popBackStack()
-                        },
-                        onFindCarClick = {
-                            navController.navigate(ResultsRoute) {
-                                launchSingleTop = true
-                                popUpTo(DrivingHabitsRoute)
+                    composable<DrivingHabitsRoute> {
+                        DrivingHabitsScreen(
+                            onboardingViewModel = onboardingViewModel,
+                            onBackClick = {
+                                navController.popBackStack()
+                            },
+                            onFindCarClick = {
+                                navController.navigate(ResultsRoute) {
+                                    launchSingleTop = true
+                                    popUpTo(DrivingHabitsRoute)
+                                }
                             }
-                        }
-                    )
-                }
+                        )
+                    }
 
-                composable<ResultsRoute> {
-                    ResultsScreen(
-                        onboardingViewModel = onboardingViewModel,
-                        onCarClick = { carId ->
-                            navController.navigate(
-                                VehicleDetailsRoute(carId)
-                            ) {
-                                launchSingleTop = true
+                    composable<ResultsRoute> {
+                        ResultsScreen(
+                            onboardingViewModel = onboardingViewModel,
+                            onCarClick = { carId ->
+                                navController.navigate(
+                                    VehicleDetailsRoute(carId)
+                                ) {
+                                    launchSingleTop = true
+                                }
                             }
-                        }
-                    )
-                }
+                        )
+                    }
 
-                composable<VehicleDetailsRoute> { backStackEntry ->
+                    composable<VehicleDetailsRoute> { backStackEntry ->
 
-                    val route = backStackEntry.toRoute<VehicleDetailsRoute>()
+                        val route = backStackEntry.toRoute<VehicleDetailsRoute>()
 
-                    VehicleDetailsScreen(
-                        carId = route.id,
-                        onBackClick = {
-                            navController.popBackStack()
-                        }
-                    )
+                        VehicleDetailsScreen(
+                            carId = route.id,
+                            onBackClick = {
+                                navController.popBackStack()
+                            }
+                        )
+                    }
                 }
             }
         }
     }
-        }
-    }
+}

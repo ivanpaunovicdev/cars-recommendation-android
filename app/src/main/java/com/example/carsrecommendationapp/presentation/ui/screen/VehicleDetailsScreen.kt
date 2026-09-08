@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
 
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 import com.example.carsrecommendationapp.util.formatMileage
 import com.example.carsrecommendationapp.util.formatPrice
 import androidx.compose.foundation.Image
@@ -35,7 +36,6 @@ import androidx.compose.ui.unit.sp
 import com.example.carsrecommendationapp.R
 import com.example.carsrecommendationapp.presentation.ui.components.BackButton
 import com.example.carsrecommendationapp.presentation.ui.components.VehicleSpecCard
-import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.compose.runtime.LaunchedEffect
 import com.example.carsrecommendationapp.presentation.ui.components.PrimaryButton
@@ -107,7 +107,7 @@ fun VehicleDetailsScreen(
                         color = colorResource(R.color.orange)
                     )
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(Dimens.Medium))
 
                     PrimaryButton(
                         text = stringResource(R.string.retry),

@@ -1,6 +1,6 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
 
-
+import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -177,7 +177,7 @@ fun BodyAndFuelScreen(
                                 color = colorResource(R.color.orange)
                             )
 
-                            Spacer(modifier = Modifier.height(16.dp))
+                            Spacer(modifier = Modifier.height(Dimens.Medium))
 
                             PrimaryButton(
                                 text = stringResource(R.string.retry),
