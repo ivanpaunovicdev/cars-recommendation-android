@@ -1,5 +1,7 @@
 package com.example.carsrecommendationapp.presentation.viewmodel
 
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
 import com.example.carsrecommendationapp.data.repository.CarRepository
 import com.example.carsrecommendationapp.domain.Recommendation
 import com.example.carsrecommendationapp.util.MainDispatcherRule
@@ -72,5 +74,62 @@ class RecommendationViewModelTest {
         assertEquals(expected, viewModel.recommendations.value)
         assertFalse(viewModel.isLoading.value)
         assertNull(viewModel.errorMessage.value)
+    }
+
+    @Test
+    fun `retry after failure loads recommendations`() = runTest {
+
+        val expected = listOf(
+            Recommendation(
+                id = 1L,
+                brand = "BMW",
+                model = "320d",
+                year = 2022,
+                mileage = 50000,
+                price = 25000,
+                fuel = "Diesel",
+                bodyType = "Sedan",
+                transmission = "Automatic",
+                driveType = "RWD",
+                score = 95
+            )
+        )
+
+        whenever(
+            repository.getRecommendations(
+                budgetMin = eq(null),
+                budgetMax = eq(100000),
+                minYear = eq(0),
+                maxMileage = eq(null),
+                brands = eq(emptyList()),
+                model = eq(null),
+                fuels = eq(emptyList()),
+                bodyTypes = eq(emptyList()),
+                transmission = eq(""),
+                driveType = eq(""),
+                dailyRoute = eq(""),
+                drivingTerrain = eq(""),
+                drivingPhilosophy = eq("")
+            )
+        )
+            .thenThrow(RuntimeException("network down"))
+            .thenReturn(expected)
+
+        val viewModel = RecommendationViewModel(
+            repository,
+            mainDispatcherRule.dispatcher
+        )
+
+        viewModel.loadRecommendations()
+        advanceUntilIdle()
+
+        assertEquals("network down", viewModel.errorMessage.value)
+        assertTrue(viewModel.recommendations.value.isEmpty())
+
+        viewModel.loadRecommendations()
+        advanceUntilIdle()
+
+        assertNull(viewModel.errorMessage.value)
+        assertEquals(expected, viewModel.recommendations.value)
     }
 }

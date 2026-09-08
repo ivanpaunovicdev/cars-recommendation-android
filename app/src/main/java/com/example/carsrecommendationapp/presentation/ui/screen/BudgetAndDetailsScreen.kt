@@ -68,6 +68,9 @@ fun BudgetAndDetailsScreen(
     val driveTypesViewModel: DriveTypesViewModel = hiltViewModel()
     val driveTypes by driveTypesViewModel.driveTypes.collectAsState()
 
+    val isLoading by driveTypesViewModel.isLoading.collectAsState()
+    val errorMessage by driveTypesViewModel.errorMessage.collectAsState()
+
     val savedDriveType by onboardingViewModel.driveType.collectAsState()
 
     var price by rememberSaveable {
@@ -341,18 +344,57 @@ fun BudgetAndDetailsScreen(
 
                 Spacer(modifier = Modifier.height(screenHeight * 0.015f))
 
-                FlowRow(
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
-                ) {
-                    driveTypeOptions.forEach { driveType ->
-                        TransmissionOptionChip(
-                            text = driveType,
-                            isSelected = selectedDriveType == driveType,
-                            onClick = {
-                                selectedDriveType = driveType
+                when {
+                    isLoading -> {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = Dimens.Medium),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = stringResource(R.string.loading),
+                                color = colorResource(R.color.white)
+                            )
+                        }
+                    }
+
+                    errorMessage != null -> {
+                        Column(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(
+                                text = stringResource(R.string.unable_to_load_data),
+                                color = colorResource(R.color.orange)
+                            )
+
+                            Spacer(modifier = Modifier.height(Dimens.Medium))
+
+                            PrimaryButton(
+                                text = stringResource(R.string.retry),
+                                onClick = {
+                                    driveTypesViewModel.loadItems()
+                                }
+                            )
+                        }
+                    }
+
+                    else -> {
+                        FlowRow(
+                            horizontalArrangement = Arrangement.spacedBy(12.dp),
+                            verticalArrangement = Arrangement.spacedBy(12.dp)
+                        ) {
+                            driveTypeOptions.forEach { driveType ->
+                                TransmissionOptionChip(
+                                    text = driveType,
+                                    isSelected = selectedDriveType == driveType,
+                                    onClick = {
+                                        selectedDriveType = driveType
+                                    }
+                                )
                             }
-                        )
+                        }
                     }
                 }
 
