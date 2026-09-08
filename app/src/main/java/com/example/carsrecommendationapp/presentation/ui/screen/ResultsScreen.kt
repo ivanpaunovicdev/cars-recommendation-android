@@ -1,7 +1,6 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
 
 import com.example.carsrecommendationapp.presentation.ui.components.PrimaryButton
-import com.example.carsrecommendationapp.domain.Recommendation
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
@@ -24,7 +23,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
