@@ -2,7 +2,7 @@ package com.example.carsrecommendationapp.presentation.viewmodel
 
 data class RecommendationQuery(
     val budgetMin: Int? = null,
-    val budgetMax: Int = 100000,
+    val budgetMax: Int?,
     val minYear: Int = 0,
     val maxMileage: Int? = null,
     val brands: List<String> = emptyList(),

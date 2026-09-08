@@ -42,7 +42,7 @@ interface CarRepository {
 
     suspend fun getRecommendations(
         budgetMin: Int? = null,
-        budgetMax: Int = 100000,
+        budgetMax: Int? = 100000,
         minYear: Int = 0,
         maxMileage: Int? = null,
         brands: List<String> = emptyList(),

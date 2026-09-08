@@ -19,7 +19,7 @@ interface RecommendationApi {
     @GET("recommendations")
     suspend fun getRecommendations(
         @Query("budgetMin") budgetMin: Int? = null,
-        @Query("budgetMax") budgetMax: Int = 100000,
+        @Query("budgetMax") budgetMax: Int? = 100000,
         @Query("minYear") minYear: Int = 0,
         @Query("maxMileage") maxMileage: Int? = null,
 

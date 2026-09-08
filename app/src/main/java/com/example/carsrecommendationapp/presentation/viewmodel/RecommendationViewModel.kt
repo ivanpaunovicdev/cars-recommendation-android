@@ -31,7 +31,7 @@ class RecommendationViewModel @Inject constructor(
     private val _recommendations = MutableStateFlow<List<Recommendation>>(emptyList())
     val recommendations: StateFlow<List<Recommendation>> = _recommendations.asStateFlow()
 
-    private val _isLoading = MutableStateFlow(false)
+    private val _isLoading = MutableStateFlow(true)
     val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
 
     private val _errorMessage = MutableStateFlow<String?>(null)
@@ -90,7 +90,7 @@ class RecommendationViewModel @Inject constructor(
 
     fun loadRecommendations(
         budgetMin: Int? = null,
-        budgetMax: Int = 100000,
+        budgetMax: Int? = 100000,
         minYear: Int = 0,
         maxMileage: Int? = null,
         brands: List<String> = emptyList(),

@@ -68,7 +68,7 @@ class CarRepositoryImpl(
 
     override suspend fun getRecommendations(
         budgetMin: Int?,
-        budgetMax: Int,
+        budgetMax: Int?,
         minYear: Int,
         maxMileage: Int?,
         brands: List<String>,
@@ -83,7 +83,7 @@ class CarRepositoryImpl(
     ): List<Recommendation> {
         return api.getRecommendations(
             budgetMin = budgetMin,
-            budgetMax = budgetMax,
+            budgetMax = budgetMax?.takeUnless { it >= 100000 },
             minYear = minYear,
             maxMileage = maxMileage,
             brands = brands,
