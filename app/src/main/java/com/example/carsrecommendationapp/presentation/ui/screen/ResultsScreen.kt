@@ -54,7 +54,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 @Composable
 fun ResultsScreen(
     onboardingViewModel: OnboardingViewModel,
-    onCarClick: (Long) -> Unit
+    onCarClick: (Long, Int) -> Unit
 ){
 
 
@@ -316,7 +316,7 @@ fun ResultsScreen(
                                 }
                             },
                             onClick = {
-                                onCarClick(car.id)
+                                onCarClick(car.id, car.score)
                             }
                         )
 

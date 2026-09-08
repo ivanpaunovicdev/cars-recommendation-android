@@ -45,6 +45,7 @@ import com.example.carsrecommendationapp.presentation.viewmodel.VehicleDetailsVi
 @Composable
 fun VehicleDetailsScreen(
     carId: Long,
+    score: Int,
     onBackClick: () -> Unit
 ) {
 
@@ -274,7 +275,7 @@ fun VehicleDetailsScreen(
                         Text(
                             text = stringResource(
                                 R.string.match_percentage,
-                                car?.skor?: 0
+                                score
                             ),
                             color = colorResource(R.color.white),
                             fontWeight = FontWeight.Bold

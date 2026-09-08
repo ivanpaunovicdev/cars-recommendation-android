@@ -147,9 +147,12 @@ class MainActivity : ComponentActivity() {
                     composable<ResultsRoute> {
                         ResultsScreen(
                             onboardingViewModel = onboardingViewModel,
-                            onCarClick = { carId ->
+                            onCarClick = { carId, score ->
                                 navController.navigate(
-                                    VehicleDetailsRoute(carId)
+                                    VehicleDetailsRoute(
+                                        id = carId,
+                                        score = score
+                                    )
                                 ) {
                                     launchSingleTop = true
                                 }
@@ -163,6 +166,7 @@ class MainActivity : ComponentActivity() {
 
                         VehicleDetailsScreen(
                             carId = route.id,
+                            score = route.score,
                             onBackClick = {
                                 navController.popBackStack()
                             }

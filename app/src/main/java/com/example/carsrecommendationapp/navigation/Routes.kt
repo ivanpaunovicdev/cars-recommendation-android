@@ -28,5 +28,6 @@ data object ResultsRoute
 
 @Serializable
 data class VehicleDetailsRoute(
-    val id: Long
+    val id: Long,
+    val score: Int
 )
