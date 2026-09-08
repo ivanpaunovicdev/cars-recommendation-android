@@ -34,8 +34,8 @@
     <string name="fuel_type_title">Tip goriva</string>
     <string name="fuel_type_description">Izaberi jedan ili više tipova goriva.</string>
     <string name="continue_text_simple">Nastavi</string>
-    <string name="loading">Loading...</string>
-    <string name="unable_to_load_data">Unable to load data.</string>
+    <string name="loading">Učitavanje...</string>
+    <string name="unable_to_load_data">Nije moguće učitati podatke.</string>
 
     <string name="step_4_of_5">KORAK 4 OD 5</string>
     <string name="budget_details_title">Budžet i detalji</string>
@@ -63,7 +63,7 @@
     <string name="results_count">%1$d rezultata</string>
     <string name="budget_filter">do €%1$d</string>
     <string name="year_filter">%1$d+</string>
-    <string name="unable_to_load_recommendations">Unable to load recommendations.</string>
+    <string name="unable_to_load_recommendations">Nije moguće učitati preporuke.</string>
 
     <string name="sort">Sortiraj</string>
     <string name="search_model_hint">Pretraži model...</string>

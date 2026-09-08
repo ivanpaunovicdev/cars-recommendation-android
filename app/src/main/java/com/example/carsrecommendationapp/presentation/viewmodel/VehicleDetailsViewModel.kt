@@ -31,11 +31,12 @@ class VehicleDetailsViewModel @Inject constructor(
     val errorMessage: StateFlow<String?> = _errorMessage.asStateFlow()
 
     fun loadCar(id: Long) {
+
+        _isLoading.value = true
+        _errorMessage.value = null
+
         viewModelScope.launch(ioDispatcher) {
             try {
-                _isLoading.value = true
-                _errorMessage.value = null
-
                 _car.value = carRepository.getCarById(id)
 
             } catch (e: CancellationException) {
