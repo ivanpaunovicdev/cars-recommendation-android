@@ -1,5 +1,8 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
 
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import com.example.carsrecommendationapp.presentation.ui.theme.Dimens
 import com.example.carsrecommendationapp.util.formatMileage
 import com.example.carsrecommendationapp.util.formatPrice
@@ -138,7 +141,10 @@ fun VehicleDetailsScreen(
     ) {
 
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .navigationBarsPadding()
         ) {
 
             Box(
@@ -212,7 +218,7 @@ fun VehicleDetailsScreen(
 
             Column(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxWidth()
                     .padding(horizontal = Dimens.ExtraLarge)
             ) {
 
@@ -231,7 +237,8 @@ fun VehicleDetailsScreen(
                     text = stringResource(
                         R.string.vehicle_subtitle,
                         car?.godiste?.toString() ?: "-",
-                        formatMileage(car?.kilometraza ?: 0)
+                        formatMileage(car?.kilometraza ?: 0),
+                        car?.poreklo ?: "-"
                     ),
                     color = colorResource(R.color.light_gray),
                     fontSize = 15.sp

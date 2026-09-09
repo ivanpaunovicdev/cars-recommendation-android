@@ -78,7 +78,7 @@
     <string name="drive_type_label">Pogon</string>
     <string name="match_percentage">%1$d%% MATCH</string>
     <string name="not_available">N/A</string>
-    <string name="vehicle_subtitle">%1$s · %2$s km · Beograd</string>
+    <string name="vehicle_subtitle">%1$s · %2$s km · %3$s</string>
 
     <string name="car_logo_description">Car logo</string>
 

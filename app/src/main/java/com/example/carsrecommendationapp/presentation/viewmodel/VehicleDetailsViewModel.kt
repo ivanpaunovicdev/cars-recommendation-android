@@ -24,7 +24,7 @@ class VehicleDetailsViewModel @Inject constructor(
     private val _car = MutableStateFlow<Car?>(null)
     val car: StateFlow<Car?> = _car.asStateFlow()
 
-    private val _isLoading = MutableStateFlow(false)
+    private val _isLoading = MutableStateFlow(true)
     val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
 
     private val _errorMessage = MutableStateFlow<String?>(null)
