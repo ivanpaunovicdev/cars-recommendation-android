@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.data.repository
 
+import com.example.carsrecommendationapp.Constants
 import com.example.carsrecommendationapp.domain.BodyType
 import com.example.carsrecommendationapp.domain.Brand
 import com.example.carsrecommendationapp.domain.Car
@@ -42,7 +43,7 @@ interface CarRepository {
 
     suspend fun getRecommendations(
         budgetMin: Int? = null,
-        budgetMax: Int? = 100000,
+        budgetMax: Int? = Constants.NO_BUDGET_LIMIT,
         minYear: Int = 0,
         maxMileage: Int? = null,
         brands: List<String> = emptyList(),

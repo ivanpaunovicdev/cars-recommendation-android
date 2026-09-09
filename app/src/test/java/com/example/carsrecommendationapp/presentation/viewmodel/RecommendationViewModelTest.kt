@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.viewmodel
 
+import com.example.carsrecommendationapp.Constants
 import org.junit.Assert.assertTrue
 import com.example.carsrecommendationapp.data.repository.CarRepository
 import com.example.carsrecommendationapp.domain.Recommendation
@@ -46,7 +47,7 @@ class RecommendationViewModelTest {
         whenever(
             repository.getRecommendations(
                 budgetMin = eq(null),
-                budgetMax = eq(100000),
+                budgetMax = eq(Constants.NO_BUDGET_LIMIT),
                 minYear = eq(0),
                 maxMileage = eq(null),
                 brands = eq(emptyList()),
@@ -97,7 +98,7 @@ class RecommendationViewModelTest {
         whenever(
             repository.getRecommendations(
                 budgetMin = eq(null),
-                budgetMax = eq(100000),
+                budgetMax = eq(Constants.NO_BUDGET_LIMIT),
                 minYear = eq(0),
                 maxMileage = eq(null),
                 brands = eq(emptyList()),

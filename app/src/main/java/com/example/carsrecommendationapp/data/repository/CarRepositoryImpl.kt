@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.data.repository
 
+import com.example.carsrecommendationapp.Constants
 import com.example.carsrecommendationapp.data.mapper.toDomain
 import com.example.carsrecommendationapp.data.network.RecommendationApi
 import com.example.carsrecommendationapp.domain.Recommendation
@@ -83,7 +84,7 @@ class CarRepositoryImpl(
     ): List<Recommendation> {
         return api.getRecommendations(
             budgetMin = budgetMin,
-            budgetMax = budgetMax?.takeUnless { it >= 100000 },
+            budgetMax = budgetMax?.takeUnless { it >= Constants.NO_BUDGET_LIMIT },
             minYear = minYear,
             maxMileage = maxMileage,
             brands = brands,

@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
 
+import com.example.carsrecommendationapp.Constants
 import com.example.carsrecommendationapp.util.apiToUiTransmission
 import com.example.carsrecommendationapp.util.uiToApiTransmission
 import com.example.carsrecommendationapp.util.formatPrice
@@ -222,7 +223,7 @@ fun BudgetAndDetailsScreen(
                 Slider(
                     value = price,
                     onValueChange = { price = it },
-                    valueRange = 0f..100000f,
+                    valueRange = 0f..Constants.NO_BUDGET_LIMIT.toFloat(),
 
                     thumb = {
                         Box(
@@ -258,7 +259,7 @@ fun BudgetAndDetailsScreen(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text("€ 0", color = colorResource(R.color.light_gray), fontSize = 13.sp)
-                    Text("${formatPrice(100000)}+", color = colorResource(R.color.light_gray), fontSize = 13.sp)
+                    Text("${formatPrice(Constants.NO_BUDGET_LIMIT)}+", color = colorResource(R.color.light_gray), fontSize = 13.sp)
                 }
 
                 Spacer(modifier = Modifier.height(screenHeight * 0.025f))

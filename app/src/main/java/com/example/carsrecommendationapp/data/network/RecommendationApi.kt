@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.data.network
 
+import com.example.carsrecommendationapp.Constants
 import com.example.carsrecommendationapp.data.dto.RecommendationDto
 import com.example.carsrecommendationapp.data.dto.BodyTypeDto
 import com.example.carsrecommendationapp.data.dto.BrandDto
@@ -19,7 +20,7 @@ interface RecommendationApi {
     @GET("recommendations")
     suspend fun getRecommendations(
         @Query("budgetMin") budgetMin: Int? = null,
-        @Query("budgetMax") budgetMax: Int? = 100000,
+        @Query("budgetMax") budgetMax: Int? = Constants.NO_BUDGET_LIMIT,
         @Query("minYear") minYear: Int = 0,
         @Query("maxMileage") maxMileage: Int? = null,
 

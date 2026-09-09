@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.viewmodel
 
+import com.example.carsrecommendationapp.Constants
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.CancellationException
 import com.example.carsrecommendationapp.di.IoDispatcher
@@ -91,7 +92,7 @@ class RecommendationViewModel @Inject constructor(
 
     fun loadRecommendations(
         budgetMin: Int? = null,
-        budgetMax: Int? = 100000,
+        budgetMax: Int? = Constants.NO_BUDGET_LIMIT,
         minYear: Int = 0,
         maxMileage: Int? = null,
         brands: List<String> = emptyList(),

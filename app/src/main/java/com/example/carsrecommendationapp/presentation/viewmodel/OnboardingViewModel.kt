@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.viewmodel
 
+import com.example.carsrecommendationapp.Constants
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -36,7 +37,7 @@ class OnboardingViewModel @Inject constructor(
     private val _budgetMax =
         savedStateHandle.getMutableStateFlow(
             "budgetMax",
-            100000
+            Constants.NO_BUDGET_LIMIT
         )
     val budgetMax: StateFlow<Int> = _budgetMax.asStateFlow()
 
