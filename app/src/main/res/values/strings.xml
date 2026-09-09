@@ -60,8 +60,12 @@
     <string name="hello_user">Zdravo, %1$s</string>
     <string name="default_user">Korisniče</string>
     <string name="your_recommendations">Tvoje preporuke</string>
-    <string name="results_count">%1$d rezultata</string>
-    <string name="budget_filter">do €%1$d</string>
+    <plurals name="results_count">
+        <item quantity="one">%d rezultat</item>
+        <item quantity="few">%d rezultata</item>
+        <item quantity="other">%d rezultata</item>
+    </plurals>
+    <string name="budget_filter">do %1$s</string>
     <string name="year_filter">%1$d+</string>
     <string name="unable_to_load_recommendations">Nije moguće učitati preporuke.</string>
 
@@ -80,11 +84,12 @@
     <string name="not_available">N/A</string>
     <string name="vehicle_subtitle">%1$s · %2$s km · %3$s</string>
 
-    <string name="car_logo_description">Car logo</string>
-
-    <string name="user_icon_description">User icon</string>
-    <string name="name_icon_description">Name icon</string>
-    <string name="info_icon_description">Info icon</string>
+    <string name="car_logo_description">Logo automobila</string>
+    <string name="user_icon_description">Ikonica korisnika</string>
+    <string name="name_icon_description">Ikonica imena</string>
+    <string name="info_icon_description">Ikonica informacija</string>
 
     <string name="retry">Pokušaj ponovo</string>
+
+    <string name="back">Nazad</string>
 </resources>

@@ -62,7 +62,7 @@ fun PrimaryButton(
 
             Icon(
                 painter = painterResource(R.drawable.baseline_arrow_forward),
-                contentDescription = "arrow",
+                contentDescription = null,
                 tint = colorResource(R.color.white)
             )
         }

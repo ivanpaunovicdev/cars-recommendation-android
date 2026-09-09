@@ -21,5 +21,4 @@ data class Car(
     val karoserija: String?,
     val menjac: String?,
     val pogon: String?,
-    val skor: Int?
 )

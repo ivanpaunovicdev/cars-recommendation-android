@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.ui.screen
 
+import androidx.compose.ui.res.pluralStringResource
 import com.example.carsrecommendationapp.presentation.ui.components.PrimaryButton
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.background
@@ -185,7 +186,12 @@ fun ResultsScreen(
                         ActiveFilterChip(selectedFuels.joinToString(", "))
                     }
 
-                    ActiveFilterChip(stringResource(R.string.budget_filter, budgetMax))
+                    ActiveFilterChip(
+                        stringResource(
+                            R.string.budget_filter,
+                            formatPrice(budgetMax)
+                        )
+                    )
 
                     ActiveFilterChip(stringResource(R.string.year_filter, minYear))
 
@@ -261,8 +267,9 @@ fun ResultsScreen(
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
                             Text(
-                                text = stringResource(
-                                    R.string.results_count,
+                                text = pluralStringResource(
+                                    R.plurals.results_count,
+                                    recommendations.size,
                                     recommendations.size
                                 ),
                                 color = colorResource(R.color.orange),

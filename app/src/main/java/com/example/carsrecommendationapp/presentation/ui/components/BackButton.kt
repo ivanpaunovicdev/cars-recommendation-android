@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.ui.components
 
+import androidx.compose.ui.res.stringResource
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -38,7 +39,7 @@ fun BackButton(
     ) {
         Icon(
             painter = painterResource(R.drawable.baseline_arrow_back),
-            contentDescription = "Back",
+            contentDescription = stringResource(R.string.back),
             tint = colorResource(R.color.white),
             modifier = Modifier.size(Dimens.LargePlus)
         )
