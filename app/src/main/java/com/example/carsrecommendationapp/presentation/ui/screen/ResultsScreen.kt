@@ -246,19 +246,7 @@ fun ResultsScreen(
                             PrimaryButton(
                                 text = stringResource(R.string.retry),
                                 onClick = {
-                                    recommendationViewModel.loadRecommendations(
-                                        budgetMin = null,
-                                        budgetMax = budgetMax,
-                                        minYear = minYear,
-                                        brands = selectedBrands.toList(),
-                                        bodyTypes = selectedBodyTypes.toList(),
-                                        fuels = selectedFuels.toList(),
-                                        transmission = transmission,
-                                        driveType = driveType,
-                                        dailyRoute = selectedDailyRoute,
-                                        drivingTerrain = selectedDrivingTerrain,
-                                        drivingPhilosophy = selectedDrivingPhilosophy
-                                    )
+                                    recommendationViewModel.retry()
                                 }
                             )
                         }

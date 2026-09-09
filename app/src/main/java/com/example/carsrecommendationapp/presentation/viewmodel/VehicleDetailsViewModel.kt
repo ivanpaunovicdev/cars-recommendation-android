@@ -1,5 +1,8 @@
 package com.example.carsrecommendationapp.presentation.viewmodel
 
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.Job
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.carsrecommendationapp.data.repository.CarRepository
@@ -29,16 +32,18 @@ class VehicleDetailsViewModel @Inject constructor(
 
     private val _errorMessage = MutableStateFlow<String?>(null)
     val errorMessage: StateFlow<String?> = _errorMessage.asStateFlow()
+    private var loadJob: Job? = null
 
     fun loadCar(id: Long) {
+
+        loadJob?.cancel()
 
         _isLoading.value = true
         _errorMessage.value = null
 
-        viewModelScope.launch(ioDispatcher) {
+        loadJob = viewModelScope.launch(ioDispatcher) {
             try {
                 _car.value = carRepository.getCarById(id)
-
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {

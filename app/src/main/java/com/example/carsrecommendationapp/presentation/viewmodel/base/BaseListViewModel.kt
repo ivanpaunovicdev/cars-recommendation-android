@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.viewmodel.base
 
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.CancellationException
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -24,9 +25,13 @@ abstract class BaseListViewModel<T>(
 
 
     protected abstract suspend fun loadData(): List<T>
+    private var loadJob: Job? = null
 
     fun loadItems() {
-        viewModelScope.launch {
+
+        loadJob?.cancel()
+
+        loadJob = viewModelScope.launch {
             try {
                 _isLoading.value = true
                 _errorMessage.value = null
@@ -37,7 +42,6 @@ abstract class BaseListViewModel<T>(
                 _errorMessage.value =
                     e.message ?: "Došlo je do greške pri učitavanju podataka."
                 e.printStackTrace()
-
             } finally {
                 _isLoading.value = false
             }

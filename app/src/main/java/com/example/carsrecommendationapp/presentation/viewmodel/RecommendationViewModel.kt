@@ -38,6 +38,7 @@ class RecommendationViewModel @Inject constructor(
     val errorMessage: StateFlow<String?> = _errorMessage.asStateFlow()
 
     private val _query = MutableStateFlow<RecommendationQuery?>(null)
+    private var lastQuery: RecommendationQuery? = null
 
     init {
         _query
@@ -103,7 +104,8 @@ class RecommendationViewModel @Inject constructor(
         drivingTerrain: String = "",
         drivingPhilosophy: String = ""
     ) {
-        _query.value = RecommendationQuery(
+
+        val query = RecommendationQuery(
             budgetMin = budgetMin,
             budgetMax = budgetMax,
             minYear = minYear,
@@ -118,5 +120,15 @@ class RecommendationViewModel @Inject constructor(
             drivingTerrain = drivingTerrain,
             drivingPhilosophy = drivingPhilosophy
         )
+
+        lastQuery = query
+        _query.value = query
+    }
+
+    fun retry() {
+        lastQuery?.let {
+            _query.value = null
+            _query.value = it
+        }
     }
 }
