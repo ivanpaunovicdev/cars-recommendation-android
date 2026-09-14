@@ -5,8 +5,6 @@ import kotlinx.coroutines.flow.onStart
 import com.example.carsrecommendationapp.Constants
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.CancellationException
-import com.example.carsrecommendationapp.di.IoDispatcher
-import kotlinx.coroutines.CoroutineDispatcher
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.carsrecommendationapp.data.repository.CarRepository
@@ -26,8 +24,6 @@ import kotlinx.coroutines.flow.onEach
 @HiltViewModel
 class RecommendationViewModel @Inject constructor(
     private val carRepository: CarRepository,
-    @IoDispatcher
-    private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private val _recommendations = MutableStateFlow<List<Recommendation>>(emptyList())
@@ -93,7 +89,7 @@ class RecommendationViewModel @Inject constructor(
                         _isLoading.value = false
                     }
 
-                }.flowOn(ioDispatcher)
+                }
             }
             .onEach { recommendations ->
                 _recommendations.value = recommendations

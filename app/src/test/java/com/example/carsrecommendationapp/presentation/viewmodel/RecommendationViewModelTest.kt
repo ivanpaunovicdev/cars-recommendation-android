@@ -63,8 +63,7 @@ class RecommendationViewModelTest {
         ).thenReturn(expected)
 
         val viewModel = RecommendationViewModel(
-            repository,
-            mainDispatcherRule.dispatcher
+            repository
         )
 
         viewModel.loadRecommendations()
@@ -116,8 +115,7 @@ class RecommendationViewModelTest {
             .thenReturn(expected)
 
         val viewModel = RecommendationViewModel(
-            repository,
-            mainDispatcherRule.dispatcher
+            repository
         )
 
         viewModel.loadRecommendations()

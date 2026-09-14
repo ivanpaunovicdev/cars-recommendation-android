@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.di
 
+import kotlinx.coroutines.CoroutineDispatcher
 import com.example.carsrecommendationapp.BuildConfig
 import com.example.carsrecommendationapp.data.network.RecommendationApi
 import com.example.carsrecommendationapp.data.repository.CarRepository
@@ -63,8 +64,12 @@ object AppModule {
     @Provides
     @Singleton
     fun provideCarRepository(
-        api: RecommendationApi
+        api: RecommendationApi,
+        @IoDispatcher ioDispatcher: CoroutineDispatcher
     ): CarRepository {
-        return CarRepositoryImpl(api)
+        return CarRepositoryImpl(
+            api = api,
+            ioDispatcher = ioDispatcher
+        )
     }
 }
