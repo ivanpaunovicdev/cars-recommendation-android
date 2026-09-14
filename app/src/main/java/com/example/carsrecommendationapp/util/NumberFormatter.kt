@@ -20,7 +20,7 @@ fun apiToUiTransmission(value: String): String {
     return when (value) {
         "Automatski / poluautomatski" -> "Automatik"
         "Manuelni" -> "Manuelni"
-        else -> "Svejedno"
+        else -> value
     }
 }
 
@@ -28,6 +28,6 @@ fun uiToApiTransmission(value: String): String {
     return when (value) {
         "Automatik" -> "Automatski / poluautomatski"
         "Manuelni" -> "Manuelni"
-        else -> ""
+        else -> value
     }
 }
