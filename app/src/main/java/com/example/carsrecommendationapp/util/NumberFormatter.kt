@@ -3,8 +3,10 @@ package com.example.carsrecommendationapp.util
 import java.text.NumberFormat
 import java.util.Locale
 
+private val SRBIAN_LOCALE = Locale("sr", "RS")
+
 private fun numberFormatter(): NumberFormat =
-    NumberFormat.getNumberInstance(Locale.GERMANY)
+    NumberFormat.getNumberInstance(SRBIAN_LOCALE)
 
 fun formatPrice(price: Int?): String {
     return "€ ${numberFormatter().format(price ?: 0)}"

@@ -1,0 +1,10 @@
+[33m8400835[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfix/code_revision[m[33m, [m[1;31morigin/fix/code_revision[m[33m)[m Improve accessibility and localization
+[33mb6bf411[m Replace budget limit magic number with constant
+[33m4208db9[m Cancel previous load jobs before starting new ones
+[33m46a68a0[m fix: improve vehicle details loading and layout
+[33m357aecc[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m Fix vehicle details score and budget limit handling
+[33m05d05ef[m Fix vehicle details match score regression
+[33md361b39[m Remove unused imports
+[33m0207a0e[m Address final review feedback
+[33m7ddffd6[m Add retry regression test and improve drive type error handling
+[33m00fba93[m Polish UI consistency and loading states

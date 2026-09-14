@@ -1,5 +1,7 @@
 package com.example.carsrecommendationapp.presentation.viewmodel
 
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.onStart
 import com.example.carsrecommendationapp.Constants
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.CancellationException
@@ -14,7 +16,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
-import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -39,11 +40,21 @@ class RecommendationViewModel @Inject constructor(
     val errorMessage: StateFlow<String?> = _errorMessage.asStateFlow()
 
     private val _query = MutableStateFlow<RecommendationQuery?>(null)
-    private var lastQuery: RecommendationQuery? = null
+
+    private val retryTrigger = MutableSharedFlow<Unit>(
+        replay = 0,
+        extraBufferCapacity = 1
+    )
+
 
     init {
-        _query
-            .filterNotNull()
+        retryTrigger
+            .onStart { emit(Unit) }
+            .flatMapLatest {
+                flow {
+                    _query.value?.let { emit(it) }
+                }
+            }
             .flatMapLatest { query ->
 
                 _isLoading.value = true
@@ -122,14 +133,11 @@ class RecommendationViewModel @Inject constructor(
             drivingPhilosophy = drivingPhilosophy
         )
 
-        lastQuery = query
         _query.value = query
+        retryTrigger.tryEmit(Unit)
     }
 
     fun retry() {
-        lastQuery?.let {
-            _query.value = null
-            _query.value = it
-        }
+        retryTrigger.tryEmit(Unit)
     }
 }
