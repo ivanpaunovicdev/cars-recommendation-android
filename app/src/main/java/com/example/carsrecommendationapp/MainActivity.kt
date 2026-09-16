@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp
 
+import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.carsrecommendationapp.presentation.ui.theme.CarsRecommendationAppTheme
 import androidx.navigation.toRoute
@@ -36,6 +37,8 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        enableEdgeToEdge()
 
         setContent {
             CarsRecommendationAppTheme {
