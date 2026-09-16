@@ -1,5 +1,7 @@
 package com.example.carsrecommendationapp.presentation.ui.components
 
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.ui.semantics.Role
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -47,7 +49,11 @@ fun DrivingRouteCard(
                     colorResource(R.color.circle_dark),
                 shape = RoundedCornerShape(Dimens.Large)
             )
-            .clickable { onClick() }
+            .selectable(
+                selected = isSelected,
+                onClick = onClick,
+                role = Role.RadioButton
+            )
             .padding(12.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center

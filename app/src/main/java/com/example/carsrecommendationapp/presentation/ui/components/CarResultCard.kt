@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.ui.components
 
+import androidx.compose.ui.semantics.Role
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -49,7 +50,10 @@ fun CarResultCard(
             .fillMaxWidth()
             .clip(RoundedCornerShape(22.dp))
             .background(colorResource(R.color.card_dark))
-            .clickable { onClick() }
+            .clickable(
+                role = Role.Button,
+                onClick = onClick
+            )
     ) {
         Column {
             Box(
@@ -90,9 +94,10 @@ fun CarResultCard(
                                 colorResource(R.color.circle_dark),
                                 CircleShape
                             )
-                            .clickable {
-                                onFavoriteClick()
-                            },
+                            .clickable(
+                                role = Role.Button,
+                                onClick = onFavoriteClick
+                            ),
                         contentAlignment = Alignment.Center
                     ) {
                         Text(

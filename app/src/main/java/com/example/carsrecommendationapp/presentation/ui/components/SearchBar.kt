@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.ui.components
 
+import androidx.compose.ui.semantics.Role
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -68,9 +69,10 @@ fun SearchBar(
                     color = colorResource(R.color.orange),
                     shape = RoundedCornerShape(Dimens.Medium)
                 )
-                .clickable {
-                    onFilterClick()
-                },
+                .clickable(
+                    role = Role.Button,
+                    onClick = onFilterClick
+                ),
             contentAlignment = Alignment.Center
         ) {
             Icon(

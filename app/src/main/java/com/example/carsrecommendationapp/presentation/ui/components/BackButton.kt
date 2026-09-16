@@ -1,5 +1,6 @@
 package com.example.carsrecommendationapp.presentation.ui.components
 
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.res.stringResource
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -32,9 +33,10 @@ fun BackButton(
                 color = colorResource(R.color.light_gray),
                 shape = RoundedCornerShape(Dimens.Small)
             )
-            .clickable {
-                onClick()
-            },
+            .clickable(
+                role = Role.Button,
+                onClick = onClick
+            ),
         contentAlignment = Alignment.Center
     ) {
         Icon(

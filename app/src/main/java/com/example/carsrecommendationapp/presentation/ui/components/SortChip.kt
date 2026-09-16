@@ -1,6 +1,7 @@
 package com.example.carsrecommendationapp.presentation.ui.components
 
-
+import androidx.compose.ui.semantics.Role
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -31,7 +32,10 @@ fun SortChip(
                 color = colorResource(R.color.card_dark),
                 shape = RoundedCornerShape(14.dp)
             )
-            .clickable { onClick() }
+            .clickable(
+                role = Role.Button,
+                onClick = onClick
+            )
             .padding(horizontal = 14.dp, vertical = 9.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {

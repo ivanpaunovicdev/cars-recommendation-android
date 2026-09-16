@@ -1,5 +1,7 @@
 package com.example.carsrecommendationapp.presentation.ui.components
 
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.ui.semantics.Role
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -38,7 +40,11 @@ fun OptionChip(
                     colorResource(R.color.card_dark),
                 shape = RoundedCornerShape(Dimens.Medium)
             )
-            .clickable { onClick() }
+            .selectable(
+                selected = isSelected,
+                onClick = onClick,
+                role = Role.Checkbox
+            )
             .padding(horizontal = Dimens.CompactPlus, vertical = Dimens.Small)
     ) {
         Text(
