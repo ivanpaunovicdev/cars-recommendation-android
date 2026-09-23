@@ -1,7 +1,5 @@
 package com.example.carsrecommendationapp.presentation.viewmodel
 
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.Job
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -40,14 +38,17 @@ class VehicleDetailsViewModel @Inject constructor(
         loadJob = viewModelScope.launch {
             try {
                 _car.value = carRepository.getCarById(id)
+                _isLoading.value = false
+
             } catch (e: CancellationException) {
                 throw e
+
             } catch (e: Exception) {
                 _errorMessage.value =
                     e.message ?: "Došlo je do greške pri učitavanju vozila."
-                e.printStackTrace()
-            } finally {
+
                 _isLoading.value = false
+                e.printStackTrace()
             }
         }
     }

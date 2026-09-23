@@ -79,14 +79,17 @@ class RecommendationViewModel @Inject constructor(
                             )
                         )
 
+                        _isLoading.value = false
+
                     } catch (e: CancellationException) {
                         throw e
+
                     } catch (e: Exception) {
                         _errorMessage.value =
                             e.message ?: "Došlo je do greške pri učitavanju preporuka."
-                        e.printStackTrace()
-                    } finally {
+
                         _isLoading.value = false
+                        e.printStackTrace()
                     }
 
                 }
