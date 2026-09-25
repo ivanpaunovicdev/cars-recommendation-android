@@ -1,10 +1,10 @@
 # Car Recommendation System - Android
 
-> 🚧 **Work in Progress** — This application is currently under active development.
+> 🚧 **Work in Progress** - This application is currently under active development.
 
 ## About the Project
 
-This Android application is part of my Master's project in Computer Engineering. It is designed to provide personalized vehicle recommendations based on user preferences, budget, vehicle specifications, and driving habits.
+This Android application was developed as part of my Master's project in Computer Engineering and is currently being further developed and improved. It is designed to provide personalized vehicle recommendations based on user preferences, budget, vehicle specifications, and driving habits.
 
 The application communicates with a Spring Boot backend through a REST API and uses a recommendation system backed by a Neo4j graph database.
 
@@ -18,7 +18,7 @@ The application communicates with a Spring Boot backend through a REST API and u
 - MVVM Architecture
 - Kotlin Coroutines
 
-  ## Features
+## Features
 
 - Multi-step onboarding for collecting user preferences
 - Vehicle filtering by brand, body type, fuel type, budget, and other specifications
@@ -27,7 +27,7 @@ The application communicates with a Spring Boot backend through a REST API and u
 - Detailed vehicle information and recommendation score
 - Communication with the backend through a REST API
 
-  ## Project Status
+## Project Status
 
 🚧 This project is currently under active development. New features, improvements, and refinements are being added as development continues.
 
